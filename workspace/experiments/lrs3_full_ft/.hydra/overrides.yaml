@@ -1,0 +1,12 @@
+- task.data=/workspace/av-hubert-ai-speak/data/lrs3_raw/subset_data
+- task.label_dir=/workspace/av-hubert-ai-speak/data/lrs3_raw/subset_data
+- task.tokenizer_bpe_model=/workspace/av-hubert-ai-speak/data/lrs3_raw/subset_data/spm_unigram1000.model
+- model.w2v_path=/workspace/av-hubert-ai-speak/workspace/checkpoints/base_vox_iter5.pt
+- common.user_dir=/workspace/av-hubert-ai-speak/av_hubert/avhubert
+- optimization.max_update=3000
+- optimization.update_freq=[2]
+- dataset.max_tokens=1500
+- dataset.num_workers=6
+- lr_scheduler.warmup_steps=1000
+- lr_scheduler.decay_steps=2000
+- model.freeze_finetune_updates=2000

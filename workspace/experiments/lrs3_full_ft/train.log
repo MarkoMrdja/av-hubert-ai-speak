@@ -1,0 +1,889 @@
+[2026-08-05 13:48:26,305][fairseq_cli.train][INFO] - {'_name': None, 'common': {'_name': None, 'no_progress_bar': False, 'log_interval': 100, 'log_format': 'json', 'log_file': None, 'tensorboard_logdir': 'tblog', 'wandb_project': None, 'azureml_logging': False, 'seed': 1337, 'cpu': False, 'tpu': False, 'bf16': False, 'memory_efficient_bf16': False, 'fp16': True, 'memory_efficient_fp16': False, 'fp16_no_flatten_grads': False, 'fp16_init_scale': 128, 'fp16_scale_window': None, 'fp16_scale_tolerance': 0.0, 'on_cpu_convert_precision': False, 'min_loss_scale': 0.0001, 'threshold_loss_scale': None, 'amp': False, 'amp_batch_retries': 2, 'amp_init_scale': 128, 'amp_scale_window': None, 'user_dir': '/workspace/av-hubert-ai-speak/av_hubert/avhubert', 'empty_cache_freq': 0, 'all_gather_list_size': 16384, 'model_parallel_size': 1, 'quantization_config_path': None, 'profile': False, 'reset_logging': False, 'suppress_crashes': False, 'use_plasma_view': False, 'plasma_path': '/tmp/plasma'}, 'common_eval': {'_name': None, 'path': None, 'post_process': None, 'quiet': False, 'model_overrides': '{}', 'results_path': None}, 'distributed_training': {'_name': None, 'distributed_world_size': 1, 'distributed_num_procs': 1, 'distributed_rank': 0, 'distributed_backend': 'nccl', 'distributed_init_method': None, 'distributed_port': -1, 'device_id': 0, 'distributed_no_spawn': False, 'ddp_backend': 'c10d', 'ddp_comm_hook': 'none', 'bucket_cap_mb': 25, 'fix_batches_to_gpus': False, 'find_unused_parameters': True, 'fast_stat_sync': False, 'heartbeat_timeout': -1, 'broadcast_buffers': False, 'slowmo_momentum': None, 'slowmo_algorithm': 'LocalSGD', 'localsgd_frequency': 3, 'nprocs_per_node': 1, 'pipeline_model_parallel': False, 'pipeline_balance': None, 'pipeline_devices': None, 'pipeline_chunks': 0, 'pipeline_encoder_balance': None, 'pipeline_encoder_devices': None, 'pipeline_decoder_balance': None, 'pipeline_decoder_devices': None, 'pipeline_checkpoint': 'never', 'zero_sharding': 'none', 'fp16': True, 'memory_efficient_fp16': False, 'tpu': False, 'no_reshard_after_forward': False, 'fp32_reduce_scatter': False, 'cpu_offload': False, 'use_sharded_state': False}, 'dataset': {'_name': None, 'num_workers': 6, 'skip_invalid_size_inputs_valid_test': False, 'max_tokens': 1500, 'batch_size': None, 'required_batch_size_multiple': 8, 'required_seq_len_multiple': 1, 'dataset_impl': None, 'data_buffer_size': 10, 'train_subset': 'train', 'valid_subset': 'valid', 'combine_valid_subsets': None, 'ignore_unused_valid_subsets': False, 'validate_interval': 1, 'validate_interval_updates': 0, 'validate_after_updates': 0, 'fixed_validation_seed': None, 'disable_validation': False, 'max_tokens_valid': 1500, 'batch_size_valid': None, 'max_valid_steps': None, 'curriculum': 0, 'gen_subset': 'test', 'num_shards': 1, 'shard_id': 0}, 'optimization': {'_name': None, 'max_epoch': 0, 'max_update': 3000, 'stop_time_hours': 0.0, 'clip_norm': 0.0, 'sentence_avg': True, 'update_freq': [2], 'lr': [0.001], 'stop_min_lr': -1.0, 'use_bmuf': False}, 'checkpoint': {'_name': None, 'save_dir': 'checkpoints', 'restore_file': 'checkpoint_last.pt', 'finetune_from_model': None, 'reset_dataloader': False, 'reset_lr_scheduler': False, 'reset_meters': False, 'reset_optimizer': False, 'optimizer_overrides': '{}', 'save_interval': 1, 'save_interval_updates': 0, 'keep_interval_updates': 1, 'keep_interval_updates_pattern': -1, 'keep_last_epochs': -1, 'keep_best_checkpoints': -1, 'no_save': False, 'no_epoch_checkpoints': True, 'no_last_checkpoints': False, 'no_save_optimizer_state': False, 'best_checkpoint_metric': 'accuracy', 'maximize_best_checkpoint_metric': True, 'patience': -1, 'checkpoint_suffix': '', 'checkpoint_shard_count': 1, 'load_checkpoint_on_all_dp_ranks': False, 'write_checkpoints_asynchronously': False, 'model_parallel_size': 1}, 'bmuf': {'_name': None, 'block_lr': 1.0, 'block_momentum': 0.875, 'global_sync_iter': 50, 'warmup_iterations': 500, 'use_nbm': False, 'average_sync': False, 'distributed_world_size': 1}, 'generation': {'_name': None, 'beam': 5, 'nbest': 1, 'max_len_a': 0.0, 'max_len_b': 200, 'min_len': 1, 'match_source_len': False, 'unnormalized': False, 'no_early_stop': False, 'no_beamable_mm': False, 'lenpen': 1.0, 'unkpen': 0.0, 'replace_unk': None, 'sacrebleu': False, 'score_reference': False, 'prefix_size': 0, 'no_repeat_ngram_size': 0, 'sampling': False, 'sampling_topk': -1, 'sampling_topp': -1.0, 'constraints': None, 'temperature': 1.0, 'diverse_beam_groups': -1, 'diverse_beam_strength': 0.5, 'diversity_rate': -1.0, 'print_alignment': None, 'print_step': False, 'lm_path': None, 'lm_weight': 0.0, 'iter_decode_eos_penalty': 0.0, 'iter_decode_max_iter': 10, 'iter_decode_force_max_iter': False, 'iter_decode_with_beam': 1, 'iter_decode_with_external_reranker': False, 'retain_iter_history': False, 'retain_dropout': False, 'retain_dropout_modules': None, 'decoding_format': None, 'no_seed_provided': False}, 'eval_lm': {'_name': None, 'output_word_probs': False, 'output_word_stats': False, 'context_window': 0, 'softmax_batch': 9223372036854775807}, 'interactive': {'_name': None, 'buffer_size': 0, 'input': '-'}, 'model': {'_name': 'av_hubert_seq2seq', 'w2v_path': '/workspace/av-hubert-ai-speak/workspace/checkpoints/base_vox_iter5.pt', 'apply_mask': False, 'mask_selection': 'static', 'mask_length': 10, 'mask_other': 0, 'mask_prob': 0.75, 'mask_channel_selection': 'static', 'mask_channel_length': 64, 'mask_channel_other': 0, 'mask_channel_prob': 0.5, 'layerdrop': 0.1, 'dropout': 0.0, 'activation_dropout': 0.1, 'attention_dropout': 0.0, 'feature_grad_mult': 1.0, 'decoder_layers': 6, 'decoder_dropout': 0.1, 'decoder_attention_dropout': 0.0, 'decoder_activation_dropout': 0.1, 'freeze_finetune_updates': 2000, 'share_decoder_input_output_embed': True, 'decoder_normalize_before': True}, 'task': {'_name': 'av_hubert_pretraining', 'is_s2s': True, 'data': '/workspace/av-hubert-ai-speak/data/lrs3_raw/subset_data', 'label_dir': '/workspace/av-hubert-ai-speak/data/lrs3_raw/subset_data', 'tokenizer_bpe_model': '/workspace/av-hubert-ai-speak/data/lrs3_raw/subset_data/spm_unigram1000.model', 'normalize': True, 'labels': ['wrd'], 'single_target': True, 'fine_tuning': True, 'stack_order_audio': 4, 'tokenizer_bpe_name': 'sentencepiece', 'max_sample_size': 500, 'modalities': ['video'], 'image_aug': True, 'pad_audio': True, 'random_crop': False}, 'criterion': {'_name': 'label_smoothed_cross_entropy', 'label_smoothing': 0.1, 'report_accuracy': True, 'ignore_prefix_size': 0, 'sentence_avg': True}, 'optimizer': {'_name': 'adam', 'adam_betas': '(0.9,0.98)', 'adam_eps': 1e-08, 'weight_decay': 0.0, 'use_old_adam': False, 'tpu': False, 'lr': [0.001]}, 'lr_scheduler': {'_name': 'tri_stage', 'warmup_steps': 1000, 'hold_steps': 0, 'decay_steps': 2000, 'phase_ratio': None, 'init_lr_scale': 0.01, 'final_lr_scale': 0.05, 'max_update': 3000, 'lr': [0.001]}, 'scoring': None, 'bpe': None, 'tokenizer': None, 'job_logging_cfg': {'version': 1, 'formatters': {'simple': {'format': '[%(asctime)s][%(name)s][%(levelname)s] - %(message)s'}}, 'handlers': {'console': {'class': 'logging.StreamHandler', 'formatter': 'simple', 'stream': 'ext://sys.stdout'}, 'file': {'class': 'logging.FileHandler', 'formatter': 'simple', 'filename': 'hydra_train.log'}}, 'root': {'level': 'INFO', 'handlers': ['console', 'file']}, 'disable_existing_loggers': False}}
+[2026-08-05 13:48:26,310][avhubert.hubert_pretraining][INFO] - current directory is /workspace/av-hubert-ai-speak/workspace/experiments/lrs3_full_ft
+[2026-08-05 13:48:26,310][avhubert.hubert_pretraining][INFO] - AVHubertPretrainingTask Config {'_name': 'av_hubert_pretraining', 'data': '/workspace/av-hubert-ai-speak/data/lrs3_raw/subset_data', 'labels': ['wrd'], 'label_dir': '/workspace/av-hubert-ai-speak/data/lrs3_raw/subset_data', 'label_rate': -1, 'sample_rate': 16000, 'normalize': True, 'enable_padding': False, 'max_sample_size': 500, 'min_sample_size': None, 'max_trim_sample_size': '${task.max_sample_size}', 'single_target': True, 'random_crop': False, 'pad_audio': True, 'pdb': False, 'stack_order_audio': 4, 'skip_verify': False, 'image_aug': True, 'image_crop_size': 88, 'image_mean': 0.421, 'image_std': 0.165, 'modalities': ['video'], 'is_s2s': True, 'tokenizer_bpe_name': 'sentencepiece', 'tokenizer_bpe_model': '/workspace/av-hubert-ai-speak/data/lrs3_raw/subset_data/spm_unigram1000.model', 'noise_wav': None, 'noise_prob': 0.0, 'noise_snr': '0', 'noise_num': 1, 'fine_tuning': True}
+[2026-08-05 13:48:26,957][avhubert.hubert_pretraining][INFO] - current directory is /workspace/av-hubert-ai-speak/workspace/experiments/lrs3_full_ft
+[2026-08-05 13:48:26,957][avhubert.hubert_pretraining][INFO] - AVHubertPretrainingTask Config {'_name': 'av_hubert_pretraining', 'data': '/workspace/av-hubert-ai-speak/data/lrs3_raw/subset_data', 'labels': ['km'], 'label_dir': '/checkpoint/bshi/data/lrs3//video/hubert/stitch-iters/envox-iter4-l12c2000/', 'label_rate': 25, 'sample_rate': 25, 'normalize': True, 'enable_padding': False, 'max_sample_size': 2000, 'min_sample_size': 5, 'max_trim_sample_size': 400, 'single_target': False, 'random_crop': True, 'pad_audio': False, 'pdb': False, 'stack_order_audio': 4, 'skip_verify': False, 'image_aug': True, 'image_crop_size': 88, 'image_mean': 0.421, 'image_std': 0.165, 'modalities': ['audio', 'video'], 'is_s2s': False, 'tokenizer_bpe_name': None, 'tokenizer_bpe_model': None, 'noise_wav': None, 'noise_prob': 0.0, 'noise_snr': '0', 'noise_num': 1, 'fine_tuning': False}
+[2026-08-05 13:48:26,963][avhubert.hubert][INFO] - HubertModel Config: {'_name': 'av_hubert', 'label_rate': 25, 'input_modality': '${task.input_modality}', 'extractor_mode': default, 'encoder_layers': 12, 'encoder_embed_dim': 768, 'encoder_ffn_embed_dim': 3072, 'encoder_attention_heads': 12, 'activation_fn': gelu, 'dropout': 0.0, 'attention_dropout': 0.0, 'activation_dropout': 0.1, 'encoder_layerdrop': 0.1, 'dropout_input': 0.0, 'dropout_features': 0.1, 'final_dim': 256, 'untie_final_proj': True, 'layer_norm_first': True, 'conv_feature_layers': '[(512,10,5)] + [(512,3,2)] * 4 + [(512,2,2)] * 2', 'conv_bias': False, 'logit_temp': 0.1, 'target_glu': False, 'feature_grad_mult': 1.0, 'mask_length_audio': 10, 'mask_prob_audio': 0.8, 'mask_length_image': 5, 'mask_prob_image': 0.3, 'mask_selection': static, 'mask_other': 0.0, 'no_mask_overlap': False, 'mask_min_space': 1, 'mask_channel_length': 10, 'mask_channel_prob': 0.0, 'mask_channel_selection': static, 'mask_channel_other': 0.0, 'no_mask_channel_overlap': False, 'mask_channel_min_space': 1, 'conv_pos': 128, 'conv_pos_groups': 16, 'latent_temp': [2.0, 0.5, 0.999995], 'skip_masked': False, 'skip_nomask': False, 'resnet_relu_type': 'prelu', 'resnet_weights': None, 'sim_type': 'cosine', 'sub_encoder_layers': 0, 'audio_feat_dim': 104, 'modality_dropout': 0.5, 'audio_dropout': 0.5, 'modality_fuse': 'concat', 'selection_type': 'same_seq', 'masking_type': 'input', 'decoder_embed_dim': 768, 'decoder_ffn_embed_dim': 3072, 'decoder_layers': 6, 'decoder_layerdrop': 0.0, 'decoder_attention_heads': 4, 'decoder_learned_pos': False, 'decoder_normalize_before': False, 'no_token_positional_embeddings': False, 'decoder_dropout': 0.1, 'decoder_attention_dropout': 0.1, 'decoder_activation_dropout': 0.0, 'max_target_positions': 2048, 'share_decoder_input_output_embed': False, 'no_scale_embedding': True}
+[2026-08-05 13:48:29,293][fairseq_cli.train][INFO] - AVHubertSeq2Seq(
+  (encoder): HubertEncoderWrapper(
+    (w2v_model): AVHubertModel(
+      (feature_extractor_audio): SubModel(
+        (proj): Linear(in_features=104, out_features=768, bias=True)
+      )
+      (feature_extractor_video): SubModel(
+        (resnet): ResEncoder(
+          (frontend3D): Sequential(
+            (0): Conv3d(1, 64, kernel_size=(5, 7, 7), stride=(1, 2, 2), padding=(2, 3, 3), bias=False)
+            (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            (2): PReLU(num_parameters=64)
+            (3): MaxPool3d(kernel_size=(1, 3, 3), stride=(1, 2, 2), padding=(0, 1, 1), dilation=1, ceil_mode=False)
+          )
+          (trunk): ResNet(
+            (layer1): Sequential(
+              (0): BasicBlock(
+                (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+                (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                (relu1): PReLU(num_parameters=64)
+                (relu2): PReLU(num_parameters=64)
+                (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+                (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              )
+              (1): BasicBlock(
+                (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+                (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                (relu1): PReLU(num_parameters=64)
+                (relu2): PReLU(num_parameters=64)
+                (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+                (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              )
+            )
+            (layer2): Sequential(
+              (0): BasicBlock(
+                (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+                (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                (relu1): PReLU(num_parameters=128)
+                (relu2): PReLU(num_parameters=128)
+                (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+                (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                (downsample): Sequential(
+                  (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+                  (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                )
+              )
+              (1): BasicBlock(
+                (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+                (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                (relu1): PReLU(num_parameters=128)
+                (relu2): PReLU(num_parameters=128)
+                (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+                (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              )
+            )
+            (layer3): Sequential(
+              (0): BasicBlock(
+                (conv1): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+                (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                (relu1): PReLU(num_parameters=256)
+                (relu2): PReLU(num_parameters=256)
+                (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+                (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                (downsample): Sequential(
+                  (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+                  (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                )
+              )
+              (1): BasicBlock(
+                (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+                (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                (relu1): PReLU(num_parameters=256)
+                (relu2): PReLU(num_parameters=256)
+                (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+                (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              )
+            )
+            (layer4): Sequential(
+              (0): BasicBlock(
+                (conv1): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+                (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                (relu1): PReLU(num_parameters=512)
+                (relu2): PReLU(num_parameters=512)
+                (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+                (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                (downsample): Sequential(
+                  (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+                  (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                )
+              )
+              (1): BasicBlock(
+                (conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+                (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+                (relu1): PReLU(num_parameters=512)
+                (relu2): PReLU(num_parameters=512)
+                (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+                (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              )
+            )
+            (avgpool): AdaptiveAvgPool2d(output_size=1)
+          )
+        )
+        (proj): Linear(in_features=512, out_features=768, bias=True)
+      )
+      (post_extract_proj): Linear(in_features=1536, out_features=768, bias=True)
+      (dropout_input): Dropout(p=0.0, inplace=False)
+      (dropout_features): Dropout(p=0.1, inplace=False)
+      (encoder): TransformerEncoder(
+        (pos_conv): Sequential(
+          (0): Conv1d(768, 768, kernel_size=(128,), stride=(1,), padding=(64,), groups=16)
+          (1): SamePad()
+          (2): GELU(approximate='none')
+        )
+        (layers): ModuleList(
+          (0): TransformerSentenceEncoderLayer(
+            (self_attn): MultiheadAttention(
+              (dropout_module): FairseqDropout()
+              (k_proj): Linear(in_features=768, out_features=768, bias=True)
+              (v_proj): Linear(in_features=768, out_features=768, bias=True)
+              (q_proj): Linear(in_features=768, out_features=768, bias=True)
+              (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            )
+            (dropout1): Dropout(p=0.0, inplace=False)
+            (dropout2): Dropout(p=0.1, inplace=False)
+            (dropout3): Dropout(p=0.0, inplace=False)
+            (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          )
+          (1): TransformerSentenceEncoderLayer(
+            (self_attn): MultiheadAttention(
+              (dropout_module): FairseqDropout()
+              (k_proj): Linear(in_features=768, out_features=768, bias=True)
+              (v_proj): Linear(in_features=768, out_features=768, bias=True)
+              (q_proj): Linear(in_features=768, out_features=768, bias=True)
+              (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            )
+            (dropout1): Dropout(p=0.0, inplace=False)
+            (dropout2): Dropout(p=0.1, inplace=False)
+            (dropout3): Dropout(p=0.0, inplace=False)
+            (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          )
+          (2): TransformerSentenceEncoderLayer(
+            (self_attn): MultiheadAttention(
+              (dropout_module): FairseqDropout()
+              (k_proj): Linear(in_features=768, out_features=768, bias=True)
+              (v_proj): Linear(in_features=768, out_features=768, bias=True)
+              (q_proj): Linear(in_features=768, out_features=768, bias=True)
+              (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            )
+            (dropout1): Dropout(p=0.0, inplace=False)
+            (dropout2): Dropout(p=0.1, inplace=False)
+            (dropout3): Dropout(p=0.0, inplace=False)
+            (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          )
+          (3): TransformerSentenceEncoderLayer(
+            (self_attn): MultiheadAttention(
+              (dropout_module): FairseqDropout()
+              (k_proj): Linear(in_features=768, out_features=768, bias=True)
+              (v_proj): Linear(in_features=768, out_features=768, bias=True)
+              (q_proj): Linear(in_features=768, out_features=768, bias=True)
+              (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            )
+            (dropout1): Dropout(p=0.0, inplace=False)
+            (dropout2): Dropout(p=0.1, inplace=False)
+            (dropout3): Dropout(p=0.0, inplace=False)
+            (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          )
+          (4): TransformerSentenceEncoderLayer(
+            (self_attn): MultiheadAttention(
+              (dropout_module): FairseqDropout()
+              (k_proj): Linear(in_features=768, out_features=768, bias=True)
+              (v_proj): Linear(in_features=768, out_features=768, bias=True)
+              (q_proj): Linear(in_features=768, out_features=768, bias=True)
+              (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            )
+            (dropout1): Dropout(p=0.0, inplace=False)
+            (dropout2): Dropout(p=0.1, inplace=False)
+            (dropout3): Dropout(p=0.0, inplace=False)
+            (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          )
+          (5): TransformerSentenceEncoderLayer(
+            (self_attn): MultiheadAttention(
+              (dropout_module): FairseqDropout()
+              (k_proj): Linear(in_features=768, out_features=768, bias=True)
+              (v_proj): Linear(in_features=768, out_features=768, bias=True)
+              (q_proj): Linear(in_features=768, out_features=768, bias=True)
+              (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            )
+            (dropout1): Dropout(p=0.0, inplace=False)
+            (dropout2): Dropout(p=0.1, inplace=False)
+            (dropout3): Dropout(p=0.0, inplace=False)
+            (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          )
+          (6): TransformerSentenceEncoderLayer(
+            (self_attn): MultiheadAttention(
+              (dropout_module): FairseqDropout()
+              (k_proj): Linear(in_features=768, out_features=768, bias=True)
+              (v_proj): Linear(in_features=768, out_features=768, bias=True)
+              (q_proj): Linear(in_features=768, out_features=768, bias=True)
+              (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            )
+            (dropout1): Dropout(p=0.0, inplace=False)
+            (dropout2): Dropout(p=0.1, inplace=False)
+            (dropout3): Dropout(p=0.0, inplace=False)
+            (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          )
+          (7): TransformerSentenceEncoderLayer(
+            (self_attn): MultiheadAttention(
+              (dropout_module): FairseqDropout()
+              (k_proj): Linear(in_features=768, out_features=768, bias=True)
+              (v_proj): Linear(in_features=768, out_features=768, bias=True)
+              (q_proj): Linear(in_features=768, out_features=768, bias=True)
+              (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            )
+            (dropout1): Dropout(p=0.0, inplace=False)
+            (dropout2): Dropout(p=0.1, inplace=False)
+            (dropout3): Dropout(p=0.0, inplace=False)
+            (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          )
+          (8): TransformerSentenceEncoderLayer(
+            (self_attn): MultiheadAttention(
+              (dropout_module): FairseqDropout()
+              (k_proj): Linear(in_features=768, out_features=768, bias=True)
+              (v_proj): Linear(in_features=768, out_features=768, bias=True)
+              (q_proj): Linear(in_features=768, out_features=768, bias=True)
+              (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            )
+            (dropout1): Dropout(p=0.0, inplace=False)
+            (dropout2): Dropout(p=0.1, inplace=False)
+            (dropout3): Dropout(p=0.0, inplace=False)
+            (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          )
+          (9): TransformerSentenceEncoderLayer(
+            (self_attn): MultiheadAttention(
+              (dropout_module): FairseqDropout()
+              (k_proj): Linear(in_features=768, out_features=768, bias=True)
+              (v_proj): Linear(in_features=768, out_features=768, bias=True)
+              (q_proj): Linear(in_features=768, out_features=768, bias=True)
+              (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            )
+            (dropout1): Dropout(p=0.0, inplace=False)
+            (dropout2): Dropout(p=0.1, inplace=False)
+            (dropout3): Dropout(p=0.0, inplace=False)
+            (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          )
+          (10): TransformerSentenceEncoderLayer(
+            (self_attn): MultiheadAttention(
+              (dropout_module): FairseqDropout()
+              (k_proj): Linear(in_features=768, out_features=768, bias=True)
+              (v_proj): Linear(in_features=768, out_features=768, bias=True)
+              (q_proj): Linear(in_features=768, out_features=768, bias=True)
+              (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            )
+            (dropout1): Dropout(p=0.0, inplace=False)
+            (dropout2): Dropout(p=0.1, inplace=False)
+            (dropout3): Dropout(p=0.0, inplace=False)
+            (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          )
+          (11): TransformerSentenceEncoderLayer(
+            (self_attn): MultiheadAttention(
+              (dropout_module): FairseqDropout()
+              (k_proj): Linear(in_features=768, out_features=768, bias=True)
+              (v_proj): Linear(in_features=768, out_features=768, bias=True)
+              (q_proj): Linear(in_features=768, out_features=768, bias=True)
+              (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            )
+            (dropout1): Dropout(p=0.0, inplace=False)
+            (dropout2): Dropout(p=0.1, inplace=False)
+            (dropout3): Dropout(p=0.0, inplace=False)
+            (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+            (fc1): Linear(in_features=768, out_features=3072, bias=True)
+            (fc2): Linear(in_features=3072, out_features=768, bias=True)
+            (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          )
+        )
+        (layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+      )
+      (layer_norm): LayerNorm((1536,), eps=1e-05, elementwise_affine=True)
+      (final_proj): None
+    )
+  )
+  (decoder): TransformerDecoder(
+    (embed_tokens): Embedding(1000, 768, padding_idx=1)
+    (embed_positions): SinusoidalPositionalEmbedding()
+    (layers): ModuleList(
+      (0): TransformerDecoderLayer(
+        (dropout_module): FairseqDropout()
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=768, out_features=768, bias=True)
+          (v_proj): Linear(in_features=768, out_features=768, bias=True)
+          (q_proj): Linear(in_features=768, out_features=768, bias=True)
+          (out_proj): Linear(in_features=768, out_features=768, bias=True)
+        )
+        (activation_dropout_module): FairseqDropout()
+        (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=768, out_features=768, bias=True)
+          (v_proj): Linear(in_features=768, out_features=768, bias=True)
+          (q_proj): Linear(in_features=768, out_features=768, bias=True)
+          (out_proj): Linear(in_features=768, out_features=768, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+      )
+      (1): TransformerDecoderLayer(
+        (dropout_module): FairseqDropout()
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=768, out_features=768, bias=True)
+          (v_proj): Linear(in_features=768, out_features=768, bias=True)
+          (q_proj): Linear(in_features=768, out_features=768, bias=True)
+          (out_proj): Linear(in_features=768, out_features=768, bias=True)
+        )
+        (activation_dropout_module): FairseqDropout()
+        (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=768, out_features=768, bias=True)
+          (v_proj): Linear(in_features=768, out_features=768, bias=True)
+          (q_proj): Linear(in_features=768, out_features=768, bias=True)
+          (out_proj): Linear(in_features=768, out_features=768, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+      )
+      (2): TransformerDecoderLayer(
+        (dropout_module): FairseqDropout()
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=768, out_features=768, bias=True)
+          (v_proj): Linear(in_features=768, out_features=768, bias=True)
+          (q_proj): Linear(in_features=768, out_features=768, bias=True)
+          (out_proj): Linear(in_features=768, out_features=768, bias=True)
+        )
+        (activation_dropout_module): FairseqDropout()
+        (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=768, out_features=768, bias=True)
+          (v_proj): Linear(in_features=768, out_features=768, bias=True)
+          (q_proj): Linear(in_features=768, out_features=768, bias=True)
+          (out_proj): Linear(in_features=768, out_features=768, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+      )
+      (3): TransformerDecoderLayer(
+        (dropout_module): FairseqDropout()
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=768, out_features=768, bias=True)
+          (v_proj): Linear(in_features=768, out_features=768, bias=True)
+          (q_proj): Linear(in_features=768, out_features=768, bias=True)
+          (out_proj): Linear(in_features=768, out_features=768, bias=True)
+        )
+        (activation_dropout_module): FairseqDropout()
+        (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=768, out_features=768, bias=True)
+          (v_proj): Linear(in_features=768, out_features=768, bias=True)
+          (q_proj): Linear(in_features=768, out_features=768, bias=True)
+          (out_proj): Linear(in_features=768, out_features=768, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+      )
+      (4): TransformerDecoderLayer(
+        (dropout_module): FairseqDropout()
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=768, out_features=768, bias=True)
+          (v_proj): Linear(in_features=768, out_features=768, bias=True)
+          (q_proj): Linear(in_features=768, out_features=768, bias=True)
+          (out_proj): Linear(in_features=768, out_features=768, bias=True)
+        )
+        (activation_dropout_module): FairseqDropout()
+        (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=768, out_features=768, bias=True)
+          (v_proj): Linear(in_features=768, out_features=768, bias=True)
+          (q_proj): Linear(in_features=768, out_features=768, bias=True)
+          (out_proj): Linear(in_features=768, out_features=768, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+      )
+      (5): TransformerDecoderLayer(
+        (dropout_module): FairseqDropout()
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=768, out_features=768, bias=True)
+          (v_proj): Linear(in_features=768, out_features=768, bias=True)
+          (q_proj): Linear(in_features=768, out_features=768, bias=True)
+          (out_proj): Linear(in_features=768, out_features=768, bias=True)
+        )
+        (activation_dropout_module): FairseqDropout()
+        (self_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=768, out_features=768, bias=True)
+          (v_proj): Linear(in_features=768, out_features=768, bias=True)
+          (q_proj): Linear(in_features=768, out_features=768, bias=True)
+          (out_proj): Linear(in_features=768, out_features=768, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=768, out_features=3072, bias=True)
+        (fc2): Linear(in_features=3072, out_features=768, bias=True)
+        (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+      )
+    )
+    (layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+  )
+)
+[2026-08-05 13:48:29,296][fairseq_cli.train][INFO] - task: AVHubertPretrainingTask
+[2026-08-05 13:48:29,296][fairseq_cli.train][INFO] - model: AVHubertSeq2Seq
+[2026-08-05 13:48:29,296][fairseq_cli.train][INFO] - criterion: LabelSmoothedCrossEntropyCriterion
+[2026-08-05 13:48:29,298][fairseq_cli.train][INFO] - num. shared model params: 160,613,608 (num. trained: 160,613,608)
+[2026-08-05 13:48:29,299][fairseq_cli.train][INFO] - num. expert model params: 0 (num. trained: 0)
+[2026-08-05 13:48:29,300][avhubert.hubert_pretraining][INFO] - Using tokenizer
+[2026-08-05 13:48:29,306][avhubert.hubert_dataset][INFO] - max_keep=500, min_keep=None, loaded 200, skipped 0 short and 0 long and 0 unaligned, longest-loaded=155, shortest-loaded=18
+[2026-08-05 13:48:29,307][avhubert.hubert_dataset][INFO] - /workspace/av-hubert-ai-speak/data/lrs3_raw/subset_data/valid.wrd is sequence label. skipped
+[2026-08-05 13:48:29,307][avhubert.hubert_dataset][INFO] - image transform: Compose(
+    Normalize(mean=0.0, std=255.0)
+    <avhubert.utils.CenterCrop object at 0x7f68294222e0>
+    Normalize(mean=0.421, std=0.165)
+)
+[2026-08-05 13:48:29,307][avhubert.hubert_dataset][INFO] - pad_audio=True, random_crop=False, normalize=True, max_sample_size=500, seqs2seq data=True,
+[2026-08-05 13:48:29,307][avhubert.hubert_dataset][INFO] - Noise wav: None->0 wav, Prob: 0.0, SNR: 0, Number of mixture: 1
+[2026-08-05 13:48:30,818][fairseq.trainer][INFO] - detected shared parameter: encoder.w2v_model.feature_extractor_video.resnet.frontend3D.0.bias <- encoder.w2v_model.feature_extractor_video.resnet.trunk.layer1.0.conv1.bias
+[2026-08-05 13:48:30,819][fairseq.trainer][INFO] - detected shared parameter: encoder.w2v_model.feature_extractor_video.resnet.frontend3D.0.bias <- encoder.w2v_model.feature_extractor_video.resnet.trunk.layer1.0.conv2.bias
+[2026-08-05 13:48:30,819][fairseq.trainer][INFO] - detected shared parameter: encoder.w2v_model.feature_extractor_video.resnet.frontend3D.0.bias <- encoder.w2v_model.feature_extractor_video.resnet.trunk.layer1.1.conv1.bias
+[2026-08-05 13:48:30,819][fairseq.trainer][INFO] - detected shared parameter: encoder.w2v_model.feature_extractor_video.resnet.frontend3D.0.bias <- encoder.w2v_model.feature_extractor_video.resnet.trunk.layer1.1.conv2.bias
+[2026-08-05 13:48:30,819][fairseq.trainer][INFO] - detected shared parameter: encoder.w2v_model.feature_extractor_video.resnet.frontend3D.0.bias <- encoder.w2v_model.feature_extractor_video.resnet.trunk.layer2.0.conv1.bias
+[2026-08-05 13:48:30,819][fairseq.trainer][INFO] - detected shared parameter: encoder.w2v_model.feature_extractor_video.resnet.frontend3D.0.bias <- encoder.w2v_model.feature_extractor_video.resnet.trunk.layer2.0.conv2.bias
+[2026-08-05 13:48:30,819][fairseq.trainer][INFO] - detected shared parameter: encoder.w2v_model.feature_extractor_video.resnet.frontend3D.0.bias <- encoder.w2v_model.feature_extractor_video.resnet.trunk.layer2.0.downsample.0.bias
+[2026-08-05 13:48:30,819][fairseq.trainer][INFO] - detected shared parameter: encoder.w2v_model.feature_extractor_video.resnet.frontend3D.0.bias <- encoder.w2v_model.feature_extractor_video.resnet.trunk.layer2.1.conv1.bias
+[2026-08-05 13:48:30,819][fairseq.trainer][INFO] - detected shared parameter: encoder.w2v_model.feature_extractor_video.resnet.frontend3D.0.bias <- encoder.w2v_model.feature_extractor_video.resnet.trunk.layer2.1.conv2.bias
+[2026-08-05 13:48:30,819][fairseq.trainer][INFO] - detected shared parameter: encoder.w2v_model.feature_extractor_video.resnet.frontend3D.0.bias <- encoder.w2v_model.feature_extractor_video.resnet.trunk.layer3.0.conv1.bias
+[2026-08-05 13:48:30,819][fairseq.trainer][INFO] - detected shared parameter: encoder.w2v_model.feature_extractor_video.resnet.frontend3D.0.bias <- encoder.w2v_model.feature_extractor_video.resnet.trunk.layer3.0.conv2.bias
+[2026-08-05 13:48:30,819][fairseq.trainer][INFO] - detected shared parameter: encoder.w2v_model.feature_extractor_video.resnet.frontend3D.0.bias <- encoder.w2v_model.feature_extractor_video.resnet.trunk.layer3.0.downsample.0.bias
+[2026-08-05 13:48:30,819][fairseq.trainer][INFO] - detected shared parameter: encoder.w2v_model.feature_extractor_video.resnet.frontend3D.0.bias <- encoder.w2v_model.feature_extractor_video.resnet.trunk.layer3.1.conv1.bias
+[2026-08-05 13:48:30,819][fairseq.trainer][INFO] - detected shared parameter: encoder.w2v_model.feature_extractor_video.resnet.frontend3D.0.bias <- encoder.w2v_model.feature_extractor_video.resnet.trunk.layer3.1.conv2.bias
+[2026-08-05 13:48:30,819][fairseq.trainer][INFO] - detected shared parameter: encoder.w2v_model.feature_extractor_video.resnet.frontend3D.0.bias <- encoder.w2v_model.feature_extractor_video.resnet.trunk.layer4.0.conv1.bias
+[2026-08-05 13:48:30,819][fairseq.trainer][INFO] - detected shared parameter: encoder.w2v_model.feature_extractor_video.resnet.frontend3D.0.bias <- encoder.w2v_model.feature_extractor_video.resnet.trunk.layer4.0.conv2.bias
+[2026-08-05 13:48:30,819][fairseq.trainer][INFO] - detected shared parameter: encoder.w2v_model.feature_extractor_video.resnet.frontend3D.0.bias <- encoder.w2v_model.feature_extractor_video.resnet.trunk.layer4.0.downsample.0.bias
+[2026-08-05 13:48:30,819][fairseq.trainer][INFO] - detected shared parameter: encoder.w2v_model.feature_extractor_video.resnet.frontend3D.0.bias <- encoder.w2v_model.feature_extractor_video.resnet.trunk.layer4.1.conv1.bias
+[2026-08-05 13:48:30,819][fairseq.trainer][INFO] - detected shared parameter: encoder.w2v_model.feature_extractor_video.resnet.frontend3D.0.bias <- encoder.w2v_model.feature_extractor_video.resnet.trunk.layer4.1.conv2.bias
+[2026-08-05 13:48:30,820][fairseq.utils][INFO] - ***********************CUDA enviroments for all 1 workers***********************
+[2026-08-05 13:48:30,820][fairseq.utils][INFO] - rank   0: capabilities =  8.6  ; total memory = 47.404 GB ; name = NVIDIA RTX A6000                        
+[2026-08-05 13:48:30,820][fairseq.utils][INFO] - ***********************CUDA enviroments for all 1 workers***********************
+[2026-08-05 13:48:30,820][fairseq_cli.train][INFO] - training on 1 devices (GPUs/TPUs)
+[2026-08-05 13:48:30,820][fairseq_cli.train][INFO] - max tokens per device = 1500 and max sentences per device = None
+[2026-08-05 13:48:30,821][fairseq.trainer][INFO] - Preparing to load checkpoint checkpoints/checkpoint_last.pt
+[2026-08-05 13:48:30,821][fairseq.trainer][INFO] - No existing checkpoint found checkpoints/checkpoint_last.pt
+[2026-08-05 13:48:30,821][fairseq.trainer][INFO] - loading train data for epoch 1
+[2026-08-05 13:48:30,821][avhubert.hubert_pretraining][INFO] - Using tokenizer
+[2026-08-05 13:48:30,866][avhubert.hubert_dataset][INFO] - max_keep=500, min_keep=None, loaded 3000, skipped 0 short and 0 long and 0 unaligned, longest-loaded=155, shortest-loaded=16
+[2026-08-05 13:48:30,867][avhubert.hubert_dataset][INFO] - /workspace/av-hubert-ai-speak/data/lrs3_raw/subset_data/train.wrd is sequence label. skipped
+[2026-08-05 13:48:30,867][avhubert.hubert_dataset][INFO] - image transform: Compose(
+    Normalize(mean=0.0, std=255.0)
+    RandomCrop(size=(88, 88))
+    <avhubert.utils.HorizontalFlip object at 0x7f68570c1f70>
+    Normalize(mean=0.421, std=0.165)
+)
+[2026-08-05 13:48:30,867][avhubert.hubert_dataset][INFO] - pad_audio=True, random_crop=False, normalize=True, max_sample_size=500, seqs2seq data=True,
+[2026-08-05 13:48:30,867][avhubert.hubert_dataset][INFO] - Noise wav: None->0 wav, Prob: 0.0, SNR: 0, Number of mixture: 1
+[2026-08-05 13:48:31,122][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:48:31,123][fairseq.trainer][INFO] - begin training epoch 1
+[2026-08-05 13:48:31,124][fairseq_cli.train][INFO] - Start iterating over samples
+[2026-08-05 13:48:54,668][train_inner][INFO] - {"epoch": 1, "update": 0.901, "loss": "159.4", "nll_loss": "8.316", "total": "506.17", "n_correct": "31.12", "ppl": "318.72", "accuracy": "6.148", "wps": "2564", "ups": "5.07", "wpb": "506.2", "bsz": "27.3", "num_updates": "100", "lr": "0.000109", "gnorm": "62.561", "loss_scale": "128", "train_wall": "22", "gb_free": "43.6", "wall": "24"}
+[2026-08-05 13:48:56,614][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2026-08-05 13:48:57,568][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:48:59,771][valid][INFO] - {"epoch": 1, "valid_loss": "163.009", "valid_nll_loss": "7.943", "valid_total": "246", "valid_n_correct": "19.6875", "valid_ppl": "246.15", "valid_accuracy": "8.003", "valid_wps": "3322.3", "valid_wpb": "246", "valid_bsz": "12.5", "valid_num_updates": "111"}
+[2026-08-05 13:48:59,772][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 1 @ 111 updates
+[2026-08-05 13:48:59,773][fairseq.trainer][INFO] - Saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 13:49:02,638][fairseq.trainer][INFO] - Finished saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 13:49:03,349][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint_best.pt (epoch 1 @ 111 updates, score 8.003) (writing took 3.5767078530043364 seconds)
+[2026-08-05 13:49:03,350][fairseq_cli.train][INFO] - end of epoch 1 (average epoch stats below)
+[2026-08-05 13:49:03,351][train][INFO] - {"epoch": 1, "train_loss": "159.09", "train_nll_loss": "8.283", "train_total": "502.144", "train_n_correct": "31.1261", "train_ppl": "311.5", "train_accuracy": "6.199", "train_wps": "1956.2", "train_ups": "3.9", "train_wpb": "502.1", "train_bsz": "27", "train_num_updates": "111", "train_lr": "0.00011989", "train_gnorm": "60.547", "train_loss_scale": "128", "train_train_wall": "24", "train_gb_free": "43.9", "train_wall": "33"}
+[2026-08-05 13:49:03,684][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:49:03,685][fairseq.trainer][INFO] - begin training epoch 2
+[2026-08-05 13:49:03,686][fairseq_cli.train][INFO] - Start iterating over samples
+[2026-08-05 13:49:22,128][train_inner][INFO] - {"epoch": 2, "update": 1.802, "loss": "151.321", "nll_loss": "7.838", "total": "499.79", "n_correct": "43.78", "ppl": "228.75", "accuracy": "8.76", "wps": "1820.1", "ups": "3.64", "wpb": "499.8", "bsz": "27", "num_updates": "200", "lr": "0.000208", "gnorm": "37.943", "loss_scale": "128", "train_wall": "19", "gb_free": "43.8", "wall": "51"}
+[2026-08-05 13:49:26,553][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2026-08-05 13:49:26,831][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:49:28,678][valid][INFO] - {"epoch": 2, "valid_loss": "158.917", "valid_nll_loss": "7.711", "valid_total": "246", "valid_n_correct": "26.8125", "valid_ppl": "209.58", "valid_accuracy": "10.899", "valid_wps": "4056.5", "valid_wpb": "246", "valid_bsz": "12.5", "valid_num_updates": "222", "valid_best_accuracy": "10.899"}
+[2026-08-05 13:49:28,679][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 2 @ 222 updates
+[2026-08-05 13:49:28,679][fairseq.trainer][INFO] - Saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 13:49:31,442][fairseq.trainer][INFO] - Finished saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 13:49:32,050][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint_best.pt (epoch 2 @ 222 updates, score 10.899) (writing took 3.370450360001996 seconds)
+[2026-08-05 13:49:32,050][fairseq_cli.train][INFO] - end of epoch 2 (average epoch stats below)
+[2026-08-05 13:49:32,051][train][INFO] - {"epoch": 2, "train_loss": "151.762", "train_nll_loss": "7.815", "train_total": "502.144", "train_n_correct": "45.991", "train_ppl": "225.27", "train_accuracy": "9.159", "train_wps": "1942.1", "train_ups": "3.87", "train_wpb": "502.1", "train_bsz": "27", "train_num_updates": "222", "train_lr": "0.00022978", "train_gnorm": "37.414", "train_loss_scale": "128", "train_train_wall": "21", "train_gb_free": "43.7", "train_wall": "61"}
+[2026-08-05 13:49:32,302][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:49:32,303][fairseq.trainer][INFO] - begin training epoch 3
+[2026-08-05 13:49:32,304][fairseq_cli.train][INFO] - Start iterating over samples
+[2026-08-05 13:49:47,922][train_inner][INFO] - {"epoch": 3, "update": 2.703, "loss": "149.341", "nll_loss": "7.647", "total": "500.36", "n_correct": "53.75", "ppl": "200.39", "accuracy": "10.742", "wps": "1939.9", "ups": "3.88", "wpb": "500.4", "bsz": "26.9", "num_updates": "300", "lr": "0.000307", "gnorm": "36.238", "loss_scale": "128", "train_wall": "19", "gb_free": "43.5", "wall": "77"}
+[2026-08-05 13:49:54,184][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2026-08-05 13:49:54,455][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:49:56,620][valid][INFO] - {"epoch": 3, "valid_loss": "156.514", "valid_nll_loss": "7.563", "valid_total": "246", "valid_n_correct": "29.125", "valid_ppl": "189.15", "valid_accuracy": "11.839", "valid_wps": "3604.4", "valid_wpb": "246", "valid_bsz": "12.5", "valid_num_updates": "333", "valid_best_accuracy": "11.839"}
+[2026-08-05 13:49:56,622][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 3 @ 333 updates
+[2026-08-05 13:49:56,622][fairseq.trainer][INFO] - Saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 13:49:59,409][fairseq.trainer][INFO] - Finished saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 13:49:59,993][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint_best.pt (epoch 3 @ 333 updates, score 11.839) (writing took 3.371626334032044 seconds)
+[2026-08-05 13:49:59,994][fairseq_cli.train][INFO] - end of epoch 3 (average epoch stats below)
+[2026-08-05 13:49:59,995][train][INFO] - {"epoch": 3, "train_loss": "147.844", "train_nll_loss": "7.571", "train_total": "502.144", "train_n_correct": "57.1441", "train_ppl": "190.17", "train_accuracy": "11.38", "train_wps": "1994.7", "train_ups": "3.97", "train_wpb": "502.1", "train_bsz": "27", "train_num_updates": "333", "train_lr": "0.00033967", "train_gnorm": "35.346", "train_loss_scale": "128", "train_train_wall": "20", "train_gb_free": "43.9", "train_wall": "89"}
+[2026-08-05 13:50:00,250][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:50:00,251][fairseq.trainer][INFO] - begin training epoch 4
+[2026-08-05 13:50:00,252][fairseq_cli.train][INFO] - Start iterating over samples
+[2026-08-05 13:50:14,001][train_inner][INFO] - {"epoch": 4, "update": 3.604, "loss": "145.871", "nll_loss": "7.396", "total": "506.65", "n_correct": "64.23", "ppl": "168.38", "accuracy": "12.677", "wps": "1942.8", "ups": "3.83", "wpb": "506.6", "bsz": "27.1", "num_updates": "400", "lr": "0.000406", "gnorm": "33.562", "loss_scale": "128", "train_wall": "19", "gb_free": "43.7", "wall": "103"}
+[2026-08-05 13:50:22,034][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2026-08-05 13:50:22,303][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:50:24,183][valid][INFO] - {"epoch": 4, "valid_loss": "156.252", "valid_nll_loss": "7.511", "valid_total": "246", "valid_n_correct": "30.25", "valid_ppl": "182.43", "valid_accuracy": "12.297", "valid_wps": "4785", "valid_wpb": "246", "valid_bsz": "12.5", "valid_num_updates": "444", "valid_best_accuracy": "12.297"}
+[2026-08-05 13:50:24,184][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 4 @ 444 updates
+[2026-08-05 13:50:24,184][fairseq.trainer][INFO] - Saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 13:50:26,364][fairseq.trainer][INFO] - Finished saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 13:50:27,012][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint_best.pt (epoch 4 @ 444 updates, score 12.297) (writing took 2.8284144019708037 seconds)
+[2026-08-05 13:50:27,013][fairseq_cli.train][INFO] - end of epoch 4 (average epoch stats below)
+[2026-08-05 13:50:27,013][train][INFO] - {"epoch": 4, "train_loss": "144.154", "train_nll_loss": "7.337", "train_total": "502.144", "train_n_correct": "64.7027", "train_ppl": "161.7", "train_accuracy": "12.885", "train_wps": "2063", "train_ups": "4.11", "train_wpb": "502.1", "train_bsz": "27", "train_num_updates": "444", "train_lr": "0.00044956", "train_gnorm": "33.18", "train_loss_scale": "128", "train_train_wall": "21", "train_gb_free": "43.9", "train_wall": "116"}
+[2026-08-05 13:50:27,252][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:50:27,253][fairseq.trainer][INFO] - begin training epoch 5
+[2026-08-05 13:50:27,254][fairseq_cli.train][INFO] - Start iterating over samples
+[2026-08-05 13:50:39,417][train_inner][INFO] - {"epoch": 5, "update": 4.505, "loss": "140.29", "nll_loss": "7.208", "total": "503.35", "n_correct": "65.96", "ppl": "147.83", "accuracy": "13.104", "wps": "1980.6", "ups": "3.93", "wpb": "503.4", "bsz": "27.4", "num_updates": "500", "lr": "0.000505", "gnorm": "34.395", "loss_scale": "128", "train_wall": "19", "gb_free": "43.5", "wall": "129"}
+[2026-08-05 13:50:49,771][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2026-08-05 13:50:50,033][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:50:52,277][valid][INFO] - {"epoch": 5, "valid_loss": "151.062", "valid_nll_loss": "7.225", "valid_total": "246", "valid_n_correct": "33.3125", "valid_ppl": "149.58", "valid_accuracy": "13.542", "valid_wps": "2667.3", "valid_wpb": "246", "valid_bsz": "12.5", "valid_num_updates": "555", "valid_best_accuracy": "13.542"}
+[2026-08-05 13:50:52,279][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 5 @ 555 updates
+[2026-08-05 13:50:52,279][fairseq.trainer][INFO] - Saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 13:50:54,483][fairseq.trainer][INFO] - Finished saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 13:50:55,083][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint_best.pt (epoch 5 @ 555 updates, score 13.542) (writing took 2.804478448117152 seconds)
+[2026-08-05 13:50:55,083][fairseq_cli.train][INFO] - end of epoch 5 (average epoch stats below)
+[2026-08-05 13:50:55,084][train][INFO] - {"epoch": 5, "train_loss": "140.38", "train_nll_loss": "7.101", "train_total": "502.144", "train_n_correct": "68.5045", "train_ppl": "137.24", "train_accuracy": "13.642", "train_wps": "1985.6", "train_ups": "3.95", "train_wpb": "502.1", "train_bsz": "27", "train_num_updates": "555", "train_lr": "0.00055945", "train_gnorm": "33.362", "train_loss_scale": "128", "train_train_wall": "21", "train_gb_free": "43.8", "train_wall": "144"}
+[2026-08-05 13:50:55,341][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:50:55,342][fairseq.trainer][INFO] - begin training epoch 6
+[2026-08-05 13:50:55,342][fairseq_cli.train][INFO] - Start iterating over samples
+[2026-08-05 13:51:05,304][train_inner][INFO] - {"epoch": 6, "update": 5.405, "loss": "140.765", "nll_loss": "6.964", "total": "494.94", "n_correct": "71.25", "ppl": "124.87", "accuracy": "14.396", "wps": "1912", "ups": "3.86", "wpb": "494.9", "bsz": "26.2", "num_updates": "600", "lr": "0.000604", "gnorm": "30.996", "loss_scale": "128", "train_wall": "19", "gb_free": "43.6", "wall": "154"}
+[2026-08-05 13:51:17,562][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2026-08-05 13:51:17,829][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:51:19,805][valid][INFO] - {"epoch": 6, "valid_loss": "149.825", "valid_nll_loss": "7.138", "valid_total": "246", "valid_n_correct": "31.875", "valid_ppl": "140.87", "valid_accuracy": "12.957", "valid_wps": "3650.4", "valid_wpb": "246", "valid_bsz": "12.5", "valid_num_updates": "666", "valid_best_accuracy": "13.542"}
+[2026-08-05 13:51:19,806][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 6 @ 666 updates
+[2026-08-05 13:51:19,806][fairseq.trainer][INFO] - Saving checkpoint to checkpoints/checkpoint_last.pt
+[2026-08-05 13:51:22,183][fairseq.trainer][INFO] - Finished saving checkpoint to checkpoints/checkpoint_last.pt
+[2026-08-05 13:51:22,297][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint_last.pt (epoch 6 @ 666 updates, score 12.957) (writing took 2.491191264009103 seconds)
+[2026-08-05 13:51:22,297][fairseq_cli.train][INFO] - end of epoch 6 (average epoch stats below)
+[2026-08-05 13:51:22,298][train][INFO] - {"epoch": 6, "train_loss": "136.328", "train_nll_loss": "6.842", "train_total": "502.144", "train_n_correct": "74.1622", "train_ppl": "114.75", "train_accuracy": "14.769", "train_wps": "2048.2", "train_ups": "4.08", "train_wpb": "502.1", "train_bsz": "27", "train_num_updates": "666", "train_lr": "0.00066934", "train_gnorm": "31.051", "train_loss_scale": "128", "train_train_wall": "21", "train_gb_free": "44", "train_wall": "171"}
+[2026-08-05 13:51:22,594][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:51:22,595][fairseq.trainer][INFO] - begin training epoch 7
+[2026-08-05 13:51:22,595][fairseq_cli.train][INFO] - Start iterating over samples
+[2026-08-05 13:51:30,930][train_inner][INFO] - {"epoch": 7, "update": 6.306, "loss": "130.65", "nll_loss": "6.714", "total": "508.84", "n_correct": "77.95", "ppl": "105.02", "accuracy": "15.319", "wps": "1985.7", "ups": "3.9", "wpb": "508.8", "bsz": "28.2", "num_updates": "700", "lr": "0.000703", "gnorm": "30.963", "loss_scale": "128", "train_wall": "19", "gb_free": "43.7", "wall": "180"}
+[2026-08-05 13:51:46,652][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2026-08-05 13:51:46,921][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:51:49,510][valid][INFO] - {"epoch": 7, "valid_loss": "148.567", "valid_nll_loss": "7.056", "valid_total": "246", "valid_n_correct": "35.75", "valid_ppl": "133.03", "valid_accuracy": "14.533", "valid_wps": "2433.6", "valid_wpb": "246", "valid_bsz": "12.5", "valid_num_updates": "777", "valid_best_accuracy": "14.533"}
+[2026-08-05 13:51:49,511][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 7 @ 777 updates
+[2026-08-05 13:51:49,512][fairseq.trainer][INFO] - Saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 13:51:51,800][fairseq.trainer][INFO] - Finished saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 13:51:52,333][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint_best.pt (epoch 7 @ 777 updates, score 14.533) (writing took 2.821780859027058 seconds)
+[2026-08-05 13:51:52,333][fairseq_cli.train][INFO] - end of epoch 7 (average epoch stats below)
+[2026-08-05 13:51:52,334][train][INFO] - {"epoch": 7, "train_loss": "132.201", "train_nll_loss": "6.574", "train_total": "502.144", "train_n_correct": "78.2072", "train_ppl": "95.29", "train_accuracy": "15.575", "train_wps": "1855.7", "train_ups": "3.7", "train_wpb": "502.1", "train_bsz": "27", "train_num_updates": "777", "train_lr": "0.00077923", "train_gnorm": "31.58", "train_loss_scale": "128", "train_train_wall": "22", "train_gb_free": "43.8", "train_wall": "202"}
+[2026-08-05 13:51:52,614][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:51:52,615][fairseq.trainer][INFO] - begin training epoch 8
+[2026-08-05 13:51:52,615][fairseq_cli.train][INFO] - Start iterating over samples
+[2026-08-05 13:51:59,224][train_inner][INFO] - {"epoch": 8, "update": 7.207, "loss": "129.8", "nll_loss": "6.498", "total": "503.61", "n_correct": "80.22", "ppl": "90.41", "accuracy": "15.929", "wps": "1780", "ups": "3.53", "wpb": "503.6", "bsz": "27.4", "num_updates": "800", "lr": "0.000802", "gnorm": "30.556", "loss_scale": "128", "train_wall": "21", "gb_free": "43.6", "wall": "208"}
+[2026-08-05 13:52:17,449][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2026-08-05 13:52:18,354][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:52:20,726][valid][INFO] - {"epoch": 8, "valid_loss": "147.178", "valid_nll_loss": "6.964", "valid_total": "246", "valid_n_correct": "35.5625", "valid_ppl": "124.87", "valid_accuracy": "14.456", "valid_wps": "2579.4", "valid_wpb": "246", "valid_bsz": "12.5", "valid_num_updates": "888", "valid_best_accuracy": "14.533"}
+[2026-08-05 13:52:20,727][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 8 @ 888 updates
+[2026-08-05 13:52:20,728][fairseq.trainer][INFO] - Saving checkpoint to checkpoints/checkpoint_last.pt
+[2026-08-05 13:52:23,204][fairseq.trainer][INFO] - Finished saving checkpoint to checkpoints/checkpoint_last.pt
+[2026-08-05 13:52:23,325][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint_last.pt (epoch 8 @ 888 updates, score 14.456) (writing took 2.5972010649275035 seconds)
+[2026-08-05 13:52:23,325][fairseq_cli.train][INFO] - end of epoch 8 (average epoch stats below)
+[2026-08-05 13:52:23,326][train][INFO] - {"epoch": 8, "train_loss": "127.658", "train_nll_loss": "6.281", "train_total": "502.144", "train_n_correct": "83.8198", "train_ppl": "77.78", "train_accuracy": "16.692", "train_wps": "1798.5", "train_ups": "3.58", "train_wpb": "502.1", "train_bsz": "27", "train_num_updates": "888", "train_lr": "0.00088912", "train_gnorm": "30.333", "train_loss_scale": "128", "train_train_wall": "23", "train_gb_free": "44", "train_wall": "233"}
+[2026-08-05 13:52:23,889][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:52:23,890][fairseq.trainer][INFO] - begin training epoch 9
+[2026-08-05 13:52:23,891][fairseq_cli.train][INFO] - Start iterating over samples
+[2026-08-05 13:52:28,027][train_inner][INFO] - {"epoch": 9, "update": 8.108, "loss": "128.261", "nll_loss": "6.261", "total": "499.96", "n_correct": "83.86", "ppl": "76.71", "accuracy": "16.773", "wps": "1735.9", "ups": "3.47", "wpb": "500", "bsz": "26.7", "num_updates": "900", "lr": "0.000901", "gnorm": "30.83", "loss_scale": "128", "train_wall": "21", "gb_free": "43.7", "wall": "237"}
+[2026-08-05 13:52:47,982][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2026-08-05 13:52:48,808][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:52:52,248][valid][INFO] - {"epoch": 9, "valid_loss": "144.888", "valid_nll_loss": "6.795", "valid_total": "246", "valid_n_correct": "37.9375", "valid_ppl": "111.08", "valid_accuracy": "15.422", "valid_wps": "2479", "valid_wpb": "246", "valid_bsz": "12.5", "valid_num_updates": "999", "valid_best_accuracy": "15.422"}
+[2026-08-05 13:52:52,250][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 9 @ 999 updates
+[2026-08-05 13:52:52,250][fairseq.trainer][INFO] - Saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 13:52:54,967][fairseq.trainer][INFO] - Finished saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 13:52:55,692][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint_best.pt (epoch 9 @ 999 updates, score 15.422) (writing took 3.442026214906946 seconds)
+[2026-08-05 13:52:55,692][fairseq_cli.train][INFO] - end of epoch 9 (average epoch stats below)
+[2026-08-05 13:52:55,693][train][INFO] - {"epoch": 9, "train_loss": "123.771", "train_nll_loss": "6.029", "train_total": "502.144", "train_n_correct": "88.6396", "train_ppl": "65.31", "train_accuracy": "17.652", "train_wps": "1722.1", "train_ups": "3.43", "train_wpb": "502.1", "train_bsz": "27", "train_num_updates": "999", "train_lr": "0.00099901", "train_gnorm": "30.294", "train_loss_scale": "128", "train_train_wall": "22", "train_gb_free": "43.8", "train_wall": "265"}
+[2026-08-05 13:52:55,950][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:52:55,951][fairseq.trainer][INFO] - begin training epoch 10
+[2026-08-05 13:52:55,951][fairseq_cli.train][INFO] - Start iterating over samples
+[2026-08-05 13:52:57,054][train_inner][INFO] - {"epoch": 10, "update": 9.009, "loss": "127.673", "nll_loss": "6.055", "total": "496.65", "n_correct": "86.19", "ppl": "66.47", "accuracy": "17.354", "wps": "1711", "ups": "3.45", "wpb": "496.6", "bsz": "26", "num_updates": "1000", "lr": "0.001", "gnorm": "30.981", "loss_scale": "128", "train_wall": "20", "gb_free": "43.6", "wall": "266"}
+[2026-08-05 13:53:18,177][train_inner][INFO] - {"epoch": 10, "update": 9.91, "loss": "120.752", "nll_loss": "5.645", "total": "505.68", "n_correct": "99.17", "ppl": "50.03", "accuracy": "19.611", "wps": "2394", "ups": "4.73", "wpb": "505.7", "bsz": "26.6", "num_updates": "1100", "lr": "0.000860892", "gnorm": "30.915", "loss_scale": "128", "train_wall": "21", "gb_free": "43.7", "wall": "287"}
+[2026-08-05 13:53:20,153][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2026-08-05 13:53:20,918][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:53:22,899][valid][INFO] - {"epoch": 10, "valid_loss": "139.056", "valid_nll_loss": "6.449", "valid_total": "246", "valid_n_correct": "42.0625", "valid_ppl": "87.35", "valid_accuracy": "17.099", "valid_wps": "4348.7", "valid_wpb": "246", "valid_bsz": "12.5", "valid_num_updates": "1110", "valid_best_accuracy": "17.099"}
+[2026-08-05 13:53:22,900][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 10 @ 1110 updates
+[2026-08-05 13:53:22,900][fairseq.trainer][INFO] - Saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 13:53:25,665][fairseq.trainer][INFO] - Finished saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 13:53:26,344][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint_best.pt (epoch 10 @ 1110 updates, score 17.099) (writing took 3.4445360749959946 seconds)
+[2026-08-05 13:53:26,345][fairseq_cli.train][INFO] - end of epoch 10 (average epoch stats below)
+[2026-08-05 13:53:26,345][train][INFO] - {"epoch": 10, "train_loss": "117.447", "train_nll_loss": "5.62", "train_total": "502.144", "train_n_correct": "100.279", "train_ppl": "49.17", "train_accuracy": "19.97", "train_wps": "1818.4", "train_ups": "3.62", "train_wpb": "502.1", "train_bsz": "27", "train_num_updates": "1110", "train_lr": "0.000848093", "train_gnorm": "30.602", "train_loss_scale": "128", "train_train_wall": "23", "train_gb_free": "43.7", "train_wall": "296"}
+[2026-08-05 13:53:26,600][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:53:26,602][fairseq.trainer][INFO] - begin training epoch 11
+[2026-08-05 13:53:26,602][fairseq_cli.train][INFO] - Start iterating over samples
+[2026-08-05 13:53:46,675][train_inner][INFO] - {"epoch": 11, "update": 10.811, "loss": "106.992", "nll_loss": "5.125", "total": "499.95", "n_correct": "117.33", "ppl": "34.9", "accuracy": "23.468", "wps": "1754.3", "ups": "3.51", "wpb": "499.9", "bsz": "27.6", "num_updates": "1200", "lr": "0.000741134", "gnorm": "29.766", "loss_scale": "128", "train_wall": "21", "gb_free": "43.8", "wall": "316"}
+[2026-08-05 13:53:50,932][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2026-08-05 13:53:51,198][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:53:53,144][valid][INFO] - {"epoch": 11, "valid_loss": "138.575", "valid_nll_loss": "6.38", "valid_total": "246", "valid_n_correct": "47.0625", "valid_ppl": "83.26", "valid_accuracy": "19.131", "valid_wps": "3932.3", "valid_wpb": "246", "valid_bsz": "12.5", "valid_num_updates": "1221", "valid_best_accuracy": "19.131"}
+[2026-08-05 13:53:53,145][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 11 @ 1221 updates
+[2026-08-05 13:53:53,146][fairseq.trainer][INFO] - Saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 13:53:55,641][fairseq.trainer][INFO] - Finished saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 13:53:56,276][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint_best.pt (epoch 11 @ 1221 updates, score 19.131) (writing took 3.1308564068749547 seconds)
+[2026-08-05 13:53:56,277][fairseq_cli.train][INFO] - end of epoch 11 (average epoch stats below)
+[2026-08-05 13:53:56,278][train][INFO] - {"epoch": 11, "train_loss": "109.392", "train_nll_loss": "5.102", "train_total": "502.144", "train_n_correct": "118.081", "train_ppl": "34.33", "train_accuracy": "23.515", "train_wps": "1862.2", "train_ups": "3.71", "train_wpb": "502.1", "train_bsz": "27", "train_num_updates": "1221", "train_lr": "0.000718185", "train_gnorm": "31.208", "train_loss_scale": "128", "train_train_wall": "23", "train_gb_free": "44", "train_wall": "325"}
+[2026-08-05 13:53:56,646][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:53:56,648][fairseq.trainer][INFO] - begin training epoch 12
+[2026-08-05 13:53:56,648][fairseq_cli.train][INFO] - Start iterating over samples
+[2026-08-05 13:54:14,544][train_inner][INFO] - {"epoch": 12, "update": 11.712, "loss": "104.072", "nll_loss": "4.737", "total": "502.09", "n_correct": "132.11", "ppl": "26.67", "accuracy": "26.312", "wps": "1801.7", "ups": "3.59", "wpb": "502.1", "bsz": "27", "num_updates": "1300", "lr": "0.000638036", "gnorm": "30.09", "loss_scale": "128", "train_wall": "21", "gb_free": "43.7", "wall": "344"}
+[2026-08-05 13:54:20,873][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2026-08-05 13:54:21,149][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:54:23,041][valid][INFO] - {"epoch": 12, "valid_loss": "138.787", "valid_nll_loss": "6.355", "valid_total": "246", "valid_n_correct": "46.5", "valid_ppl": "81.86", "valid_accuracy": "18.902", "valid_wps": "4001.2", "valid_wpb": "246", "valid_bsz": "12.5", "valid_num_updates": "1332", "valid_best_accuracy": "19.131"}
+[2026-08-05 13:54:23,042][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 12 @ 1332 updates
+[2026-08-05 13:54:23,043][fairseq.trainer][INFO] - Saving checkpoint to checkpoints/checkpoint_last.pt
+[2026-08-05 13:54:25,426][fairseq.trainer][INFO] - Finished saving checkpoint to checkpoints/checkpoint_last.pt
+[2026-08-05 13:54:25,540][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint_last.pt (epoch 12 @ 1332 updates, score 18.902) (writing took 2.4981775989290327 seconds)
+[2026-08-05 13:54:25,541][fairseq_cli.train][INFO] - end of epoch 12 (average epoch stats below)
+[2026-08-05 13:54:25,542][train][INFO] - {"epoch": 12, "train_loss": "102.378", "train_nll_loss": "4.644", "train_total": "502.144", "train_n_correct": "135.694", "train_ppl": "25.01", "train_accuracy": "27.023", "train_wps": "1904.7", "train_ups": "3.79", "train_wpb": "502.1", "train_bsz": "27", "train_num_updates": "1332", "train_lr": "0.000608176", "train_gnorm": "29.5", "train_loss_scale": "128", "train_train_wall": "23", "train_gb_free": "43.8", "train_wall": "355"}
+[2026-08-05 13:54:25,794][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:54:25,795][fairseq.trainer][INFO] - begin training epoch 13
+[2026-08-05 13:54:25,796][fairseq_cli.train][INFO] - Start iterating over samples
+[2026-08-05 13:54:40,265][train_inner][INFO] - {"epoch": 13, "update": 12.613, "loss": "100.446", "nll_loss": "4.355", "total": "498.58", "n_correct": "147.6", "ppl": "20.47", "accuracy": "29.604", "wps": "1938.4", "ups": "3.89", "wpb": "498.6", "bsz": "26.2", "num_updates": "1400", "lr": "0.00054928", "gnorm": "32.637", "loss_scale": "128", "train_wall": "20", "gb_free": "43.9", "wall": "369"}
+[2026-08-05 13:54:48,772][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2026-08-05 13:54:49,308][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:54:51,769][valid][INFO] - {"epoch": 13, "valid_loss": "136.906", "valid_nll_loss": "6.204", "valid_total": "246", "valid_n_correct": "49.375", "valid_ppl": "73.74", "valid_accuracy": "20.071", "valid_wps": "2701.9", "valid_wpb": "246", "valid_bsz": "12.5", "valid_num_updates": "1443", "valid_best_accuracy": "20.071"}
+[2026-08-05 13:54:51,771][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 13 @ 1443 updates
+[2026-08-05 13:54:51,771][fairseq.trainer][INFO] - Saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 13:54:54,377][fairseq.trainer][INFO] - Finished saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 13:54:55,014][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint_best.pt (epoch 13 @ 1443 updates, score 20.071) (writing took 3.243256395915523 seconds)
+[2026-08-05 13:54:55,015][fairseq_cli.train][INFO] - end of epoch 13 (average epoch stats below)
+[2026-08-05 13:54:55,015][train][INFO] - {"epoch": 13, "train_loss": "95.892", "train_nll_loss": "4.225", "train_total": "502.144", "train_n_correct": "155.685", "train_ppl": "18.69", "train_accuracy": "31.004", "train_wps": "1891.1", "train_ups": "3.77", "train_wpb": "502.1", "train_bsz": "27", "train_num_updates": "1443", "train_lr": "0.000515017", "train_gnorm": "31.481", "train_loss_scale": "128", "train_train_wall": "22", "train_gb_free": "43.8", "train_wall": "384"}
+[2026-08-05 13:54:55,942][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:54:55,994][fairseq.trainer][INFO] - begin training epoch 14
+[2026-08-05 13:54:55,995][fairseq_cli.train][INFO] - Start iterating over samples
+[2026-08-05 13:55:09,508][train_inner][INFO] - {"epoch": 14, "update": 13.514, "loss": "89.294", "nll_loss": "3.99", "total": "513.78", "n_correct": "173.48", "ppl": "15.88", "accuracy": "33.765", "wps": "1757", "ups": "3.42", "wpb": "513.8", "bsz": "28.6", "num_updates": "1500", "lr": "0.000472871", "gnorm": "28.883", "loss_scale": "128", "train_wall": "20", "gb_free": "43.8", "wall": "399"}
+[2026-08-05 13:55:20,488][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2026-08-05 13:55:21,221][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:55:23,347][valid][INFO] - {"epoch": 14, "valid_loss": "139.466", "valid_nll_loss": "6.311", "valid_total": "246", "valid_n_correct": "50.5", "valid_ppl": "79.42", "valid_accuracy": "20.528", "valid_wps": "4329.5", "valid_wpb": "246", "valid_bsz": "12.5", "valid_num_updates": "1554", "valid_best_accuracy": "20.528"}
+[2026-08-05 13:55:23,348][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 14 @ 1554 updates
+[2026-08-05 13:55:23,348][fairseq.trainer][INFO] - Saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 13:55:26,146][fairseq.trainer][INFO] - Finished saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 13:55:27,127][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint_best.pt (epoch 14 @ 1554 updates, score 20.528) (writing took 3.7789109761361033 seconds)
+[2026-08-05 13:55:27,127][fairseq_cli.train][INFO] - end of epoch 14 (average epoch stats below)
+[2026-08-05 13:55:27,128][train][INFO] - {"epoch": 14, "train_loss": "89.671", "train_nll_loss": "3.825", "train_total": "502.144", "train_n_correct": "177.892", "train_ppl": "14.17", "train_accuracy": "35.426", "train_wps": "1735.7", "train_ups": "3.46", "train_wpb": "502.1", "train_bsz": "27", "train_num_updates": "1554", "train_lr": "0.000436129", "train_gnorm": "30.057", "train_loss_scale": "128", "train_train_wall": "23", "train_gb_free": "44", "train_wall": "416"}
+[2026-08-05 13:55:27,594][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:55:27,595][fairseq.trainer][INFO] - begin training epoch 15
+[2026-08-05 13:55:27,595][fairseq_cli.train][INFO] - Start iterating over samples
+[2026-08-05 13:55:38,360][train_inner][INFO] - {"epoch": 15, "update": 14.414, "loss": "90.721", "nll_loss": "3.683", "total": "490.17", "n_correct": "182.03", "ppl": "12.85", "accuracy": "37.136", "wps": "1699", "ups": "3.47", "wpb": "490.2", "bsz": "25.4", "num_updates": "1600", "lr": "0.000407091", "gnorm": "32.347", "loss_scale": "128", "train_wall": "20", "gb_free": "43.8", "wall": "428"}
+[2026-08-05 13:55:51,510][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2026-08-05 13:55:51,786][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:55:53,529][valid][INFO] - {"epoch": 15, "valid_loss": "139.848", "valid_nll_loss": "6.341", "valid_total": "246", "valid_n_correct": "52.5", "valid_ppl": "81.06", "valid_accuracy": "21.341", "valid_wps": "4037.3", "valid_wpb": "246", "valid_bsz": "12.5", "valid_num_updates": "1665", "valid_best_accuracy": "21.341"}
+[2026-08-05 13:55:53,530][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 15 @ 1665 updates
+[2026-08-05 13:55:53,531][fairseq.trainer][INFO] - Saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 13:55:55,822][fairseq.trainer][INFO] - Finished saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 13:55:56,409][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint_best.pt (epoch 15 @ 1665 updates, score 21.341) (writing took 2.878205840010196 seconds)
+[2026-08-05 13:55:56,409][fairseq_cli.train][INFO] - end of epoch 15 (average epoch stats below)
+[2026-08-05 13:55:56,410][train][INFO] - {"epoch": 15, "train_loss": "84.092", "train_nll_loss": "3.468", "train_total": "502.144", "train_n_correct": "200.342", "train_ppl": "11.07", "train_accuracy": "39.897", "train_wps": "1903.5", "train_ups": "3.79", "train_wpb": "502.1", "train_bsz": "27", "train_num_updates": "1665", "train_lr": "0.000369324", "train_gnorm": "31.859", "train_loss_scale": "128", "train_train_wall": "23", "train_gb_free": "43.8", "train_wall": "446"}
+[2026-08-05 13:55:56,660][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:55:56,661][fairseq.trainer][INFO] - begin training epoch 16
+[2026-08-05 13:55:56,661][fairseq_cli.train][INFO] - Start iterating over samples
+[2026-08-05 13:56:05,384][train_inner][INFO] - {"epoch": 16, "update": 15.315, "loss": "77.633", "nll_loss": "3.323", "total": "509.45", "n_correct": "215.38", "ppl": "10.01", "accuracy": "42.277", "wps": "1885.2", "ups": "3.7", "wpb": "509.4", "bsz": "28.9", "num_updates": "1700", "lr": "0.000350461", "gnorm": "30.739", "loss_scale": "128", "train_wall": "20", "gb_free": "43.8", "wall": "455"}
+[2026-08-05 13:56:20,635][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2026-08-05 13:56:20,941][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:56:23,453][valid][INFO] - {"epoch": 16, "valid_loss": "141.052", "valid_nll_loss": "6.391", "valid_total": "246", "valid_n_correct": "52.625", "valid_ppl": "83.9", "valid_accuracy": "21.392", "valid_wps": "2858.7", "valid_wpb": "246", "valid_bsz": "12.5", "valid_num_updates": "1776", "valid_best_accuracy": "21.392"}
+[2026-08-05 13:56:23,455][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 16 @ 1776 updates
+[2026-08-05 13:56:23,455][fairseq.trainer][INFO] - Saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 13:56:25,771][fairseq.trainer][INFO] - Finished saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 13:56:26,308][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint_best.pt (epoch 16 @ 1776 updates, score 21.392) (writing took 2.853831273969263 seconds)
+[2026-08-05 13:56:26,309][fairseq_cli.train][INFO] - end of epoch 16 (average epoch stats below)
+[2026-08-05 13:56:26,309][train][INFO] - {"epoch": 16, "train_loss": "78.723", "train_nll_loss": "3.127", "train_total": "502.144", "train_n_correct": "224.108", "train_ppl": "8.74", "train_accuracy": "44.63", "train_wps": "1864.2", "train_ups": "3.71", "train_wpb": "502.1", "train_bsz": "27", "train_num_updates": "1776", "train_lr": "0.000312752", "train_gnorm": "32.805", "train_loss_scale": "128", "train_train_wall": "23", "train_gb_free": "44", "train_wall": "475"}
+[2026-08-05 13:56:26,617][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:56:26,618][fairseq.trainer][INFO] - begin training epoch 17
+[2026-08-05 13:56:26,618][fairseq_cli.train][INFO] - Start iterating over samples
+[2026-08-05 13:56:32,696][train_inner][INFO] - {"epoch": 17, "update": 16.216, "loss": "76.606", "nll_loss": "3.056", "total": "500.45", "n_correct": "227.9", "ppl": "8.32", "accuracy": "45.539", "wps": "1832.4", "ups": "3.66", "wpb": "500.4", "bsz": "27.3", "num_updates": "1800", "lr": "0.000301709", "gnorm": "32.169", "loss_scale": "128", "train_wall": "20", "gb_free": "43.6", "wall": "482"}
+[2026-08-05 13:56:49,967][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2026-08-05 13:56:50,291][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:56:52,066][valid][INFO] - {"epoch": 17, "valid_loss": "140.718", "valid_nll_loss": "6.374", "valid_total": "246", "valid_n_correct": "54.4375", "valid_ppl": "82.96", "valid_accuracy": "22.129", "valid_wps": "4029.5", "valid_wpb": "246", "valid_bsz": "12.5", "valid_num_updates": "1887", "valid_best_accuracy": "22.129"}
+[2026-08-05 13:56:52,067][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 17 @ 1887 updates
+[2026-08-05 13:56:52,067][fairseq.trainer][INFO] - Saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 13:56:54,339][fairseq.trainer][INFO] - Finished saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 13:56:54,871][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint_best.pt (epoch 17 @ 1887 updates, score 22.129) (writing took 2.8041491529438645 seconds)
+[2026-08-05 13:56:54,872][fairseq_cli.train][INFO] - end of epoch 17 (average epoch stats below)
+[2026-08-05 13:56:54,872][train][INFO] - {"epoch": 17, "train_loss": "73.712", "train_nll_loss": "2.814", "train_total": "502.144", "train_n_correct": "248.27", "train_ppl": "7.03", "train_accuracy": "49.442", "train_wps": "1951.4", "train_ups": "3.89", "train_wpb": "502.1", "train_bsz": "27", "train_num_updates": "1887", "train_lr": "0.000264846", "train_gnorm": "31.707", "train_loss_scale": "128", "train_train_wall": "22", "train_gb_free": "43.9", "train_wall": "504"}
+[2026-08-05 13:56:55,129][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:56:55,131][fairseq.trainer][INFO] - begin training epoch 18
+[2026-08-05 13:56:55,131][fairseq_cli.train][INFO] - Start iterating over samples
+[2026-08-05 13:56:59,461][train_inner][INFO] - {"epoch": 18, "update": 17.117, "loss": "76.468", "nll_loss": "2.791", "total": "500.49", "n_correct": "249.35", "ppl": "6.92", "accuracy": "49.821", "wps": "1870", "ups": "3.74", "wpb": "500.5", "bsz": "25.8", "num_updates": "1900", "lr": "0.000259739", "gnorm": "32.746", "loss_scale": "128", "train_wall": "20", "gb_free": "43.9", "wall": "509"}
+[2026-08-05 13:57:18,365][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2026-08-05 13:57:18,605][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:57:20,384][valid][INFO] - {"epoch": 18, "valid_loss": "141.727", "valid_nll_loss": "6.41", "valid_total": "246", "valid_n_correct": "56.4375", "valid_ppl": "85.03", "valid_accuracy": "22.942", "valid_wps": "4477.3", "valid_wpb": "246", "valid_bsz": "12.5", "valid_num_updates": "1998", "valid_best_accuracy": "22.942"}
+[2026-08-05 13:57:20,385][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 18 @ 1998 updates
+[2026-08-05 13:57:20,386][fairseq.trainer][INFO] - Saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 13:57:22,608][fairseq.trainer][INFO] - Finished saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 13:57:23,191][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint_best.pt (epoch 18 @ 1998 updates, score 22.942) (writing took 2.8053166351746768 seconds)
+[2026-08-05 13:57:23,191][fairseq_cli.train][INFO] - end of epoch 18 (average epoch stats below)
+[2026-08-05 13:57:23,191][train][INFO] - {"epoch": 18, "train_loss": "69.612", "train_nll_loss": "2.56", "train_total": "502.144", "train_n_correct": "269.883", "train_ppl": "5.9", "train_accuracy": "53.746", "train_wps": "1968.2", "train_ups": "3.92", "train_wpb": "502.1", "train_bsz": "27", "train_num_updates": "1998", "train_lr": "0.000224278", "train_gnorm": "32.204", "train_loss_scale": "128", "train_train_wall": "21", "train_gb_free": "43.8", "train_wall": "532"}
+[2026-08-05 13:57:23,427][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:57:23,428][fairseq.trainer][INFO] - begin training epoch 19
+[2026-08-05 13:57:23,428][fairseq_cli.train][INFO] - Start iterating over samples
+[2026-08-05 13:57:24,655][train_inner][INFO] - {"epoch": 19, "update": 18.018, "loss": "69.845", "nll_loss": "2.554", "total": "501.61", "n_correct": "270.26", "ppl": "5.87", "accuracy": "53.879", "wps": "1991", "ups": "3.97", "wpb": "501.6", "bsz": "26.9", "num_updates": "2000", "lr": "0.000223607", "gnorm": "32.521", "loss_scale": "128", "train_wall": "19", "gb_free": "43.7", "wall": "534"}
+[2026-08-05 13:57:25,143][fairseq.trainer][INFO] - NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 64.0
+[2026-08-05 13:57:26,552][fairseq.trainer][INFO] - NOTE: gradient overflow detected, ignoring gradient, setting loss scale to: 32.0
+[2026-08-05 13:57:59,548][train_inner][INFO] - {"epoch": 19, "update": 18.937, "loss": "66.834", "nll_loss": "2.4", "total": "505.17", "n_correct": "287.62", "ppl": "5.28", "accuracy": "56.935", "wps": "1447.8", "ups": "2.87", "wpb": "505.2", "bsz": "27.3", "num_updates": "2100", "lr": "0.000192501", "gnorm": "51.565", "loss_scale": "32", "train_wall": "35", "gb_free": "41.1", "wall": "569"}
+[2026-08-05 13:58:01,682][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2026-08-05 13:58:01,920][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:58:04,445][valid][INFO] - {"epoch": 19, "valid_loss": "143.09", "valid_nll_loss": "6.48", "valid_total": "246", "valid_n_correct": "55.375", "valid_ppl": "89.27", "valid_accuracy": "22.51", "valid_wps": "5045.1", "valid_wpb": "246", "valid_bsz": "12.5", "valid_num_updates": "2107", "valid_best_accuracy": "22.942"}
+[2026-08-05 13:58:04,446][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 19 @ 2107 updates
+[2026-08-05 13:58:04,446][fairseq.trainer][INFO] - Saving checkpoint to checkpoints/checkpoint_last.pt
+[2026-08-05 13:58:06,452][fairseq.trainer][INFO] - Finished saving checkpoint to checkpoints/checkpoint_last.pt
+[2026-08-05 13:58:06,519][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint_last.pt (epoch 19 @ 2107 updates, score 22.51) (writing took 2.0728736149612814 seconds)
+[2026-08-05 13:58:06,519][fairseq_cli.train][INFO] - end of epoch 19 (average epoch stats below)
+[2026-08-05 13:58:06,520][train][INFO] - {"epoch": 19, "train_loss": "66.46", "train_nll_loss": "2.39", "train_total": "502.56", "train_n_correct": "287.018", "train_ppl": "5.24", "train_accuracy": "57.111", "train_wps": "1264.3", "train_ups": "2.52", "train_wpb": "502.6", "train_bsz": "27.2", "train_num_updates": "2107", "train_lr": "0.000190493", "train_gnorm": "51.145", "train_loss_scale": "32", "train_train_wall": "37", "train_gb_free": "41.2", "train_wall": "576"}
+[2026-08-05 13:58:06,796][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:58:06,797][fairseq.trainer][INFO] - begin training epoch 20
+[2026-08-05 13:58:06,797][fairseq_cli.train][INFO] - Start iterating over samples
+[2026-08-05 13:58:38,855][train_inner][INFO] - {"epoch": 20, "update": 19.838, "loss": "59.761", "nll_loss": "2.029", "total": "502.6", "n_correct": "319.12", "ppl": "4.08", "accuracy": "63.494", "wps": "1278.7", "ups": "2.54", "wpb": "502.6", "bsz": "27.7", "num_updates": "2200", "lr": "0.000165723", "gnorm": "43.459", "loss_scale": "32", "train_wall": "33", "gb_free": "41", "wall": "608"}
+[2026-08-05 13:58:44,713][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2026-08-05 13:58:44,946][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:58:46,703][valid][INFO] - {"epoch": 20, "valid_loss": "142.178", "valid_nll_loss": "6.444", "valid_total": "246", "valid_n_correct": "57.3125", "valid_ppl": "87.09", "valid_accuracy": "23.298", "valid_wps": "4308.3", "valid_wpb": "246", "valid_bsz": "12.5", "valid_num_updates": "2218", "valid_best_accuracy": "23.298"}
+[2026-08-05 13:58:46,705][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 20 @ 2218 updates
+[2026-08-05 13:58:46,705][fairseq.trainer][INFO] - Saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 13:58:49,049][fairseq.trainer][INFO] - Finished saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 13:58:49,684][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint_best.pt (epoch 20 @ 2218 updates, score 23.298) (writing took 2.979639920173213 seconds)
+[2026-08-05 13:58:49,685][fairseq_cli.train][INFO] - end of epoch 20 (average epoch stats below)
+[2026-08-05 13:58:49,685][train][INFO] - {"epoch": 20, "train_loss": "61.016", "train_nll_loss": "2.021", "train_total": "502.144", "train_n_correct": "319.802", "train_ppl": "4.06", "train_accuracy": "63.687", "train_wps": "1291.3", "train_ups": "2.57", "train_wpb": "502.1", "train_bsz": "27", "train_num_updates": "2218", "train_lr": "0.000161314", "train_gnorm": "43.677", "train_loss_scale": "32", "train_train_wall": "37", "train_gb_free": "41.3", "train_wall": "619"}
+[2026-08-05 13:58:49,977][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:58:49,978][fairseq.trainer][INFO] - begin training epoch 21
+[2026-08-05 13:58:49,978][fairseq_cli.train][INFO] - Start iterating over samples
+[2026-08-05 13:59:18,532][train_inner][INFO] - {"epoch": 21, "update": 20.739, "loss": "60.264", "nll_loss": "1.814", "total": "501.45", "n_correct": "339.71", "ppl": "3.52", "accuracy": "67.746", "wps": "1263.8", "ups": "2.52", "wpb": "501.4", "bsz": "25.8", "num_updates": "2300", "lr": "0.000142669", "gnorm": "42.067", "loss_scale": "32", "train_wall": "33", "gb_free": "40.4", "wall": "648"}
+[2026-08-05 13:59:27,903][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2026-08-05 13:59:28,161][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:59:30,367][valid][INFO] - {"epoch": 21, "valid_loss": "143.573", "valid_nll_loss": "6.524", "valid_total": "246", "valid_n_correct": "59.5", "valid_ppl": "92", "valid_accuracy": "24.187", "valid_wps": "2833.1", "valid_wpb": "246", "valid_bsz": "12.5", "valid_num_updates": "2329", "valid_best_accuracy": "24.187"}
+[2026-08-05 13:59:30,368][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 21 @ 2329 updates
+[2026-08-05 13:59:30,368][fairseq.trainer][INFO] - Saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 13:59:32,427][fairseq.trainer][INFO] - Finished saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 13:59:33,082][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint_best.pt (epoch 21 @ 2329 updates, score 24.187) (writing took 2.7134928479790688 seconds)
+[2026-08-05 13:59:33,082][fairseq_cli.train][INFO] - end of epoch 21 (average epoch stats below)
+[2026-08-05 13:59:33,082][train][INFO] - {"epoch": 21, "train_loss": "56.839", "train_nll_loss": "1.761", "train_total": "502.144", "train_n_correct": "344.784", "train_ppl": "3.39", "train_accuracy": "68.662", "train_wps": "1284.4", "train_ups": "2.56", "train_wpb": "502.1", "train_bsz": "27", "train_num_updates": "2329", "train_lr": "0.000136605", "train_gnorm": "41.196", "train_loss_scale": "32", "train_train_wall": "37", "train_gb_free": "42", "train_wall": "662"}
+[2026-08-05 13:59:33,324][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 13:59:33,325][fairseq.trainer][INFO] - begin training epoch 22
+[2026-08-05 13:59:33,325][fairseq_cli.train][INFO] - Start iterating over samples
+[2026-08-05 13:59:58,195][train_inner][INFO] - {"epoch": 22, "update": 21.64, "loss": "51.345", "nll_loss": "1.634", "total": "502.95", "n_correct": "359.17", "ppl": "3.1", "accuracy": "71.413", "wps": "1268.1", "ups": "2.52", "wpb": "502.9", "bsz": "28.9", "num_updates": "2400", "lr": "0.000122823", "gnorm": "39.927", "loss_scale": "32", "train_wall": "33", "gb_free": "41", "wall": "687"}
+[2026-08-05 14:00:11,369][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2026-08-05 14:00:11,621][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 14:00:13,437][valid][INFO] - {"epoch": 22, "valid_loss": "143.108", "valid_nll_loss": "6.515", "valid_total": "246", "valid_n_correct": "57.75", "valid_ppl": "91.48", "valid_accuracy": "23.476", "valid_wps": "4037", "valid_wpb": "246", "valid_bsz": "12.5", "valid_num_updates": "2440", "valid_best_accuracy": "24.187"}
+[2026-08-05 14:00:13,438][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 22 @ 2440 updates
+[2026-08-05 14:00:13,439][fairseq.trainer][INFO] - Saving checkpoint to checkpoints/checkpoint_last.pt
+[2026-08-05 14:00:15,726][fairseq.trainer][INFO] - Finished saving checkpoint to checkpoints/checkpoint_last.pt
+[2026-08-05 14:00:15,838][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint_last.pt (epoch 22 @ 2440 updates, score 23.476) (writing took 2.3998863799497485 seconds)
+[2026-08-05 14:00:15,839][fairseq_cli.train][INFO] - end of epoch 22 (average epoch stats below)
+[2026-08-05 14:00:15,839][train][INFO] - {"epoch": 22, "train_loss": "53.73", "train_nll_loss": "1.568", "train_total": "502.144", "train_n_correct": "365.721", "train_ppl": "2.97", "train_accuracy": "72.832", "train_wps": "1303.6", "train_ups": "2.6", "train_wpb": "502.1", "train_bsz": "27", "train_num_updates": "2440", "train_lr": "0.00011568", "train_gnorm": "39.895", "train_loss_scale": "32", "train_train_wall": "37", "train_gb_free": "40.5", "train_wall": "705"}
+[2026-08-05 14:00:16,120][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 14:00:16,121][fairseq.trainer][INFO] - begin training epoch 23
+[2026-08-05 14:00:16,121][fairseq_cli.train][INFO] - Start iterating over samples
+[2026-08-05 14:00:37,229][train_inner][INFO] - {"epoch": 23, "update": 22.541, "loss": "54.03", "nll_loss": "1.423", "total": "499.35", "n_correct": "378.52", "ppl": "2.68", "accuracy": "75.803", "wps": "1279.3", "ups": "2.56", "wpb": "499.4", "bsz": "25.6", "num_updates": "2500", "lr": "0.000105737", "gnorm": "37.393", "loss_scale": "32", "train_wall": "33", "gb_free": "40.3", "wall": "726"}
+[2026-08-05 14:00:54,231][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2026-08-05 14:00:54,468][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 14:00:56,351][valid][INFO] - {"epoch": 23, "valid_loss": "145.906", "valid_nll_loss": "6.652", "valid_total": "246", "valid_n_correct": "58.5625", "valid_ppl": "100.53", "valid_accuracy": "23.806", "valid_wps": "3858.6", "valid_wpb": "246", "valid_bsz": "12.5", "valid_num_updates": "2551", "valid_best_accuracy": "24.187"}
+[2026-08-05 14:00:56,352][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 23 @ 2551 updates
+[2026-08-05 14:00:56,353][fairseq.trainer][INFO] - Saving checkpoint to checkpoints/checkpoint_last.pt
+[2026-08-05 14:00:58,628][fairseq.trainer][INFO] - Finished saving checkpoint to checkpoints/checkpoint_last.pt
+[2026-08-05 14:00:58,742][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint_last.pt (epoch 23 @ 2551 updates, score 23.806) (writing took 2.389620984904468 seconds)
+[2026-08-05 14:00:58,742][fairseq_cli.train][INFO] - end of epoch 23 (average epoch stats below)
+[2026-08-05 14:00:58,743][train][INFO] - {"epoch": 23, "train_loss": "50.303", "train_nll_loss": "1.35", "train_total": "502.144", "train_n_correct": "389.153", "train_ppl": "2.55", "train_accuracy": "77.498", "train_wps": "1299.2", "train_ups": "2.59", "train_wpb": "502.1", "train_bsz": "27", "train_num_updates": "2551", "train_lr": "9.79606e-05", "train_gnorm": "35.593", "train_loss_scale": "32", "train_train_wall": "37", "train_gb_free": "41.2", "train_wall": "748"}
+[2026-08-05 14:00:59,007][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 14:00:59,008][fairseq.trainer][INFO] - begin training epoch 24
+[2026-08-05 14:00:59,008][fairseq_cli.train][INFO] - Start iterating over samples
+[2026-08-05 14:01:16,606][train_inner][INFO] - {"epoch": 24, "update": 23.441, "loss": "48.916", "nll_loss": "1.279", "total": "499.7", "n_correct": "394.94", "ppl": "2.43", "accuracy": "79.035", "wps": "1269", "ups": "2.54", "wpb": "499.7", "bsz": "27", "num_updates": "2600", "lr": "9.10282e-05", "gnorm": "35.06", "loss_scale": "32", "train_wall": "33", "gb_free": "40.2", "wall": "766"}
+[2026-08-05 14:01:37,254][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2026-08-05 14:01:37,490][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 14:01:39,217][valid][INFO] - {"epoch": 24, "valid_loss": "146.42", "valid_nll_loss": "6.693", "valid_total": "246", "valid_n_correct": "59.8125", "valid_ppl": "103.45", "valid_accuracy": "24.314", "valid_wps": "4250.9", "valid_wpb": "246", "valid_bsz": "12.5", "valid_num_updates": "2662", "valid_best_accuracy": "24.314"}
+[2026-08-05 14:01:39,218][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 24 @ 2662 updates
+[2026-08-05 14:01:39,218][fairseq.trainer][INFO] - Saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 14:01:41,206][fairseq.trainer][INFO] - Finished saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 14:01:41,691][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint_best.pt (epoch 24 @ 2662 updates, score 24.314) (writing took 2.473528102040291 seconds)
+[2026-08-05 14:01:41,692][fairseq_cli.train][INFO] - end of epoch 24 (average epoch stats below)
+[2026-08-05 14:01:41,692][train][INFO] - {"epoch": 24, "train_loss": "48.321", "train_nll_loss": "1.228", "train_total": "502.144", "train_n_correct": "402.054", "train_ppl": "2.34", "train_accuracy": "80.067", "train_wps": "1297.8", "train_ups": "2.58", "train_wpb": "502.1", "train_bsz": "27", "train_num_updates": "2662", "train_lr": "8.29553e-05", "train_gnorm": "34.463", "train_loss_scale": "32", "train_train_wall": "37", "train_gb_free": "40.7", "train_wall": "791"}
+[2026-08-05 14:01:41,925][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 14:01:41,926][fairseq.trainer][INFO] - begin training epoch 25
+[2026-08-05 14:01:41,927][fairseq_cli.train][INFO] - Start iterating over samples
+[2026-08-05 14:01:55,683][train_inner][INFO] - {"epoch": 25, "update": 24.342, "loss": "49.164", "nll_loss": "1.175", "total": "500.43", "n_correct": "406.95", "ppl": "2.26", "accuracy": "81.32", "wps": "1280.7", "ups": "2.56", "wpb": "500.4", "bsz": "26", "num_updates": "2700", "lr": "7.83654e-05", "gnorm": "35.265", "loss_scale": "32", "train_wall": "33", "gb_free": "41.5", "wall": "805"}
+[2026-08-05 14:02:20,092][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2026-08-05 14:02:20,327][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 14:02:22,388][valid][INFO] - {"epoch": 25, "valid_loss": "148.043", "valid_nll_loss": "6.779", "valid_total": "246", "valid_n_correct": "59.25", "valid_ppl": "109.79", "valid_accuracy": "24.085", "valid_wps": "4142.1", "valid_wpb": "246", "valid_bsz": "12.5", "valid_num_updates": "2773", "valid_best_accuracy": "24.314"}
+[2026-08-05 14:02:22,389][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 25 @ 2773 updates
+[2026-08-05 14:02:22,389][fairseq.trainer][INFO] - Saving checkpoint to checkpoints/checkpoint_last.pt
+[2026-08-05 14:02:24,418][fairseq.trainer][INFO] - Finished saving checkpoint to checkpoints/checkpoint_last.pt
+[2026-08-05 14:02:24,522][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint_last.pt (epoch 25 @ 2773 updates, score 24.085) (writing took 2.1332179938908666 seconds)
+[2026-08-05 14:02:24,523][fairseq_cli.train][INFO] - end of epoch 25 (average epoch stats below)
+[2026-08-05 14:02:24,523][train][INFO] - {"epoch": 25, "train_loss": "46.367", "train_nll_loss": "1.107", "train_total": "502.144", "train_n_correct": "416.072", "train_ppl": "2.15", "train_accuracy": "82.859", "train_wps": "1301.4", "train_ups": "2.59", "train_wpb": "502.1", "train_bsz": "27", "train_num_updates": "2773", "train_lr": "7.02485e-05", "train_gnorm": "33.586", "train_loss_scale": "32", "train_train_wall": "37", "train_gb_free": "41.3", "train_wall": "834"}
+[2026-08-05 14:02:24,774][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 14:02:24,775][fairseq.trainer][INFO] - begin training epoch 26
+[2026-08-05 14:02:24,775][fairseq_cli.train][INFO] - Start iterating over samples
+[2026-08-05 14:02:35,015][train_inner][INFO] - {"epoch": 26, "update": 25.243, "loss": "44.386", "nll_loss": "1.118", "total": "510.82", "n_correct": "422.03", "ppl": "2.17", "accuracy": "82.618", "wps": "1298.8", "ups": "2.54", "wpb": "510.8", "bsz": "28.8", "num_updates": "2800", "lr": "6.74641e-05", "gnorm": "32.174", "loss_scale": "32", "train_wall": "33", "gb_free": "40.6", "wall": "844"}
+[2026-08-05 14:03:02,863][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2026-08-05 14:03:03,098][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 14:03:05,119][valid][INFO] - {"epoch": 26, "valid_loss": "147.817", "valid_nll_loss": "6.786", "valid_total": "246", "valid_n_correct": "60.6875", "valid_ppl": "110.39", "valid_accuracy": "24.67", "valid_wps": "3046.5", "valid_wpb": "246", "valid_bsz": "12.5", "valid_num_updates": "2884", "valid_best_accuracy": "24.67"}
+[2026-08-05 14:03:05,121][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 26 @ 2884 updates
+[2026-08-05 14:03:05,121][fairseq.trainer][INFO] - Saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 14:03:07,145][fairseq.trainer][INFO] - Finished saving checkpoint to checkpoints/checkpoint_best.pt
+[2026-08-05 14:03:07,747][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint_best.pt (epoch 26 @ 2884 updates, score 24.67) (writing took 2.6259027819614857 seconds)
+[2026-08-05 14:03:07,747][fairseq_cli.train][INFO] - end of epoch 26 (average epoch stats below)
+[2026-08-05 14:03:07,748][train][INFO] - {"epoch": 26, "train_loss": "44.726", "train_nll_loss": "1.006", "train_total": "502.144", "train_n_correct": "426.766", "train_ppl": "2.01", "train_accuracy": "84.989", "train_wps": "1289.5", "train_ups": "2.57", "train_wpb": "502.1", "train_bsz": "27", "train_num_updates": "2884", "train_lr": "5.94881e-05", "train_gnorm": "31.624", "train_loss_scale": "32", "train_train_wall": "37", "train_gb_free": "41.4", "train_wall": "877"}
+[2026-08-05 14:03:07,994][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 14:03:07,995][fairseq.trainer][INFO] - begin training epoch 27
+[2026-08-05 14:03:07,995][fairseq_cli.train][INFO] - Start iterating over samples
+[2026-08-05 14:03:14,640][train_inner][INFO] - {"epoch": 27, "update": 26.144, "loss": "44.654", "nll_loss": "0.983", "total": "500.97", "n_correct": "428.7", "ppl": "1.98", "accuracy": "85.574", "wps": "1264.3", "ups": "2.52", "wpb": "501", "bsz": "26.8", "num_updates": "2900", "lr": "5.80793e-05", "gnorm": "31.595", "loss_scale": "32", "train_wall": "33", "gb_free": "40.8", "wall": "884"}
+[2026-08-05 14:03:46,019][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2026-08-05 14:03:46,255][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 14:03:48,044][valid][INFO] - {"epoch": 27, "valid_loss": "149.174", "valid_nll_loss": "6.865", "valid_total": "246", "valid_n_correct": "59.6875", "valid_ppl": "116.56", "valid_accuracy": "24.263", "valid_wps": "4452.2", "valid_wpb": "246", "valid_bsz": "12.5", "valid_num_updates": "2995", "valid_best_accuracy": "24.67"}
+[2026-08-05 14:03:48,045][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 27 @ 2995 updates
+[2026-08-05 14:03:48,046][fairseq.trainer][INFO] - Saving checkpoint to checkpoints/checkpoint_last.pt
+[2026-08-05 14:03:50,428][fairseq.trainer][INFO] - Finished saving checkpoint to checkpoints/checkpoint_last.pt
+[2026-08-05 14:03:50,502][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint_last.pt (epoch 27 @ 2995 updates, score 24.263) (writing took 2.4562648609280586 seconds)
+[2026-08-05 14:03:50,502][fairseq_cli.train][INFO] - end of epoch 27 (average epoch stats below)
+[2026-08-05 14:03:50,503][train][INFO] - {"epoch": 27, "train_loss": "43.51", "train_nll_loss": "0.93", "train_total": "502.144", "train_n_correct": "435.892", "train_ppl": "1.91", "train_accuracy": "86.806", "train_wps": "1303.7", "train_ups": "2.6", "train_wpb": "502.1", "train_bsz": "27", "train_num_updates": "2995", "train_lr": "5.03759e-05", "train_gnorm": "30.239", "train_loss_scale": "32", "train_train_wall": "37", "train_gb_free": "41.2", "train_wall": "920"}
+[2026-08-05 14:03:50,811][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 14:03:50,812][fairseq.trainer][INFO] - begin training epoch 28
+[2026-08-05 14:03:50,812][fairseq_cli.train][INFO] - Start iterating over samples
+[2026-08-05 14:03:53,589][train_inner][INFO] - {"epoch": 28, "update": 27.045, "loss": "43.37", "nll_loss": "0.926", "total": "500", "n_correct": "434.32", "ppl": "1.9", "accuracy": "86.864", "wps": "1283.8", "ups": "2.57", "wpb": "500", "bsz": "27", "num_updates": "3000", "lr": "5e-05", "gnorm": "30.1", "loss_scale": "32", "train_wall": "33", "gb_free": "40.8", "wall": "923"}
+[2026-08-05 14:03:53,589][fairseq_cli.train][INFO] - Stopping training due to num_updates: 3000 >= max_update: 3000
+[2026-08-05 14:03:53,589][fairseq_cli.train][INFO] - begin validation on "valid" subset
+[2026-08-05 14:03:53,879][fairseq.logging.progress_bar][WARNING] - tensorboard not found, please install with: pip install tensorboard
+[2026-08-05 14:03:55,740][valid][INFO] - {"epoch": 28, "valid_loss": "148.953", "valid_nll_loss": "6.857", "valid_total": "246", "valid_n_correct": "59.0625", "valid_ppl": "115.91", "valid_accuracy": "24.009", "valid_wps": "4729.7", "valid_wpb": "246", "valid_bsz": "12.5", "valid_num_updates": "3000", "valid_best_accuracy": "24.67"}
+[2026-08-05 14:03:55,742][fairseq.checkpoint_utils][INFO] - Preparing to save checkpoint for epoch 28 @ 3000 updates
+[2026-08-05 14:03:55,742][fairseq.trainer][INFO] - Saving checkpoint to checkpoints/checkpoint_last.pt
+[2026-08-05 14:03:58,127][fairseq.trainer][INFO] - Finished saving checkpoint to checkpoints/checkpoint_last.pt
+[2026-08-05 14:03:58,235][fairseq.checkpoint_utils][INFO] - Saved checkpoint checkpoints/checkpoint_last.pt (epoch 28 @ 3000 updates, score 24.009) (writing took 2.493586785858497 seconds)
+[2026-08-05 14:03:58,237][fairseq_cli.train][INFO] - end of epoch 28 (average epoch stats below)
+[2026-08-05 14:03:58,237][train][INFO] - {"epoch": 28, "train_loss": "40.931", "train_nll_loss": "0.958", "train_total": "526.8", "train_n_correct": "457.4", "train_ppl": "1.94", "train_accuracy": "86.826", "train_wps": "340.6", "train_ups": "0.65", "train_wpb": "526.8", "train_bsz": "30.4", "train_num_updates": "3000", "train_lr": "5e-05", "train_gnorm": "29.274", "train_loss_scale": "32", "train_train_wall": "2", "train_gb_free": "40.8", "train_wall": "927"}
+[2026-08-05 14:03:58,237][fairseq_cli.train][INFO] - done training in 927.1 seconds
+FT_EXIT=0

@@ -1,0 +1,38 @@
+# === Data (licensed / huge — NEVER push) ===
+data/
+*.mp4
+*.wav
+*.npz
+*.parquet
+*.tar
+*.tar.gz
+*.tar.xz
+
+# === Model checkpoints & binaries (huge) ===
+workspace/checkpoints/
+*.pt
+*.dat
+*.bz2
+workspace/experiments/*/checkpoint_*.pt
+# keep experiment LOGS + decode results (small, useful for the report):
+!workspace/experiments/**/train.log
+!workspace/experiments/**/*.log
+!workspace/experiments/**/*.json
+!workspace/experiments/**/wer.*
+!workspace/experiments/**/.hydra/**
+
+# === The upstream repo is a submodule/clone — don't vendor it ===
+# (we only keep OUR modified hubert_asr.py separately; see below)
+av_hubert/
+
+# === Runpod / local artifacts ===
+workspace/RUNPOD_POD_INFO.txt
+scratchpad/
+*.pyc
+__pycache__/
+.DS_Store
+node_modules/
+
+# === conda/pip local ===
+*.egg-info/
+.vscode/

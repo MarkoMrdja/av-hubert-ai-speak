@@ -1,0 +1,126 @@
+diff --git a/avhubert/hubert_asr.py b/avhubert/hubert_asr.py
+index f493897..a2ac821 100644
+--- a/avhubert/hubert_asr.py
++++ b/avhubert/hubert_asr.py
+@@ -33,6 +33,84 @@ else:
+ logger = logging.getLogger(__name__)
+ 
+ 
++import math as _math
++
++
++class LoRALinear(nn.Module):
++    """Frozen nn.Linear + trainable low-rank update: y = Wx + (alpha/r) B(Ax).
++
++    B is zero-initialised so the adapter is a no-op at step 0 (training starts
++    exactly at the pretrained function). Only lora_A / lora_B are trainable.
++    """
++
++    def __init__(self, base: nn.Linear, r=8, alpha=16, dropout=0.0):
++        super().__init__()
++        self.base = base
++        for p in self.base.parameters():
++            p.requires_grad = False
++        self.r = r
++        self.scaling = alpha / r
++        self.lora_dropout = nn.Dropout(dropout) if dropout > 0 else nn.Identity()
++        self.lora_A = nn.Parameter(torch.zeros(r, base.in_features))
++        self.lora_B = nn.Parameter(torch.zeros(base.out_features, r))
++        nn.init.kaiming_uniform_(self.lora_A, a=_math.sqrt(5))
++        nn.init.zeros_(self.lora_B)
++
++    def forward(self, x):
++        return self.base(x) + self.scaling * (self.lora_dropout(x) @ self.lora_A.t() @ self.lora_B.t())
++
++    # Proxy the wrapped Linear's attributes so fairseq code that introspects
++    # layer.weight / layer.bias / dims (e.g. attention modules) still works.
++    @property
++    def weight(self):
++        return self.base.weight
++
++    @property
++    def bias(self):
++        return self.base.bias
++
++    @property
++    def in_features(self):
++        return self.base.in_features
++
++    @property
++    def out_features(self):
++        return self.base.out_features
++
++
++def _apply_lora(model, cfg):
++    """Config-driven LoRA injection for AVHubertSeq2Seq. Freezes everything
++    except the injected LoRA matrices. Returns the same model instance."""
++    targets = tuple(t.strip() for t in cfg.lora_targets.split(",") if t.strip())
++    scope = cfg.lora_scope  # 'decoder' | 'encoder' | 'all'
++    replaced = []
++    for full_name, mod in list(model.named_modules()):
++        if not isinstance(mod, nn.Linear):
++            continue
++        if full_name.split(".")[-1] not in targets:
++            continue
++        if scope != "all" and scope not in full_name:
++            continue
++        replaced.append(full_name)
++    for full_name in replaced:
++        parent = model
++        parts = full_name.split(".")
++        for p in parts[:-1]:
++            parent = getattr(parent, p)
++        base = getattr(parent, parts[-1])
++        setattr(parent, parts[-1],
++                LoRALinear(base, r=cfg.lora_r, alpha=cfg.lora_alpha, dropout=cfg.lora_dropout))
++    # Freeze all non-LoRA params.
++    for name, p in model.named_parameters():
++        p.requires_grad = ("lora_A" in name) or ("lora_B" in name)
++    trn = sum(p.numel() for p in model.parameters() if p.requires_grad)
++    tot = sum(p.numel() for p in model.parameters())
++    logger.info(f"[LoRA] scope={scope} targets={targets} r={cfg.lora_r} "
++                f"alpha={cfg.lora_alpha}: adapted {len(replaced)} layers, "
++                f"trainable {trn:,}/{tot:,} ({100*trn/tot:.2f}%)")
++    return model
++
++
+ @dataclass
+ class AVHubertAsrConfig(FairseqDataclass):
+     w2v_path: str = field(
+@@ -192,6 +270,22 @@ class AVHubertCtc(BaseFairseqModel):
+ 
+ @dataclass
+ class AVHubertSeq2SeqConfig(AVHubertAsrConfig):
++    # --- LoRA (parameter-efficient fine-tuning); disabled by default ---
++    lora_enable: bool = field(
++        default=False, metadata={"help": "wrap target Linear layers with LoRA and freeze the rest"}
++    )
++    lora_r: int = field(default=8, metadata={"help": "LoRA rank"})
++    lora_alpha: int = field(default=16, metadata={"help": "LoRA scaling alpha"})
++    lora_dropout: float = field(default=0.0, metadata={"help": "LoRA dropout"})
++    lora_targets: str = field(
++        default="q_proj,v_proj",
++        metadata={"help": "comma-separated Linear leaf names to adapt "
++                          "(q_proj,k_proj,v_proj,out_proj,fc1,fc2)"},
++    )
++    lora_scope: str = field(
++        default="decoder",
++        metadata={"help": "which part to adapt: 'decoder', 'encoder', or 'all'"},
++    )
+     decoder_embed_dim: int = field(
+         default=768, metadata={"help": "decoder embedding dimension"}
+     )
+@@ -487,7 +581,12 @@ class AVHubertSeq2Seq(FairseqEncoderDecoderModel):
+         decoder_embed_tokens = build_embedding(tgt_dict, cfg.decoder_embed_dim)
+         decoder = TransformerDecoder(cfg, tgt_dict, decoder_embed_tokens)
+ 
+-        return AVHubertSeq2Seq(encoder, decoder, tgt_dict, cfg)
++        model = AVHubertSeq2Seq(encoder, decoder, tgt_dict, cfg)
++
++        if getattr(cfg, "lora_enable", False):
++            model = _apply_lora(model, cfg)
++
++        return model
+ 
+ 
+     def forward(self, **kwargs):
