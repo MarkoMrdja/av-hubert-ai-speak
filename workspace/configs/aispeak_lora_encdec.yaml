@@ -1,0 +1,134 @@
+# @package _group_
+#
+# AI-SPEAK (Serbian) LoRA fine-tuning — scope=all. See preprocess_aispeak.sh.
+# Same as lrs2_base_vsr_runpod.yaml but with LoRA enabled on the model.
+#
+# LoRA freezes the whole pretrained model and trains only small low-rank adapters
+# (~0.3% of params). Per the professor: decoder-first (this config), then optionally
+# encoder (set model.lora_scope=encoder or =all). Main use is the AI-SPEAK Serbian
+# adaptation where data is scarce; also run once on LRS3 as a comparison point.
+#
+# Because only adapters train, we can use a higher LR and it's fine to run all
+# updates unfrozen (freeze_finetune_updates=0) — the base is frozen by LoRA anyway.
+
+common:
+  fp16: true
+  log_format: json
+  log_interval: 100
+  tensorboard_logdir: tblog
+  seed: 1337
+  user_dir: ???
+
+checkpoint:
+  save_interval: 1
+  keep_interval_updates: 1
+  no_epoch_checkpoints: true
+  best_checkpoint_metric: accuracy
+  maximize_best_checkpoint_metric: true
+
+distributed_training:
+  ddp_backend: c10d
+  find_unused_parameters: true
+  distributed_world_size: 1
+  nprocs_per_node: 1
+
+task:
+  _name: av_hubert_pretraining
+  is_s2s: true
+  data: ???
+  label_dir: ???
+  tokenizer_bpe_model: ???
+  normalize: true
+  labels: ["wrd"]
+  single_target: true
+  fine_tuning: true
+  stack_order_audio: 4
+  tokenizer_bpe_name: sentencepiece
+  max_sample_size: 500
+  modalities: ["video"]
+  image_aug: true
+  pad_audio: true
+  random_crop: false
+
+dataset:
+  num_workers: 8
+  max_tokens: 2000
+  validate_after_updates: 0
+  validate_interval: 1
+  train_subset: train
+  valid_subset: valid
+
+criterion:
+  _name: label_smoothed_cross_entropy
+  report_accuracy: true
+  label_smoothing: 0.1
+
+optimization:
+  max_update: 10000
+  lr: [0.003]            # LoRA tolerates a higher LR than full fine-tuning
+  sentence_avg: true
+  update_freq: [4]
+
+optimizer:
+  _name: adam
+  adam_betas: (0.9,0.98)
+  adam_eps: 1e-08
+
+lr_scheduler:
+  _name: tri_stage
+  warmup_steps: 2000
+  hold_steps: 0
+  decay_steps: 8000
+  final_lr_scale: 0.05
+
+model:
+  _name: av_hubert_seq2seq
+  w2v_path: ???
+  # --- LoRA settings ---
+  lora_enable: true
+  lora_r: 8
+  lora_alpha: 16
+  lora_dropout: 0.05
+  lora_targets: "q_proj,v_proj"     # attention query/value projections
+  lora_scope: "all"             # decoder-first; set to "encoder" or "all" later
+  # --- with LoRA the base is frozen anyway, so don't gate on freeze updates ---
+  freeze_finetune_updates: 0
+  apply_mask: false
+  mask_selection: static
+  mask_length: 10
+  mask_other: 0
+  mask_prob: 0.75
+  mask_channel_selection: static
+  mask_channel_length: 64
+  mask_channel_other: 0
+  mask_channel_prob: 0.5
+  layerdrop: 0.1
+  dropout: 0.0
+  activation_dropout: 0.1
+  attention_dropout: 0.0
+  feature_grad_mult: 1.0
+  decoder_layers: 6
+  decoder_dropout: 0.1
+  decoder_attention_dropout: 0.0
+  decoder_activation_dropout: 0.1
+  share_decoder_input_output_embed: true
+  decoder_normalize_before: true
+
+hydra:
+  job:
+    config:
+      override_dirname:
+        kv_sep: '-'
+        item_sep: '__'
+        exclude_keys:
+          - run
+          - task.data
+          - task.label_dir
+          - model.w2v_path
+          - dataset.train_subset
+          - dataset.valid_subset
+  run:
+    dir: ???
+  sweep:
+    dir: ???
+    subdir: ${hydra.job.config_name}__${hydra.job.override_dirname}
