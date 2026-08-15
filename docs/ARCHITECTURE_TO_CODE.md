@@ -113,7 +113,7 @@ Fine-tuning *wraps* the pretrained `AVHubertModel` as its encoder and bolts a
 ---
 
 ## 5. How to verify all this yourself
-Run `workspace/scripts/inspect_model.py` on the downloaded checkpoint — it prints
+Run `workspace/scripts/common/inspect_model.py` on the downloaded checkpoint — it prints
 the real module tree and parameter counts so you can confirm ResNet frontend,
 Transformer depth/width, and Base's ~103M params against these notes.
 

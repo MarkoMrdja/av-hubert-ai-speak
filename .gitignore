@@ -21,9 +21,17 @@ workspace/experiments/*/checkpoint_*.pt
 !workspace/experiments/**/wer.*
 !workspace/experiments/**/.hydra/**
 
-# === The upstream repo is a submodule/clone — don't vendor it ===
-# (we only keep OUR modified hubert_asr.py separately; see below)
-av_hubert/
+# === The upstream repo is a pinned git SUBMODULE (see .gitmodules) ===
+# We do NOT vendor its files; the submodule records the exact commit.
+# Our LoRA change lives in our_code_changes/ and is applied on top.
+# Ignore local build artifacts inside it:
+av_hubert/**/__pycache__/
+av_hubert/**/*.egg-info/
+av_hubert/requirements-frozen-macos-arm64.txt
+
+# === Personal / local-only (guides, infra notes, doc generators) ===
+# Kept on disk, never pushed.
+local/
 
 # === Runpod / local artifacts ===
 workspace/RUNPOD_POD_INFO.txt

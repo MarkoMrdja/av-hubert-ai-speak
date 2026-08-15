@@ -1,7 +1,7 @@
 # @package _group_
 #
 # AI-SPEAK (Serbian) LoRA fine-tuning — scope=all. See preprocess_aispeak.sh.
-# Same as lrs2_base_vsr_runpod.yaml but with LoRA enabled on the model.
+# AI-SPEAK (Serbian) VSR config with LoRA (encoder+decoder) enabled.
 #
 # LoRA freezes the whole pretrained model and trains only small low-rank adapters
 # (~0.3% of params). Per the professor: decoder-first (this config), then optionally

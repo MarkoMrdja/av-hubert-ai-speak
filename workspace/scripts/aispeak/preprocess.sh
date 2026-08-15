@@ -19,7 +19,7 @@ LIMIT_PER_SPEAKER=""                      # e.g. 20 for a quick dry run; "" = al
 # ===========================================================================
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPO_PREP="$HERE/../../av_hubert/avhubert/preparation"
+REPO_PREP="$HERE/../../../av_hubert/avhubert/preparation"
 FFMPEG="$(command -v ffmpeg)"
 PREP="$AISPEAK_ROOT/prepared_${LANGUAGE}"
 OUT="$AISPEAK_ROOT/${LANGUAGE}_data"
@@ -28,7 +28,7 @@ LIMIT_ARG=""
 [ -n "$LIMIT_PER_SPEAKER" ] && LIMIT_ARG="--limit-per-speaker $LIMIT_PER_SPEAKER"
 
 echo "== Step 1: read Excel, resample video/audio, build lists =="
-python "$HERE/aispeak_prepare.py" --root "$AISPEAK_ROOT" --out "$PREP" \
+python "$HERE/prepare.py" --root "$AISPEAK_ROOT" --out "$PREP" \
   --language "$LANGUAGE" \
   --valid-speakers $VALID_SPEAKERS --test-speakers $TEST_SPEAKERS \
   --ffmpeg "$FFMPEG" $LIMIT_ARG
@@ -40,7 +40,7 @@ cat "$PREP/nframes.audio.0" > "$PREP/nframes.audio"
 cat "$PREP/nframes.video.0" > "$PREP/nframes.video"
 
 echo "== Step 3: build manifests + Serbian tokenizer =="
-python "$HERE/aispeak_build_manifest.py" --prepared "$PREP" --out "$OUT" --vocab-size "$VOCAB_SIZE"
+python "$HERE/build_manifest.py" --prepared "$PREP" --out "$OUT" --vocab-size "$VOCAB_SIZE"
 
 echo ""
 echo "DONE. Fine-tune data dir: $OUT"

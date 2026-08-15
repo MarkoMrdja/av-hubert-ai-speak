@@ -23,14 +23,14 @@ VOCAB_SIZE=1000
 # ===========================================================================
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPO_PREP="$HERE/../../av_hubert/avhubert/preparation"
-CKPT="$HERE/../checkpoints"
+REPO_PREP="$HERE/../../../av_hubert/avhubert/preparation"
+CKPT="$HERE/../../checkpoints"
 FFMPEG="$(command -v ffmpeg)"
 PREP="$LRS3/prepared_subset"
 mkdir -p "$PREP"
 
 echo "== Step 0: build subset file.list / label.list =="
-python "$HERE/lrs3_make_subset.py" --lrs3 "$LRS3" --out "$PREP" \
+python "$HERE/make_subset.py" --lrs3 "$LRS3" --out "$PREP" \
   --n-train "$N_TRAIN" --n-valid "$N_VALID"
 
 echo "== Step 1: landmark detection (dlib) =="
@@ -60,11 +60,11 @@ cat "$LRS3/nframes.audio.0" > "$PREP/nframes.audio"
 cat "$LRS3/nframes.video.0" > "$PREP/nframes.video"
 
 echo "== Step 5: convert parquet TEST split (already 96x96 ROIs) =="
-python "$HERE/lrs3_test_from_parquet.py" \
+python "$HERE/test_from_parquet.py" \
   --parquet-dir "$LRS3/test-mattymchen/data" --out "$LRS3" --fps 25 --sr 16000
 
 echo "== Step 6: build manifests + tokenizer =="
-python "$HERE/lrs3_build_manifest.py" \
+python "$HERE/build_manifest.py" \
   --lrs3 "$LRS3" --prepared "$PREP" --out "$LRS3/subset_data" --vocab-size "$VOCAB_SIZE"
 
 echo ""

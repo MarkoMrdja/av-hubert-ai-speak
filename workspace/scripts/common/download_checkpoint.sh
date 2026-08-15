@@ -11,7 +11,7 @@
 set -euo pipefail
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-CKPT_DIR="$HERE/../checkpoints"
+CKPT_DIR="$HERE/../../checkpoints"
 mkdir -p "$CKPT_DIR"
 
 # --- Pretrained BASE, LRS3 + VoxCeleb2 (self-supervised, no finetuning) ---

@@ -19,7 +19,7 @@ set -euo pipefail
 
 REPO="TheNHz/ellipsis-lrs3-raw"
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-DEST="${1:-$HERE/../../data/lrs3_raw}"
+DEST="${1:-$HERE/../../../data/lrs3_raw}"
 mkdir -p "$DEST"
 
 echo "== downloading LRS3 (trainval + test + valid ids) from $REPO =="

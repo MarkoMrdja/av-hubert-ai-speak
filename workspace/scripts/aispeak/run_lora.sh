@@ -26,8 +26,8 @@ EXP=${EXP:-$PROJECT/workspace/experiments/aispeak_lora_$VARIANT}
 # ===========================================================================
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-AVHUBERT="$HERE/../../av_hubert/avhubert"
-CONF_DIR="$HERE/../configs"
+AVHUBERT="$HERE/../../../av_hubert/avhubert"
+CONF_DIR="$HERE/../../configs"
 TOKENIZER="$DATA/$(ls "$DATA" | grep -m1 '^spm_unigram.*\.model$')"
 
 echo "config: $CONFIG   data: $DATA"
@@ -43,4 +43,4 @@ fairseq-hydra-train --config-dir "$CONF_DIR" --config-name "$CONFIG" \
 
 echo ""
 echo "done. checkpoints + logs in: $EXP"
-echo "then evaluate with evaluate_lrs2.sh style: infer_s2s.py gen_subset=test on $DATA"
+echo "then evaluate with common/evaluate.sh (point DATA/FT_CKPT at this run): gen_subset=test on $DATA"

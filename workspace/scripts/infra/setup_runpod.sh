@@ -9,17 +9,18 @@
 # what matters is the HOST CUDA DRIVER being >= 11.7). Pick a 24GB GPU (RTX 3090/4090).
 #
 # Usage on the rented box (SSH in, then):
-#   git clone --recursive https://github.com/facebookresearch/av_hubert.git   # or your fork
-#   bash setup_runpod.sh /workspace/av-hubert-ai-speak
+#   git clone --recursive https://github.com/<you>/av-hubert-ai-speak.git   # pulls av_hubert submodule + nested fairseq
+#   cd av-hubert-ai-speak && bash our_code_changes/apply_patch.sh            # apply our LoRA change
+#   bash workspace/scripts/infra/setup_runpod.sh /workspace/av-hubert-ai-speak
 # If you instead scp your whole project folder up, just point the arg at it.
 set -euo pipefail
 
 PROJECT="${1:-/workspace/av-hubert-ai-speak}"
 echo "== project dir: $PROJECT =="
 [ -d "$PROJECT/av_hubert/fairseq" ] || {
-  echo "ERROR: $PROJECT/av_hubert/fairseq not found."
-  echo "Clone with:  git clone --recursive https://github.com/facebookresearch/av_hubert.git $PROJECT/av_hubert"
-  echo "and pin:     cd $PROJECT/av_hubert && git checkout 258fb50e && git submodule update --init --recursive"
+  echo "ERROR: $PROJECT/av_hubert/fairseq not found (submodule not initialized)."
+  echo "Fix with:  cd $PROJECT && git submodule update --init --recursive"
+  echo "Then:      bash our_code_changes/apply_patch.sh"
   exit 1
 }
 

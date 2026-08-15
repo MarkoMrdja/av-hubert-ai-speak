@@ -16,7 +16,7 @@ DIR="${1:?use: up|down}"; shift
 SSH_TARGET="${1:?ssh target e.g. root@HOST}"; shift
 SSH_OPTS="$*"                      # e.g. "-p 40000 -i ~/.ssh/id_ed25519"
 REMOTE=/workspace/av-hubert-ai-speak
-LOCAL="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+LOCAL="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
 
 RSYNC="rsync -avhP --stats -e ssh${SSH_OPTS:+ $SSH_OPTS}"
 
@@ -31,7 +31,7 @@ case "$DIR" in
     $RSYNC "$LOCAL/workspace/checkpoints" "$SSH_TARGET:$REMOTE/workspace/"
     # preprocessed data dir (the small subset you'll train on)
     $RSYNC "$LOCAL/data"                  "$SSH_TARGET:$REMOTE/"
-    echo "done. Now SSH in and run setup_runpod.sh + run_finetune_lrs2.sh."
+    echo "done. Now SSH in and run infra/setup_runpod.sh + common/run_finetune.sh."
     ;;
   down)
     echo "== downloading experiment results from $SSH_TARGET:$REMOTE =="
@@ -46,5 +46,5 @@ esac
 #  * Cheapest/fastest: preprocess LOCALLY on the Mac (CPU work — landmarks/crop),
 #    then upload only the small preprocessed subset + checkpoint. Rent GPU ONLY for
 #    training. This minimizes paid GPU hours.
-#  * Alternative: upload raw LRS2 and run preprocess_lrs2.sh on the pod too. Simpler
-#    but you pay GPU rent during CPU-bound preprocessing. Prefer the first option.
+#  * Alternative: upload raw data and run the preprocess step on the pod too.
+#    Simpler but you pay GPU rent during CPU-bound preprocessing. Prefer the first.
