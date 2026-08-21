@@ -59,8 +59,6 @@ def main():
     prep = Path(args.prepared)
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
-    vdir = os.path.abspath(prep / "video")
-    adir = os.path.abspath(prep / "audio")
 
     fids = load(prep / "file.list")
     labels = load(prep / "label.list")
@@ -86,11 +84,14 @@ def main():
     os.unlink(corpus)
     vocab_txt = (out / spm_prefix).as_posix() + ".txt"
 
+    # tsv root is a PLACEHOLDER + relative paths, so the data dir is portable across
+    # machines (Mac -> RunPod). Substitute the root on the target: e.g.
+    #   sed -i "1s|PREPARED_ROOT|/workspace/av-hubert-ai-speak/data/aispeak_prepared|" *.tsv
     for name, rows in buckets.items():
         with open(out / f"{name}.tsv", "w", encoding="utf-8") as fo:
-            fo.write("/\n")
+            fo.write("PREPARED_ROOT\n")
             for fid, _, v, a in rows:
-                fo.write("\t".join([fid, f"{vdir}/{fid}.mp4", f"{adir}/{fid}.wav",
+                fo.write("\t".join([fid, f"video/{fid}.mp4", f"audio/{fid}.wav",
                                     str(v), str(a)]) + "\n")
         with open(out / f"{name}.wrd", "w", encoding="utf-8") as fo:
             for _, lab, _, _ in rows:
