@@ -39,11 +39,17 @@ _WS = re.compile(r"\s+")
 
 
 def normalize(text):
-    """Uppercase + strip punctuation/quotes + collapse whitespace (VSR convention)."""
+    """Lowercase + strip punctuation/quotes + collapse whitespace.
+
+    LOWERCASE is REQUIRED: AV-HuBERT's s2s label processor calls `.lower()` on every
+    transcript before SPM-encoding it (hubert_pretraining.py: bpe_tokenizer.encode(
+    label.lower())). If the SPM vocab is built on UPPERCASE text, the lowercased eval
+    refs tokenize to all-<unk> and WER is meaningless. So the vocab MUST be lowercase.
+    (Case/punctuation aren't visible on the lips anyway.)"""
     text = text.replace("“", "").replace("”", "").replace("„", "").replace("\"", "")
     text = _PUNCT.sub(" ", text)
     text = _WS.sub(" ", text).strip()
-    return text.upper()
+    return text.lower()
 
 
 def main():
