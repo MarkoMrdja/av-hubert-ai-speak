@@ -16,12 +16,14 @@ Usage:
 """
 import argparse
 import os
+import re
 import shutil
 import sys
 from pathlib import Path
 from tempfile import NamedTemporaryFile
 
-REPO_PREP = Path(__file__).resolve().parents[2] / "av_hubert" / "avhubert" / "preparation"
+# build_manifest.py is at workspace/scripts/aispeak/ -> repo root is parents[3]
+REPO_PREP = Path(__file__).resolve().parents[3] / "av_hubert" / "avhubert" / "preparation"
 sys.path.insert(0, str(REPO_PREP))
 from gen_subword import gen_vocab  # noqa: E402
 
@@ -30,13 +32,28 @@ def load(p):
     return [ln.rstrip("\n") for ln in open(p, encoding="utf-8")]
 
 
+# strip everything that isn't a letter or space (punctuation + curly quotes are
+# not visible on the lips, so we don't ask the model to predict them)
+_PUNCT = re.compile(r"[^\wČĆĐŠŽčćđšž ]", flags=re.UNICODE)
+_WS = re.compile(r"\s+")
+
+
+def normalize(text):
+    """Uppercase + strip punctuation/quotes + collapse whitespace (VSR convention)."""
+    text = text.replace("“", "").replace("”", "").replace("„", "").replace("\"", "")
+    text = _PUNCT.sub(" ", text)
+    text = _WS.sub(" ", text).strip()
+    return text.upper()
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--prepared", required=True, help="dir with file/label/split.list + nframes.*")
     ap.add_argument("--out", required=True)
     ap.add_argument("--vocab-size", type=int, default=500,
                     help="SentencePiece vocab size; keep small for a small Serbian set")
-    ap.add_argument("--lowercase", action="store_true", default=True)
+    ap.add_argument("--no-normalize", action="store_true",
+                    help="keep transcripts verbatim (default: uppercase + strip punctuation)")
     args = ap.parse_args()
 
     prep = Path(args.prepared)
@@ -47,8 +64,8 @@ def main():
 
     fids = load(prep / "file.list")
     labels = load(prep / "label.list")
-    if args.lowercase:
-        labels = [x.lower() for x in labels]
+    if not args.no_normalize:
+        labels = [normalize(x) for x in labels]
     splits = load(prep / "split.list")
     nfv = load(prep / "nframes.video")
     nfa = load(prep / "nframes.audio")
