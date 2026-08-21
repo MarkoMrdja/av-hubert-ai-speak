@@ -64,7 +64,7 @@ criterion:
   label_smoothing: 0.1
 
 optimization:
-  max_update: 10000
+  max_update: 5000
   lr: [0.003]            # LoRA tolerates a higher LR than full fine-tuning
   sentence_avg: true
   update_freq: [4]
@@ -76,9 +76,9 @@ optimizer:
 
 lr_scheduler:
   _name: tri_stage
-  warmup_steps: 2000
+  warmup_steps: 400
   hold_steps: 0
-  decay_steps: 8000
+  decay_steps: 4000
   final_lr_scale: 0.05
 
 model:
