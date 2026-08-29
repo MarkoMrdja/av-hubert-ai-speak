@@ -24,12 +24,22 @@ echo "== project dir: $PROJECT =="
 [ -f "$REQ" ] || { echo "ERROR: $REQ not found."; exit 1; }
 
 # --- 1. Miniconda (if absent) ---------------------------------------------
-if ! command -v conda >/dev/null 2>&1; then
+# Locate an existing conda (on PATH, or a prior install dir) before installing,
+# so a re-run on a box that already has miniconda doesn't error out.
+CONDA_BASE=""
+if command -v conda >/dev/null 2>&1; then
+  CONDA_BASE="$(conda info --base)"
+elif [ -d "$HOME/miniconda3" ]; then
+  CONDA_BASE="$HOME/miniconda3"
+elif [ -d /opt/conda ]; then
+  CONDA_BASE="/opt/conda"
+else
   echo "== installing miniconda =="
   curl -L -o /tmp/mc.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
   bash /tmp/mc.sh -b -p "$HOME/miniconda3"
+  CONDA_BASE="$HOME/miniconda3"
 fi
-source "$(conda info --base 2>/dev/null || echo "$HOME/miniconda3")/etc/profile.d/conda.sh"
+source "$CONDA_BASE/etc/profile.d/conda.sh"
 
 # --- 2. conda env (conda-forge only; new conda blocks defaults on ToS) -----
 echo "== creating conda env 'avhubert' (python 3.9) =="
