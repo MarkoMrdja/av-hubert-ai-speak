@@ -23,9 +23,7 @@ echo "== project dir: $PROJECT =="
 }
 [ -f "$REQ" ] || { echo "ERROR: $REQ not found."; exit 1; }
 
-# --- 1. Miniconda (if absent) ---------------------------------------------
-# Locate an existing conda (on PATH, or a prior install dir) before installing,
-# so a re-run on a box that already has miniconda doesn't error out.
+# --- 1. Miniconda: reuse an existing install (PATH / dir) or install ---------
 CONDA_BASE=""
 if command -v conda >/dev/null 2>&1; then
   CONDA_BASE="$(conda info --base)"
@@ -50,22 +48,17 @@ conda activate avhubert
 command -v cmake >/dev/null 2>&1 || (apt-get update && apt-get install -y cmake) || \
   conda install -y -c conda-forge cmake
 
-# --- 4. install pinned deps from requirements.txt --------------------------
-# The CUDA 11.7 torch wheels come from the PyTorch index.
+# --- 4. install pinned deps (CUDA torch from the PyTorch index) -------------
 echo "== installing deps (env/requirements.txt, CUDA torch) =="
 pip install -r "$REQ" --extra-index-url https://download.pytorch.org/whl/cu117
 
 # --- 5. fairseq editable (vendored) ----------------------------------------
 echo "== installing vendored fairseq (editable) =="
 pip install --no-build-isolation -e "$PROJECT/av_hubert/fairseq"
-# The editable install doesn't always compile fairseq's Cython extensions
-# (data_utils_fast etc.) -> "ImportError: Please build Cython components".
-# Build them explicitly so imports work.
+# build Cython ext (data_utils_fast etc.) — editable install may skip it
 echo "== building fairseq Cython extensions =="
 ( cd "$PROJECT/av_hubert/fairseq" && python setup.py build_ext --inplace )
-# fairseq's -e install pulls omegaconf/hydra too new -> ImportError: II. These
-# two are NOT in requirements.txt (their legacy metadata needs pip<24.1), so we
-# downgrade pip and install them here, last.
+# omegaconf/hydra: kept out of requirements.txt (legacy metadata needs pip<24.1)
 pip install "pip<24.1"
 pip install "omegaconf==2.0.6" "hydra-core==1.0.7"
 

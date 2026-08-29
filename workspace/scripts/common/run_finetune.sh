@@ -43,11 +43,12 @@ echo "config: $CONFIG_NAME   data: $DATA"
 mkdir -p "$EXP"
 cd "$AVHUBERT"    # common.user_dir=`pwd` must point at the avhubert module
 
-# Optional Hydra overrides via env vars (e.g. LORA_R=16 for a rank sweep, or
-# MAX_UPDATE=3000 to cap training). Left empty -> config defaults are used.
+# Optional Hydra overrides via env vars (LORA_R, MAX_UPDATE, PATIENCE).
+# Empty -> config defaults. PATIENCE early-stops after N validations w/o improvement.
 EXTRA=()
 [ -n "${LORA_R:-}" ]     && EXTRA+=("model.lora_r=$LORA_R")
 [ -n "${MAX_UPDATE:-}" ] && EXTRA+=("optimization.max_update=$MAX_UPDATE")
+[ -n "${PATIENCE:-}" ]   && EXTRA+=("checkpoint.patience=$PATIENCE")
 
 fairseq-hydra-train \
   --config-dir "$CONF_DIR" --config-name "$CONFIG_NAME" \
