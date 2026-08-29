@@ -58,6 +58,11 @@ pip install -r "$REQ" --extra-index-url https://download.pytorch.org/whl/cu117
 # --- 5. fairseq editable (vendored) ----------------------------------------
 echo "== installing vendored fairseq (editable) =="
 pip install --no-build-isolation -e "$PROJECT/av_hubert/fairseq"
+# The editable install doesn't always compile fairseq's Cython extensions
+# (data_utils_fast etc.) -> "ImportError: Please build Cython components".
+# Build them explicitly so imports work.
+echo "== building fairseq Cython extensions =="
+( cd "$PROJECT/av_hubert/fairseq" && python setup.py build_ext --inplace )
 # fairseq's -e install pulls omegaconf/hydra too new -> ImportError: II. These
 # two are NOT in requirements.txt (their legacy metadata needs pip<24.1), so we
 # downgrade pip and install them here, last.
