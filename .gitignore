@@ -1,5 +1,6 @@
 # === Data (licensed / huge — NEVER push) ===
-data/
+# Anchored to repo-root /data/ only — must NOT match vendored av_hubert/**/data/ dirs.
+/data/
 *.mp4
 *.wav
 *.npz
@@ -21,17 +22,16 @@ workspace/experiments/*/checkpoint_*.pt
 !workspace/experiments/**/wer.*
 !workspace/experiments/**/.hydra/**
 
-# === The upstream repo is a pinned git SUBMODULE (see .gitmodules) ===
-# We do NOT vendor its files; the submodule records the exact commit.
-# Our LoRA change lives in our_code_changes/ and is applied on top.
-# Ignore local build artifacts inside it:
+# === Vendored upstream (av_hubert @ 258fb50 + fairseq @ afc77bd) ===
+# Meta's av_hubert + fairseq are vendored (committed directly, MIT-licensed),
+# with our LoRA change applied in avhubert/hubert_asr.py. See av_hubert/PROVENANCE.md.
+# Only ignore local build artifacts inside it:
 av_hubert/**/__pycache__/
 av_hubert/**/*.egg-info/
-av_hubert/requirements-frozen-macos-arm64.txt
 
 # === Personal / local-only (guides, infra notes, doc generators) ===
-# Kept on disk, never pushed.
-local/
+# Kept on disk, never pushed. Anchored to repo-root /local/ (not vendored subdirs).
+/local/
 
 # === Runpod / local artifacts ===
 workspace/RUNPOD_POD_INFO.txt

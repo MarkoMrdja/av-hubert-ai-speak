@@ -9,37 +9,34 @@ This repository holds the **code, configs, scripts, and documents** only. Datase
 licensed (AI-SPEAK is CC BY-NC-SA 4.0, LRS3 CC BY 4.0).
 
 ## Code version used
-- Upstream [facebookresearch/av_hubert](https://github.com/facebookresearch/av_hubert)
-  is included as a **git submodule** at `av_hubert/`, pinned to commit
-  `258fb50e155134eec2c4b49c2ae8de267075fd18` (its nested fairseq submodule at
-  `afc77bdf4bb51453ce76f1572ef2ee6ddcda8eeb`).
-- Our modification (LoRA support) lives in `our_code_changes/` (patch + modified
-  file) and is applied on top of the clean submodule — we do **not** vendor
-  upstream's files.
+- [facebookresearch/av_hubert](https://github.com/facebookresearch/av_hubert)
+  (commit `258fb50e`) and its `fairseq` dependency (commit `afc77bdf`) are
+  **vendored** under `av_hubert/` — committed directly (MIT-licensed), see
+  `av_hubert/PROVENANCE.md`.
+- Our only modification (LoRA support) is committed directly in
+  `av_hubert/avhubert/hubert_asr.py`. See the diff with `git log -p`.
 
 ## Setup
 ```bash
-git clone --recursive https://github.com/<you>/av-hubert-ai-speak.git
+git clone https://github.com/<you>/av-hubert-ai-speak.git
 cd av-hubert-ai-speak
-bash our_code_changes/apply_patch.sh      # apply our LoRA change onto upstream
+bash workspace/scripts/infra/setup_env.sh .   # conda env + deps (any CUDA GPU machine)
 ```
-Already cloned without `--recursive`? Run `git submodule update --init --recursive`
-first. Env pins: `env/requirements-frozen-macos-arm64.txt`.
+Env pins: `env/requirements.txt` (Linux/CUDA) · `env/requirements_mac.txt` (macOS/CPU).
 
 ## Layout
 ```
-av_hubert/          pinned upstream submodule (model + fairseq)
-our_code_changes/   our LoRA patch + apply_patch.sh (applied on top of upstream)
-env/                frozen dependency pins
+av_hubert/          vendored upstream (av_hubert + fairseq) incl. our LoRA change
+env/                requirements.txt (CUDA) + requirements_mac.txt + verify_env.py
 workspace/
   configs/          LoRA + fine-tune configs (LRS3 + AI-SPEAK)
   scripts/
     common/         lora.py, inspect_model.py, download_*, run_finetune, evaluate
     lrs3/           LRS3 subset prep (make_subset, parquet test, manifest)
     aispeak/        Serbian prep + LoRA run
-    infra/          RunPod setup + sync
+    infra/          env setup + remote sync
   experiments/      run logs + decode results (checkpoints excluded)
-docs/               learning guide, architecture↔code map, RunPod/AI-SPEAK guides
+docs/               architecture↔code map, results, report skeleton
 deliverables/       Uputstvo (task 4) + Izveštaj (task 6), Serbian .docx + generators
 ```
 

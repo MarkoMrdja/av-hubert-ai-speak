@@ -48,11 +48,39 @@
 
 Tri eksperimenta (jedan pokretaj svaki), test na neviđenim govornicima (2535 reči):
 
-| # | Polazni enkoder | LoRA opseg | Obučivih par. | Greške | **WER** |
+| # | Polazni enkoder | LoRA opseg | Rang | Obučivih par. | **WER** |
 |---|---|---|---|---:|---:|
-| 1 | B (engleski VSR) | samo dekoder | 295K (0,18%) | 1830 / 2535 | **72,2%** |
-| 2 | B (engleski VSR) | enkoder+dekoder | 590K (0,37%) | 1924 / 2535 | **75,9%** |
-| 3 | A (samo pretrening) | enkoder+dekoder | 590K (0,37%) | 1817 / 2535 | **71,7%** |
+| 1 | B (engleski VSR) | samo dekoder | r=8 | 295K (0,18%) | **72,2%** |
+| 2 | B (engleski VSR) | enkoder+dekoder | r=8 | 590K (0,37%) | 75,9% |
+| 3 | A (samo pretrening) | enkoder+dekoder | r=8 | 590K (0,37%) | 71,7% |
+| 4 | B (engleski VSR) | samo dekoder | r=4 | 147K (0,09%) | 74,3% |
+
+Sve četiri konfiguracije daju WER u uskom opsegu **71,7–75,9%** (raspon 4,2 p.p.).
+
+### Unakrsna validacija (cross-validation) — ključni nalaz
+
+Pošto se rezultati grupišu tesno, urađena je **3-struka unakrsna validacija po
+govornicima** (leave-N-speakers-out) za najbolju konfiguraciju (r=8, samo dekoder),
+rotiranjem koji su govornici u test skupu:
+
+| Fold | Test govornici | WER |
+|---|---|---:|
+| A | spk01–04 | 70,9% |
+| B | spk11–14 | 81,6% |
+| C | spk27–30 | 74,0% |
+| **Prosek ± std** | | **75,5% ± 5,5%** |
+
+**Varijansa između foldova (raspon 10,7 p.p.) je više nego DVOSTRUKO veća od razlike
+između svih konfiguracija (4,2 p.p.).** Zaključak: razlike između arhitektonskih
+izbora (dekoder vs enkoder+dekoder, r=4 vs r=8, enkoder A vs B) su **unutar šuma** —
+manje od variranja koje potiče prosto od toga *koji govornici* su u test skupu. Neki
+govornici se jednostavno lakše čitaju sa usana (jasnija artikulacija, bez brade,
+bolji kadar). **Dominantni faktor WER-a je izbor test govornika, a ne arhitektura.**
+
+Ovo je metodološki važno: da smo se oslonili na po jedan pokretaj, pogrešno bismo
+zaključili npr. „enkoder A (71,7%) je bolji od B (75,9%)" — a unakrsna validacija
+pokazuje da je ta razlika manja od varijanse jednog folda. Usko grlo ostaje
+**količina označenih srpskih podataka** (~2,7 h), ne izbor konfiguracije.
 
 **Raspodela kvaliteta (Run 3, 311 test klipova).** Prosečan WER (71,7%) sakriva
 bimodalnu prirodu rezultata:

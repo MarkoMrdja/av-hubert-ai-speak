@@ -86,7 +86,7 @@ Marko Mrđa · Mašinsko učenje · Fakultet tehničkih nauka, Univerzitet u Nov
     model se zamrzava, obučavaju se samo niskorangovani adapteri (`r=8`) na
     projekcijama pažnje `q_proj`/`v_proj` — 0,18–0,37% parametara. Pogodno za mali
     korpus jer otporno na preprilagođavanje. (Puna implementacija u
-    `our_code_changes/`; objašnjenje u uputstvu.)
+    vendovan av_hubert/; objašnjenje u uputstvu.)
 
 ### 2.3 Podaci
 

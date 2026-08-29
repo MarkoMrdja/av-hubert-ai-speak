@@ -28,7 +28,7 @@ proven to load via w2v_path — and only overwrite its encoder WEIGHTS with seed
 (both are the same Base AVHubertModel architecture, so keys match). Result: a checkpoint
 that loads exactly like seed A but carries seed B's VSR-tuned encoder.
 
-USAGE (run where fairseq is importable — e.g. on RunPod):
+USAGE (run where fairseq is importable — i.e. in the CUDA training env):
    python extract_encoder.py --in base_vox_433h.pt --template base_vox_iter5.pt \
        --out base_vox_433h_encoder.pt
 

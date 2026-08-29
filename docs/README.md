@@ -12,5 +12,5 @@ project documentation:
 
 ## Environment
 Conda env `avhubert` (Python 3.9). Exact pins in
-[`../env/requirements-frozen-macos-arm64.txt`](../env/requirements-frozen-macos-arm64.txt).
+[`../env/requirements.txt`](../env/requirements.txt) (Linux/CUDA) or [`../env/requirements_mac.txt`](../env/requirements_mac.txt) (macOS/CPU).
 On a GPU (Linux) box, rebuild with a CUDA torch build but the same version pins.

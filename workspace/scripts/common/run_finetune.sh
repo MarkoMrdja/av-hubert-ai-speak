@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Launch fine-tuning of a pretrained AV-HuBERT Base model on a prepared data dir.
-# Run on the machine WITH the NVIDIA GPU (the rented RunPod box, not the Mac).
+# Run on the machine WITH the NVIDIA GPU (any CUDA box, not a CPU-only Mac).
 #
 # Prereqs: a preprocess step has produced $DATA (tsv/wrd/dict/spm), and
 # download_checkpoint.sh has fetched the Base checkpoint.
@@ -18,7 +18,7 @@
 set -euo pipefail
 
 # ============================ CONFIG (edit me) =============================
-# On RunPod the repo is typically cloned under /workspace; adjust to your paths.
+# Adjust these paths to wherever you cloned the repo on the GPU machine.
 PROJECT=${PROJECT:-/workspace/av-hubert-ai-speak}
 DATA=${DATA:-$PROJECT/data/lrs3_raw/subset_data}                # from preprocess
 CKPT=${CKPT:-$PROJECT/workspace/checkpoints/base_vox_iter5.pt}
@@ -43,13 +43,20 @@ echo "config: $CONFIG_NAME   data: $DATA"
 mkdir -p "$EXP"
 cd "$AVHUBERT"    # common.user_dir=`pwd` must point at the avhubert module
 
+# Optional Hydra overrides via env vars (e.g. LORA_R=16 for a rank sweep, or
+# MAX_UPDATE=3000 to cap training). Left empty -> config defaults are used.
+EXTRA=()
+[ -n "${LORA_R:-}" ]     && EXTRA+=("model.lora_r=$LORA_R")
+[ -n "${MAX_UPDATE:-}" ] && EXTRA+=("optimization.max_update=$MAX_UPDATE")
+
 fairseq-hydra-train \
   --config-dir "$CONF_DIR" --config-name "$CONFIG_NAME" \
   task.data="$DATA" task.label_dir="$DATA" \
   task.tokenizer_bpe_model="$TOKENIZER" \
   model.w2v_path="$CKPT" \
   hydra.run.dir="$EXP" \
-  common.user_dir="$(pwd)"
+  common.user_dir="$(pwd)" \
+  "${EXTRA[@]}"
 
 echo ""
 echo "training finished. checkpoints + logs in: $EXP"

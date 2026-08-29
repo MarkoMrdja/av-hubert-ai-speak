@@ -1,0 +1,35 @@
+# AV-HuBERT × AI-SPEAK — Python dependencies (Linux / CUDA).
+# This is the authoritative list used to build the training environment on a
+# Linux/CUDA GPU machine. setup_env.sh installs from this file.
+#
+# torch is the CUDA 11.7 build; install with the PyTorch index:
+#   pip install -r env/requirements.txt --extra-index-url https://download.pytorch.org/whl/cu117
+#
+# fairseq is NOT listed here — it is vendored under av_hubert/fairseq/ and
+# installed editable by setup_env.sh (pip install --no-build-isolation -e .).
+
+# --- core (install FIRST, before fairseq) ---
+numpy==1.23.5
+torch==1.13.1+cu117
+torchaudio==0.13.1
+torchvision==0.14.1+cu117
+
+# --- preprocessing + model deps ---
+opencv-python==4.9.0.80
+sentencepiece==0.2.2
+editdistance==0.8.1
+scikit-image==0.19.3
+python_speech_features==0.6
+pydub==0.25.1
+dlib
+tqdm==4.69.0
+sacrebleu==2.6.0
+
+# --- build pins (fairseq legacy metadata) ---
+Cython<3
+setuptools<70
+
+# NB: omegaconf==2.0.6 / hydra-core==1.0.7 are NOT listed here on purpose.
+# Their legacy wheel metadata is rejected by pip>=24.1, so they must be installed
+# AFTER downgrading pip (pip<24.1) AND after `pip install -e fairseq`. setup_env.sh
+# handles that ordering explicitly.

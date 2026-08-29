@@ -4,7 +4,7 @@ Minimal, dependency-free LoRA (Low-Rank Adaptation) for the fairseq AV-HuBERT mo
 REFERENCE COPY (not imported at runtime). The version that actually runs during
 training is embedded in `av_hubert/avhubert/hubert_asr.py` (`LoRALinear` +
 `_apply_lora`), because our change to upstream must be a single self-contained
-patch to one file inside the pinned submodule — see our_code_changes/. This file
+change to one file inside the vendored av_hubert/. This file
 is the clean, standalone, documented version kept for study and the report.
 
 Why hand-rolled: HuggingFace `peft` drags in torch 2.x, which breaks the pinned

@@ -91,7 +91,7 @@ def main():
     vocab_txt = (out / spm_prefix).as_posix() + ".txt"
 
     # tsv root is a PLACEHOLDER + relative paths, so the data dir is portable across
-    # machines (Mac -> RunPod). Substitute the root on the target: e.g.
+    # machines (local -> remote GPU). Substitute the root on the target: e.g.
     #   sed -i "1s|PREPARED_ROOT|/workspace/av-hubert-ai-speak/data/aispeak_prepared|" *.tsv
     for name, rows in buckets.items():
         with open(out / f"{name}.tsv", "w", encoding="utf-8") as fo:

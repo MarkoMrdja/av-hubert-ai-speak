@@ -191,10 +191,11 @@ def process_audio(asrc, dst_wav, window, ffmpeg="ffmpeg", sr=16000):
     subprocess.call(cmd)
 
 
-def _worker(job, vid_out, aud_out, size, fps, ffmpeg):
-    """One utterance: (fid, vsrc, asrc, align) -> (fid, nframes) or (fid, 0) on fail."""
+def _worker(job, vid_out, aud_out, size, fps, ffmpeg, trim=True):
+    """One utterance: (fid, vsrc, asrc, align) -> (fid, nframes) or (fid, 0) on fail.
+    trim=False keeps the FULL clip (no .align-based cutting)."""
     fid, vsrc, asrc, align = job
-    window = read_align_window(align)
+    window = read_align_window(align) if trim else None
     dst_v = str(Path(vid_out) / f"{fid}.mp4")
     dst_a = str(Path(aud_out) / f"{fid}.wav")
     try:
@@ -219,6 +220,9 @@ def main():
     ap.add_argument("--size", type=int, default=96)
     ap.add_argument("--fps", type=int, default=25)
     ap.add_argument("--jobs", type=int, default=max(1, os.cpu_count() - 2))
+    ap.add_argument("--no-trim", action="store_true",
+                    help="keep FULL clips (do NOT cut to the .align utterance window). "
+                         "Use to test whether alignment-trimming clips the visual speech onset.")
     ap.add_argument("--limit-per-speaker", type=int, default=None,
                     help="optional cap on utterances per speaker (quick tests)")
     args = ap.parse_args()
@@ -260,8 +264,10 @@ def main():
             meta[fid] = (split, text)
 
     print(f"processing {len(jobs)} utterances with {args.jobs} workers ...")
+    if args.no_trim:
+        print("  --no-trim: keeping FULL clips (no .align cutting)")
     work = partial(_worker, vid_out=str(vid_out), aud_out=str(aud_out),
-                   size=args.size, fps=args.fps, ffmpeg=args.ffmpeg)
+                   size=args.size, fps=args.fps, ffmpeg=args.ffmpeg, trim=not args.no_trim)
     with Pool(args.jobs) as pool:
         results = pool.map(work, jobs)
 
