@@ -1,12 +1,9 @@
 #!/usr/bin/env bash
 # End-to-end AI-SPEAK (Serbian) preprocessing driver. Prepares a fairseq data dir
-# for LoRA fine-tuning of AV-HuBERT on Serbian.
+# for LoRA fine-tuning of AV-HuBERT on Serbian: prepare.py (crop/resample video+audio,
+# write lists) -> count_frames -> build_manifest.py (tsv/wrd/dict/spm).
 #
-# AI-SPEAK video is ALREADY lip-only/anonymized, so unlike LRS3 there is NO dlib
-# landmark/mouth-crop step — aispeak_prepare.py just resamples the frontal clip to
-# 96x96 @25fps grayscale and the audio to 16 kHz.
-#
-# EDIT the CONFIG block (paths, speaker splits), then: bash preprocess_aispeak.sh
+# EDIT the CONFIG block (paths, speaker splits), then: bash preprocess.sh
 set -euo pipefail
 
 # ============================ CONFIG (edit me) =============================

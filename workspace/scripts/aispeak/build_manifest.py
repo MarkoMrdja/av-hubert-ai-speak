@@ -2,17 +2,14 @@
 """
 AI-SPEAK — build the fairseq data dir (tsv/wrd/dict/spm) from the prepared lists.
 
-Unlike LRS3 (where test came from parquet), AI-SPEAK train/valid/test all come from
-the same speaker-disjoint split.list produced by aispeak_prepare.py. Builds a NEW
-Serbian SentencePiece vocabulary from the training transcripts.
+train/valid/test come from the speaker-disjoint split.list produced by prepare.py.
+Builds a new Serbian SentencePiece vocabulary from the training transcripts.
 
-Prereqs: run aispeak_prepare.py then count_frames on the prepared file.list.
-
+Prereqs: run prepare.py, then count_frames on the prepared file.list.
 Outputs in --out: {train,valid,test}.{tsv,wrd}, dict.wrd.txt, spm_unigram{V}.model/.txt
 
 Usage:
-  python aispeak_build_manifest.py --prepared /path/prepared --out /path/ser_data \
-     --vocab-size 500
+  python build_manifest.py --prepared /path/prepared --out /path/ser_data --vocab-size 500
 """
 import argparse
 import os

@@ -1,11 +1,7 @@
 #!/usr/bin/env python3
 """
-Validate AI-SPEAK mouth-ROI crops produced by prepare.py — a two-tier funnel.
-
-We CANNOT perfectly auto-confirm "the mouth is centered" (that needs a working
-mouth detector, which dlib is NOT on this anonymized data — it fails on ~50% of
-speakers). So we combine objective automated checks (catch gross failures reliably)
-with a human contact sheet (catch subtle cases automation can't).
+Validate AI-SPEAK mouth-ROI crops produced by prepare.py — a two-tier funnel that
+combines automated checks (gross failures) with a human contact sheet (subtle cases).
 
 TIER 1 — automated checks over ALL clips. Flags a clip if:
   * black_frac  : too much of the ROI is near-black (crop missed the face)         [reliable]

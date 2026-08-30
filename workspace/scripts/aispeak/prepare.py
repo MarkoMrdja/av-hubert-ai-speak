@@ -1,39 +1,25 @@
 #!/usr/bin/env python3
 """
-AI-SPEAK (Serbian) — Step 1: build file.list / label.list / split.list from the
-per-speaker Excel metadata, and preprocess video+audio into AV-HuBERT format.
+AI-SPEAK (Serbian) preprocessing: read per-speaker Excel metadata, crop/resample the
+video and audio into AV-HuBERT format, and write file/label/split lists.
 
-AI-SPEAK layout (VERIFIED against the released Kaggle dataset, 2026-08):
-  <root>/spkNN-MM/spkXX/            # NOTE the spkNN-MM grouping dir above spkXX
-     <spkXX>.xlsx                   # 8 cols: name, video_a/r/l, audio, transcript, language, common
-     alignment/<name>.align         # word-level timings, TAB-sep "start<TAB>end<TAB>word", 100ns ticks
-     ser/  eng/                     # per-language material, each with:
-        video_a_anonymized/         # FRONTAL camera, lip-only anonymized mp4  (we use this)
-        video_r_anonymized/  video_l_anonymized/  audio/
+Dataset layout:
+  <root>/spkNN-MM/spkXX/
+     <spkXX>.xlsx            8 cols: name, video_a/r/l, audio, transcript, language, common
+     alignment/<name>.align word-level timings, TAB-sep "start<TAB>end<TAB>word", 100ns ticks
+     ser/ eng/              per-language material; video_a_anonymized/ is the frontal camera
 
-Verified format facts:
-  * frontal video = 1080x1920 portrait, 100 fps  -> we resample to 25 fps
-  * audio         = 22.05 kHz mono WAV (PCM_S16LE) -> we resample to 16 kHz
-  * ser/eng clips INTERLEAVE by index -> filter by the Excel `language` column, not index.
+Format facts: frontal video 1080x1920 @100fps -> 25fps; audio 22.05kHz mono -> 16kHz;
+ser/eng clips interleave by index, so filter by the Excel `language` column.
 
-Two things that differ from a naive pipeline (see docs/AISPEAK_ROI_CROP_DECISION.md):
-  1. ROI CROP (not naive resize): the frame is mostly black with the anonymized face
-     as a bright "island" whose position varies per speaker. We find the non-black
-     bounding box per frame, take a mouth-centered square (cy = y0 + 0.66*h,
-     half = 0.34*w), and resize to 96x96 gray. dlib was rejected (fails on ~50% of
-     speakers due to the pixelated upper face).
-  2. TRIM via .align: clips are untrimmed (~1-4s of silence + occasional laughter).
-     We cut video+audio to [first_nonsil_start - pad, last_nonsil_end + pad], dropping
-     leading/trailing `sil`, so AI-SPEAK clips match LRS3's utterance-tight distribution.
+For the chosen language (default 'ser') this script:
+  1. reads each spkXX Excel, keeps rows with a frontal video + audio,
+  2. crops the mouth ROI (content bounding box) and resamples video to 96x96 @25fps gray,
+  3. trims + resamples audio to 16 kHz mono using the .align word timings,
+  4. writes file.list / label.list / split.list.
 
-This script, for the chosen language (default 'ser'):
-  1. reads each spkXX Excel, keeps rows for that language with a frontal video + audio,
-  2. content-bbox crops + resamples the frontal video to 96x96 @25fps grayscale mp4,
-  3. trims + resamples audio to 16 kHz mono wav,
-  4. writes file.list / label.list / split.list (+ nframes.* via count_frames later).
-
-`<id>` = "spkXX/<name>" so ids are unique across speakers.
-Speaker-disjoint split: --valid-speakers -> valid, --test-speakers -> test, rest -> train.
+`<id>` = "spkXX/<name>" (unique across speakers). Speaker-disjoint split:
+--valid-speakers -> valid, --test-speakers -> test, rest -> train.
 
 Usage:
   python prepare.py --root /path/to/ai-speak --out /path/to/ai-speak/prepared \

@@ -1,39 +1,22 @@
 #!/usr/bin/env python3
 """
-Extract the pretrained ENCODER from a fine-tuned AV-HuBERT seq2seq checkpoint
-(e.g. base_vox_433h.pt) into a checkpoint that loads via `model.w2v_path` exactly
-like a pretrained checkpoint (e.g. base_vox_iter5.pt).
+Extract the encoder from a fine-tuned AV-HuBERT seq2seq checkpoint (e.g. base_vox_433h.pt)
+into a checkpoint that loads via `model.w2v_path` exactly like a pretrained one
+(base_vox_iter5.pt). Used to start Serbian fine-tuning from an English-VSR-tuned encoder
+while dropping its English decoder.
 
-WHY: our AI-SPEAK experiment "seed B" wants to start from a checkpoint whose encoder
-has ALREADY been fine-tuned for English VSR (lip-reading skill, which transfers
-cross-lingually), but WITHOUT its English decoder (wrong language + wrong vocab size,
-1000 vs our Serbian 500). So we keep B's encoder, drop its decoder, and let the
-Serbian decoder train fresh. This isolates the real question: does a VSR-tuned
-encoder beat a merely-pretrained one (seed A) for Serbian?
+A fine-tuned AVHubertSeq2Seq checkpoint stores encoder keys as `encoder.w2v_model.<...>`
+and decoder keys as `decoder.<...>`; a pretrained checkpoint stores the encoder keys bare
+(`<...>`) plus a `cfg` the w2v_path loader uses to rebuild the AVHubertModel. Since the
+fine-tuned checkpoint's cfg is `av_hubert_seq2seq` and lacks the metadata the pretrained
+load path expects, we use the pretrained checkpoint as a TEMPLATE (cfg + metadata) and
+overwrite only its encoder weights with the fine-tuned encoder (same Base architecture,
+matching keys).
 
-HOW: a fine-tuned AVHubertSeq2Seq checkpoint stores keys like
-   encoder.w2v_model.<...>   (the AVHubertModel encoder — what we want)
-   decoder.<...>             (the English seq2seq decoder — we drop this)
-A pretrained checkpoint stores the encoder keys WITHOUT the `encoder.w2v_model.`
-prefix (just `<...>`), plus a `cfg` describing the AVHubertModel. We remap the keys
-and reuse the fine-tuned checkpoint's cfg.model (same encoder architecture).
-
-The w2v_path loader (hubert_asr.py) reads state["cfg"].model to BUILD an AVHubertModel
-and expects fairseq training-state metadata (best_loss, optimizer_history, ...). A
-fine-tuned checkpoint's cfg.model is `av_hubert_seq2seq` (wrong — would rebuild the whole
-seq2seq) and it lacks the exact metadata layout the pretrained-load path upgrades.
-
-So we use the PRETRAINED checkpoint (seed A) as the TEMPLATE — its cfg + metadata are
-proven to load via w2v_path — and only overwrite its encoder WEIGHTS with seed B's
-(both are the same Base AVHubertModel architecture, so keys match). Result: a checkpoint
-that loads exactly like seed A but carries seed B's VSR-tuned encoder.
-
-USAGE (run where fairseq is importable — i.e. in the CUDA training env):
+Usage (run where fairseq is importable, i.e. in the CUDA training env):
    python extract_encoder.py --in base_vox_433h.pt --template base_vox_iter5.pt \
        --out base_vox_433h_encoder.pt
-
-Then use --out as model.w2v_path, same as seed A. VALIDATE with a short run
-(it should print the same "[LoRA] adapted N layers" line and loss should drop).
+Then pass --out as model.w2v_path.
 """
 import argparse
 import torch
