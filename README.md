@@ -36,14 +36,13 @@ workspace/
     aispeak/        Serbian prep + LoRA run
     infra/          env setup + remote sync
   experiments/      run logs + decode results (checkpoints excluded)
-docs/               architecture↔code map, results, report skeleton
-deliverables/       Uputstvo (task 4) + Izveštaj (task 6), Serbian .docx + generators
+deliverables/       AV-HuBERT presentation (PDF) + Uputstvo + Izveštaj (Serbian .docx)
 ```
 
 ## Reproduce
-See `docs/ARCHITECTURE_TO_CODE.md` (concept→code map) and
-`deliverables/Uputstvo_AV-HuBERT.docx` for setup, preprocessing, training, and
-evaluation. The pipeline itself is the `workspace/scripts/{common,lrs3,aispeak}`
+See `deliverables/Uputstvo_AV-HuBERT.docx` for setup, preprocessing, training, and
+evaluation — it also maps the architecture to the concrete code (classes, functions,
+line numbers). The pipeline itself is the `workspace/scripts/{common,lrs3,aispeak}`
 drivers, each with a commented CONFIG block.
 
 ## Results (LRS3 subset — "does the code work" scale, not paper-scale)
