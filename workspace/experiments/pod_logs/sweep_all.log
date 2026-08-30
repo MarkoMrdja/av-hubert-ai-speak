@@ -1,0 +1,13 @@
+=== [rank 4] training (max_update=3000, patience=8) ===
+=== [rank 4] decoding VALIDATION ===
+RANK 4 VALID WER: 77.81333333333333 (stopped at num_updates": "1848)
+=== [rank 8] training (max_update=3000, patience=8) ===
+=== [rank 8] decoding VALIDATION ===
+RANK 8 VALID WER: 76.42666666666666 (stopped at num_updates": "1872)
+=== [rank 16] training (max_update=3000, patience=8) ===
+=== [rank 16] decoding VALIDATION ===
+RANK 16 VALID WER: 71.04 (stopped at num_updates": "2136)
+=== [rank 32] training (max_update=3000, patience=8) ===
+=== [rank 32] decoding VALIDATION ===
+RANK 32 VALID WER: 73.6 (stopped at num_updates": "1872)
+SWEEP_ALL_DONE

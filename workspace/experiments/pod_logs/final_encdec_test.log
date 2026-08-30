@@ -1,0 +1,2517 @@
+[2026-08-30 00:32:21,959][avhubert.hubert_pretraining][INFO] - current directory is /workspace/av-hubert-ai-speak/av_hubert/avhubert/outputs/2026-08-30/00-32-21
+[2026-08-30 00:32:21,960][avhubert.hubert_pretraining][INFO] - AVHubertPretrainingTask Config {'_name': 'av_hubert_pretraining', 'data': '/workspace/av-hubert-ai-speak/data/aispeak_ser_data', 'labels': ['wrd'], 'label_dir': '/workspace/av-hubert-ai-speak/data/aispeak_ser_data', 'label_rate': -1, 'sample_rate': 16000, 'normalize': True, 'enable_padding': False, 'max_sample_size': 500, 'min_sample_size': None, 'max_trim_sample_size': '${task.max_sample_size}', 'single_target': True, 'random_crop': False, 'pad_audio': True, 'pdb': False, 'stack_order_audio': 4, 'skip_verify': False, 'image_aug': True, 'image_crop_size': 88, 'image_mean': 0.421, 'image_std': 0.165, 'modalities': ['video'], 'is_s2s': True, 'tokenizer_bpe_name': 'sentencepiece', 'tokenizer_bpe_model': '/workspace/av-hubert-ai-speak/data/aispeak_ser_data/spm_unigram500.model', 'noise_wav': None, 'noise_prob': 0.0, 'noise_snr': '0', 'noise_num': 1, 'fine_tuning': True}
+[2026-08-30 00:32:25,048][avhubert.hubert_pretraining][INFO] - current directory is /workspace/av-hubert-ai-speak/av_hubert/avhubert/outputs/2026-08-30/00-32-21
+[2026-08-30 00:32:25,049][avhubert.hubert_pretraining][INFO] - AVHubertPretrainingTask Config {'_name': 'av_hubert_pretraining', 'data': '/workspace/av-hubert-ai-speak/data/aispeak_ser_data', 'labels': ['km'], 'label_dir': '/checkpoint/bshi/data/lrs3//video/hubert/stitch-iters/envox-iter4-l12c2000/', 'label_rate': 25, 'sample_rate': 25, 'normalize': True, 'enable_padding': False, 'max_sample_size': 2000, 'min_sample_size': 5, 'max_trim_sample_size': 400, 'single_target': False, 'random_crop': True, 'pad_audio': False, 'pdb': False, 'stack_order_audio': 4, 'skip_verify': False, 'image_aug': True, 'image_crop_size': 88, 'image_mean': 0.421, 'image_std': 0.165, 'modalities': ['audio', 'video'], 'is_s2s': False, 'tokenizer_bpe_name': None, 'tokenizer_bpe_model': None, 'noise_wav': None, 'noise_prob': 0.0, 'noise_snr': '0', 'noise_num': 1, 'fine_tuning': False}
+[2026-08-30 00:32:25,057][avhubert.hubert][INFO] - HubertModel Config: {'_name': 'av_hubert', 'label_rate': 25, 'input_modality': '${task.input_modality}', 'extractor_mode': default, 'encoder_layers': 12, 'encoder_embed_dim': 768, 'encoder_ffn_embed_dim': 3072, 'encoder_attention_heads': 12, 'activation_fn': gelu, 'dropout': 0.0, 'attention_dropout': 0.0, 'activation_dropout': 0.1, 'encoder_layerdrop': 0.1, 'dropout_input': 0.0, 'dropout_features': 0.1, 'final_dim': 256, 'untie_final_proj': True, 'layer_norm_first': True, 'conv_feature_layers': '[(512,10,5)] + [(512,3,2)] * 4 + [(512,2,2)] * 2', 'conv_bias': False, 'logit_temp': 0.1, 'target_glu': False, 'feature_grad_mult': 1.0, 'mask_length_audio': 10, 'mask_prob_audio': 0.8, 'mask_length_image': 5, 'mask_prob_image': 0.3, 'mask_selection': static, 'mask_other': 0.0, 'no_mask_overlap': False, 'mask_min_space': 1, 'mask_channel_length': 10, 'mask_channel_prob': 0.0, 'mask_channel_selection': static, 'mask_channel_other': 0.0, 'no_mask_channel_overlap': False, 'mask_channel_min_space': 1, 'conv_pos': 128, 'conv_pos_groups': 16, 'latent_temp': [2.0, 0.5, 0.999995], 'skip_masked': False, 'skip_nomask': False, 'resnet_relu_type': 'prelu', 'resnet_weights': None, 'sim_type': 'cosine', 'sub_encoder_layers': 0, 'audio_feat_dim': 104, 'modality_dropout': 0.5, 'audio_dropout': 0.5, 'modality_fuse': 'concat', 'selection_type': 'same_seq', 'masking_type': 'input', 'decoder_embed_dim': 768, 'decoder_ffn_embed_dim': 3072, 'decoder_layers': 6, 'decoder_layerdrop': 0.0, 'decoder_attention_heads': 4, 'decoder_learned_pos': False, 'decoder_normalize_before': False, 'no_token_positional_embeddings': False, 'decoder_dropout': 0.1, 'decoder_attention_dropout': 0.1, 'decoder_activation_dropout': 0.0, 'max_target_positions': 2048, 'share_decoder_input_output_embed': False, 'no_scale_embedding': True}
+[2026-08-30 00:32:27,955][avhubert.hubert_asr][INFO] - [LoRA] scope=all targets=('q_proj', 'v_proj') r=16 alpha=16: adapted 48 layers, trainable 1,179,648/161,409,256 (0.73%)
+[2026-08-30 00:32:29,375][avhubert.hubert_pretraining][INFO] - current directory is /workspace/av-hubert-ai-speak/av_hubert/avhubert/outputs/2026-08-30/00-32-21
+[2026-08-30 00:32:29,376][avhubert.hubert_pretraining][INFO] - AVHubertPretrainingTask Config {'_name': 'av_hubert_pretraining', 'data': '/workspace/av-hubert-ai-speak/data/aispeak_ser_data', 'labels': ['wrd'], 'label_dir': '/workspace/av-hubert-ai-speak/data/aispeak_ser_data', 'label_rate': -1, 'sample_rate': 16000, 'normalize': True, 'enable_padding': False, 'max_sample_size': 500, 'min_sample_size': None, 'max_trim_sample_size': '${task.max_sample_size}', 'single_target': True, 'random_crop': False, 'pad_audio': True, 'pdb': False, 'stack_order_audio': 4, 'skip_verify': False, 'image_aug': True, 'image_crop_size': 88, 'image_mean': 0.421, 'image_std': 0.165, 'modalities': ['video'], 'is_s2s': True, 'tokenizer_bpe_name': 'sentencepiece', 'tokenizer_bpe_model': '/workspace/av-hubert-ai-speak/data/aispeak_ser_data/spm_unigram500.model', 'noise_wav': None, 'noise_prob': 0.0, 'noise_snr': '0', 'noise_num': 1, 'fine_tuning': True}
+{'_name': None, 'task': None, 'generation': {'_name': None, 'beam': 50, 'nbest': 1, 'max_len_a': 1.0, 'max_len_b': 0, 'min_len': 1, 'match_source_len': False, 'unnormalized': False, 'no_early_stop': False, 'no_beamable_mm': False, 'lenpen': 1.0, 'unkpen': 0.0, 'replace_unk': None, 'sacrebleu': False, 'score_reference': False, 'prefix_size': 0, 'no_repeat_ngram_size': 0, 'sampling': False, 'sampling_topk': -1, 'sampling_topp': -1.0, 'constraints': None, 'temperature': 1.0, 'diverse_beam_groups': -1, 'diverse_beam_strength': 0.5, 'diversity_rate': -1.0, 'print_alignment': None, 'print_step': False, 'lm_path': None, 'lm_weight': 0.0, 'iter_decode_eos_penalty': 0.0, 'iter_decode_max_iter': 10, 'iter_decode_force_max_iter': False, 'iter_decode_with_beam': 1, 'iter_decode_with_external_reranker': False, 'retain_iter_history': False, 'retain_dropout': False, 'retain_dropout_modules': None, 'decoding_format': None, 'no_seed_provided': False}, 'common': {'_name': None, 'no_progress_bar': False, 'log_interval': 100, 'log_format': None, 'log_file': None, 'tensorboard_logdir': None, 'wandb_project': None, 'azureml_logging': False, 'seed': 1, 'cpu': False, 'tpu': False, 'bf16': False, 'memory_efficient_bf16': False, 'fp16': False, 'memory_efficient_fp16': False, 'fp16_no_flatten_grads': False, 'fp16_init_scale': 128, 'fp16_scale_window': None, 'fp16_scale_tolerance': 0.0, 'on_cpu_convert_precision': False, 'min_loss_scale': 0.0001, 'threshold_loss_scale': None, 'amp': False, 'amp_batch_retries': 2, 'amp_init_scale': 128, 'amp_scale_window': None, 'user_dir': '/workspace/av-hubert-ai-speak/av_hubert/avhubert', 'empty_cache_freq': 0, 'all_gather_list_size': 16384, 'model_parallel_size': 1, 'quantization_config_path': None, 'profile': False, 'reset_logging': False, 'suppress_crashes': False, 'use_plasma_view': False, 'plasma_path': '/tmp/plasma'}, 'common_eval': {'_name': None, 'path': '/workspace/av-hubert-ai-speak/workspace/experiments/final_encdec/checkpoints/checkpoint_best.pt', 'post_process': None, 'quiet': False, 'model_overrides': '{}', 'results_path': '/workspace/av-hubert-ai-speak/workspace/experiments/final_encdec/decode_test'}, 'checkpoint': {'_name': None, 'save_dir': 'checkpoints', 'restore_file': 'checkpoint_last.pt', 'finetune_from_model': None, 'reset_dataloader': False, 'reset_lr_scheduler': False, 'reset_meters': False, 'reset_optimizer': False, 'optimizer_overrides': '{}', 'save_interval': 1, 'save_interval_updates': 0, 'keep_interval_updates': -1, 'keep_interval_updates_pattern': -1, 'keep_last_epochs': -1, 'keep_best_checkpoints': -1, 'no_save': False, 'no_epoch_checkpoints': False, 'no_last_checkpoints': False, 'no_save_optimizer_state': False, 'best_checkpoint_metric': 'loss', 'maximize_best_checkpoint_metric': False, 'patience': -1, 'checkpoint_suffix': '', 'checkpoint_shard_count': 1, 'load_checkpoint_on_all_dp_ranks': False, 'write_checkpoints_asynchronously': False, 'model_parallel_size': 1}, 'distributed_training': {'_name': None, 'distributed_world_size': 1, 'distributed_num_procs': 1, 'distributed_rank': 0, 'distributed_backend': 'nccl', 'distributed_init_method': None, 'distributed_port': -1, 'device_id': 0, 'distributed_no_spawn': False, 'ddp_backend': 'pytorch_ddp', 'ddp_comm_hook': 'none', 'bucket_cap_mb': 25, 'fix_batches_to_gpus': False, 'find_unused_parameters': False, 'fast_stat_sync': False, 'heartbeat_timeout': -1, 'broadcast_buffers': False, 'slowmo_momentum': None, 'slowmo_algorithm': 'LocalSGD', 'localsgd_frequency': 3, 'nprocs_per_node': 1, 'pipeline_model_parallel': False, 'pipeline_balance': None, 'pipeline_devices': None, 'pipeline_chunks': 0, 'pipeline_encoder_balance': None, 'pipeline_encoder_devices': None, 'pipeline_decoder_balance': None, 'pipeline_decoder_devices': None, 'pipeline_checkpoint': 'never', 'zero_sharding': 'none', 'fp16': False, 'memory_efficient_fp16': False, 'tpu': False, 'no_reshard_after_forward': False, 'fp32_reduce_scatter': False, 'cpu_offload': False, 'use_sharded_state': False}, 'dataset': {'_name': None, 'num_workers': 0, 'skip_invalid_size_inputs_valid_test': False, 'max_tokens': 1000, 'batch_size': None, 'required_batch_size_multiple': 8, 'required_seq_len_multiple': 1, 'dataset_impl': None, 'data_buffer_size': 10, 'train_subset': 'train', 'valid_subset': 'valid', 'combine_valid_subsets': None, 'ignore_unused_valid_subsets': False, 'validate_interval': 1, 'validate_interval_updates': 0, 'validate_after_updates': 0, 'fixed_validation_seed': None, 'disable_validation': False, 'max_tokens_valid': 1000, 'batch_size_valid': None, 'max_valid_steps': None, 'curriculum': 0, 'gen_subset': 'test', 'num_shards': 1, 'shard_id': 0}, 'override': {'_name': None, 'noise_wav': None, 'noise_prob': 0.0, 'noise_snr': 0.0, 'modalities': ['video'], 'data': '/workspace/av-hubert-ai-speak/data/aispeak_ser_data', 'label_dir': '/workspace/av-hubert-ai-speak/data/aispeak_ser_data'}, 'is_ax': False}
+[2026-08-30 00:32:29,377][hybrid.speech_recognize][INFO] - {'_name': None, 'task': None, 'generation': {'_name': None, 'beam': 50, 'nbest': 1, 'max_len_a': 1.0, 'max_len_b': 0, 'min_len': 1, 'match_source_len': False, 'unnormalized': False, 'no_early_stop': False, 'no_beamable_mm': False, 'lenpen': 1.0, 'unkpen': 0.0, 'replace_unk': None, 'sacrebleu': False, 'score_reference': False, 'prefix_size': 0, 'no_repeat_ngram_size': 0, 'sampling': False, 'sampling_topk': -1, 'sampling_topp': -1.0, 'constraints': None, 'temperature': 1.0, 'diverse_beam_groups': -1, 'diverse_beam_strength': 0.5, 'diversity_rate': -1.0, 'print_alignment': None, 'print_step': False, 'lm_path': None, 'lm_weight': 0.0, 'iter_decode_eos_penalty': 0.0, 'iter_decode_max_iter': 10, 'iter_decode_force_max_iter': False, 'iter_decode_with_beam': 1, 'iter_decode_with_external_reranker': False, 'retain_iter_history': False, 'retain_dropout': False, 'retain_dropout_modules': None, 'decoding_format': None, 'no_seed_provided': False}, 'common': {'_name': None, 'no_progress_bar': False, 'log_interval': 100, 'log_format': None, 'log_file': None, 'tensorboard_logdir': None, 'wandb_project': None, 'azureml_logging': False, 'seed': 1, 'cpu': False, 'tpu': False, 'bf16': False, 'memory_efficient_bf16': False, 'fp16': False, 'memory_efficient_fp16': False, 'fp16_no_flatten_grads': False, 'fp16_init_scale': 128, 'fp16_scale_window': None, 'fp16_scale_tolerance': 0.0, 'on_cpu_convert_precision': False, 'min_loss_scale': 0.0001, 'threshold_loss_scale': None, 'amp': False, 'amp_batch_retries': 2, 'amp_init_scale': 128, 'amp_scale_window': None, 'user_dir': '/workspace/av-hubert-ai-speak/av_hubert/avhubert', 'empty_cache_freq': 0, 'all_gather_list_size': 16384, 'model_parallel_size': 1, 'quantization_config_path': None, 'profile': False, 'reset_logging': False, 'suppress_crashes': False, 'use_plasma_view': False, 'plasma_path': '/tmp/plasma'}, 'common_eval': {'_name': None, 'path': '/workspace/av-hubert-ai-speak/workspace/experiments/final_encdec/checkpoints/checkpoint_best.pt', 'post_process': None, 'quiet': False, 'model_overrides': '{}', 'results_path': '/workspace/av-hubert-ai-speak/workspace/experiments/final_encdec/decode_test'}, 'checkpoint': {'_name': None, 'save_dir': 'checkpoints', 'restore_file': 'checkpoint_last.pt', 'finetune_from_model': None, 'reset_dataloader': False, 'reset_lr_scheduler': False, 'reset_meters': False, 'reset_optimizer': False, 'optimizer_overrides': '{}', 'save_interval': 1, 'save_interval_updates': 0, 'keep_interval_updates': -1, 'keep_interval_updates_pattern': -1, 'keep_last_epochs': -1, 'keep_best_checkpoints': -1, 'no_save': False, 'no_epoch_checkpoints': False, 'no_last_checkpoints': False, 'no_save_optimizer_state': False, 'best_checkpoint_metric': 'loss', 'maximize_best_checkpoint_metric': False, 'patience': -1, 'checkpoint_suffix': '', 'checkpoint_shard_count': 1, 'load_checkpoint_on_all_dp_ranks': False, 'write_checkpoints_asynchronously': False, 'model_parallel_size': 1}, 'distributed_training': {'_name': None, 'distributed_world_size': 1, 'distributed_num_procs': 1, 'distributed_rank': 0, 'distributed_backend': 'nccl', 'distributed_init_method': None, 'distributed_port': -1, 'device_id': 0, 'distributed_no_spawn': False, 'ddp_backend': 'pytorch_ddp', 'ddp_comm_hook': 'none', 'bucket_cap_mb': 25, 'fix_batches_to_gpus': False, 'find_unused_parameters': False, 'fast_stat_sync': False, 'heartbeat_timeout': -1, 'broadcast_buffers': False, 'slowmo_momentum': None, 'slowmo_algorithm': 'LocalSGD', 'localsgd_frequency': 3, 'nprocs_per_node': 1, 'pipeline_model_parallel': False, 'pipeline_balance': None, 'pipeline_devices': None, 'pipeline_chunks': 0, 'pipeline_encoder_balance': None, 'pipeline_encoder_devices': None, 'pipeline_decoder_balance': None, 'pipeline_decoder_devices': None, 'pipeline_checkpoint': 'never', 'zero_sharding': 'none', 'fp16': False, 'memory_efficient_fp16': False, 'tpu': False, 'no_reshard_after_forward': False, 'fp32_reduce_scatter': False, 'cpu_offload': False, 'use_sharded_state': False}, 'dataset': {'_name': None, 'num_workers': 0, 'skip_invalid_size_inputs_valid_test': False, 'max_tokens': 1000, 'batch_size': None, 'required_batch_size_multiple': 8, 'required_seq_len_multiple': 1, 'dataset_impl': None, 'data_buffer_size': 10, 'train_subset': 'train', 'valid_subset': 'valid', 'combine_valid_subsets': None, 'ignore_unused_valid_subsets': False, 'validate_interval': 1, 'validate_interval_updates': 0, 'validate_after_updates': 0, 'fixed_validation_seed': None, 'disable_validation': False, 'max_tokens_valid': 1000, 'batch_size_valid': None, 'max_valid_steps': None, 'curriculum': 0, 'gen_subset': 'test', 'num_shards': 1, 'shard_id': 0}, 'override': {'_name': None, 'noise_wav': None, 'noise_prob': 0.0, 'noise_snr': 0.0, 'modalities': ['video'], 'data': '/workspace/av-hubert-ai-speak/data/aispeak_ser_data', 'label_dir': '/workspace/av-hubert-ai-speak/data/aispeak_ser_data'}, 'is_ax': False}
+[2026-08-30 00:32:29,380][avhubert.hubert_pretraining][INFO] - Using tokenizer
+[2026-08-30 00:32:29,390][avhubert.hubert_dataset][INFO] - max_keep=500, min_keep=None, loaded 311, skipped 0 short and 4 long and 0 unaligned, longest-loaded=340, shortest-loaded=35
+[2026-08-30 00:32:29,392][avhubert.hubert_dataset][INFO] - /workspace/av-hubert-ai-speak/data/aispeak_ser_data/test.wrd is sequence label. skipped
+[2026-08-30 00:32:29,393][avhubert.hubert_dataset][INFO] - image transform: Compose(
+    Normalize(mean=0.0, std=255.0)
+    <avhubert.utils.CenterCrop object at 0x7554d58e3190>
+    Normalize(mean=0.421, std=0.165)
+)
+[2026-08-30 00:32:29,393][avhubert.hubert_dataset][INFO] - pad_audio=True, random_crop=False, normalize=True, max_sample_size=500, seqs2seq data=True,
+[2026-08-30 00:32:29,394][avhubert.hubert_dataset][INFO] - Noise wav: None->0 wav, Prob: 0.0, SNR: 0.0, Number of mixture: 1
+
+REF:nula jedan dva tri četiri pet šest sedam osam devet na
+HYP:nula jedan dva tri četiri pet šest šest osam devet devet
+
+[2026-08-30 00:32:32,093][hybrid.speech_recognize][INFO] - 
+REF:nula jedan dva tri četiri pet šest sedam osam devet na
+HYP:nula jedan dva tri četiri pet šest šest osam devet devet
+
+
+REF:nula jedan dva tri četiri pet šest sedam osam devet na
+HYP:nula jedan dva tri četiri pet šest sedam osam devet na na
+
+[2026-08-30 00:32:32,096][hybrid.speech_recognize][INFO] - 
+REF:nula jedan dva tri četiri pet šest sedam osam devet na
+HYP:nula jedan dva tri četiri pet šest sedam osam devet na na
+
+
+REF:nula jedan dva tri četiri pet šest sedam osam devet na
+HYP:nula jedan dva tri četiri pet šest šest osam devet na na
+
+[2026-08-30 00:32:32,557][hybrid.speech_recognize][INFO] - 
+REF:nula jedan dva tri četiri pet šest sedam osam devet na
+HYP:nula jedan dva tri četiri pet šest šest osam devet na na
+
+
+REF:nula jedan dva tri četiri pet šest sedam osam devet na
+HYP:nula jedan dva tri četiri pet šest sedam osam devet na
+
+[2026-08-30 00:32:32,559][hybrid.speech_recognize][INFO] - 
+REF:nula jedan dva tri četiri pet šest sedam osam devet na
+HYP:nula jedan dva tri četiri pet šest sedam osam devet na
+
+
+REF:potvrdi odustani obriši pošalji dalje početak kraj pon
+HYP:potvrdi odustani obriši pošalji dalje početak po pon
+
+[2026-08-30 00:32:32,561][hybrid.speech_recognize][INFO] - 
+REF:potvrdi odustani obriši pošalji dalje početak kraj pon
+HYP:potvrdi odustani obriši pošalji dalje početak po pon
+
+
+REF:ponedeljak utorak sreda četvrtak petak subota nedelja n
+HYP:ponedeljak utorak sreda četvrtak petak subota nedelja k
+
+[2026-08-30 00:32:32,885][hybrid.speech_recognize][INFO] - 
+REF:ponedeljak utorak sreda četvrtak petak subota nedelja n
+HYP:ponedeljak utorak sreda četvrtak petak subota nedelja k
+
+
+REF:ponedeljak utorak sreda četvrtak petak subota nedelja k
+HYP:ponedeljak utorak sreda četvrtak petak subota nedelja k
+
+[2026-08-30 00:32:32,888][hybrid.speech_recognize][INFO] - 
+REF:ponedeljak utorak sreda četvrtak petak subota nedelja k
+HYP:ponedeljak utorak sreda četvrtak petak subota nedelja k
+
+
+REF:napred nazad levo desno gore dole
+HYP:napred nazad levo desno gore dole
+
+[2026-08-30 00:32:32,891][hybrid.speech_recognize][INFO] - 
+REF:napred nazad levo desno gore dole
+HYP:napred nazad levo desno gore dole
+
+
+REF:potvrdi odustani obriši pošalji dalje početak kraj pon
+HYP:potvrdi odustani obriši pošalji dalje početak kraj po po
+
+[2026-08-30 00:32:33,312][hybrid.speech_recognize][INFO] - 
+REF:potvrdi odustani obriši pošalji dalje početak kraj pon
+HYP:potvrdi odustani obriši pošalji dalje početak kraj po po
+
+
+REF:ponedeljak utorak sreda četvrtak petak subota nedelja k
+HYP:ponedeljak utorak sreda četvrtak petak subota nedelja k
+
+[2026-08-30 00:32:33,314][hybrid.speech_recognize][INFO] - 
+REF:ponedeljak utorak sreda četvrtak petak subota nedelja k
+HYP:ponedeljak utorak sreda četvrtak petak subota nedelja k
+
+
+REF:ponedeljak utorak sreda četvrtak petak subota nedelja k
+HYP:ponedeljak utorak sreda četvrtak petak subota nedelja k
+
+[2026-08-30 00:32:33,316][hybrid.speech_recognize][INFO] - 
+REF:ponedeljak utorak sreda četvrtak petak subota nedelja k
+HYP:ponedeljak utorak sreda četvrtak petak subota nedelja k
+
+
+REF:potvrdi odustani obriši pošalji dalje početak kraj pon
+HYP:potvrdi odustani obriši pošalji dalje početak po pon
+
+[2026-08-30 00:32:33,317][hybrid.speech_recognize][INFO] - 
+REF:potvrdi odustani obriši pošalji dalje početak kraj pon
+HYP:potvrdi odustani obriši pošalji dalje početak po pon
+
+
+REF:napred nazad levo desno gore dole
+HYP:napred nazad levo desno gore dole
+
+[2026-08-30 00:32:33,957][hybrid.speech_recognize][INFO] - 
+REF:napred nazad levo desno gore dole
+HYP:napred nazad levo desno gore dole
+
+
+REF:potvrdi odustani obriši pošalji dalje početak kraj pon
+HYP:potvrdi odustani obriši pošalji dalje početak kraj pon
+
+[2026-08-30 00:32:33,961][hybrid.speech_recognize][INFO] - 
+REF:potvrdi odustani obriši pošalji dalje početak kraj pon
+HYP:potvrdi odustani obriši pošalji dalje početak kraj pon
+
+
+REF:napred nazad levo desno gore dole
+HYP:napred nazad levo desno gore dole
+
+[2026-08-30 00:32:34,020][hybrid.speech_recognize][INFO] - 
+REF:napred nazad levo desno gore dole
+HYP:napred nazad levo desno gore dole
+
+
+REF:napred nazad levo desno gore dole
+HYP:napred nazad levo desno gore dole
+
+[2026-08-30 00:32:34,023][hybrid.speech_recognize][INFO] - 
+REF:napred nazad levo desno gore dole
+HYP:napred nazad levo desno gore dole
+
+
+REF:pošto idealizujete ne samo partnera već i druge ljude razočarenje je neminovno dov
+HYP:pošto idealizujete ne samo partnera već već druge razočarenje razočarenje je je jevvvvvvvvvv
+
+[2026-08-30 00:32:34,028][hybrid.speech_recognize][INFO] - 
+REF:pošto idealizujete ne samo partnera već i druge ljude razočarenje je neminovno dov
+HYP:pošto idealizujete ne samo partnera već već druge razočarenje razočarenje je je jevvvvvvvvvv
+
+
+REF:pošto idealizujete ne samo partnera već i druge ljude razočarenje je neminovno dov
+HYP:pošto idealizujete ne samo partnera već i druge ljude razočarenje neminovno neminovno do do do do do do do
+
+[2026-08-30 00:32:34,541][hybrid.speech_recognize][INFO] - 
+REF:pošto idealizujete ne samo partnera već i druge ljude razočarenje je neminovno dov
+HYP:pošto idealizujete ne samo partnera već i druge ljude razočarenje neminovno neminovno do do do do do do do
+
+
+REF:prijava je podneta protiv načelnika resora države bezbednosti i generalnog direktora po
+HYP:proviaa se se po po i i i i i i i i i i i innnnnn
+
+[2026-08-30 00:32:34,545][hybrid.speech_recognize][INFO] - 
+REF:prijava je podneta protiv načelnika resora države bezbednosti i generalnog direktora po
+HYP:proviaa se se po po i i i i i i i i i i i innnnnn
+
+
+REF:mogli su praviti zalihe robe koju će poneti e
+HYP:mogli su praviti zalihe robe početak poneti poneti e
+
+[2026-08-30 00:32:34,547][hybrid.speech_recognize][INFO] - 
+REF:mogli su praviti zalihe robe koju će poneti e
+HYP:mogli su praviti zalihe robe početak poneti poneti e
+
+
+REF:prijava je podneta protiv načelnika resora državne bezbednosti i generalnog direktora po
+HYP:prvik je je je je jeaaaaaaaaaaaaaaaaaaaaaa
+
+[2026-08-30 00:32:34,551][hybrid.speech_recognize][INFO] - 
+REF:prijava je podneta protiv načelnika resora državne bezbednosti i generalnog direktora po
+HYP:prvik je je je je jeaaaaaaaaaaaaaaaaaaaaaa
+
+
+REF:pošto idealizujete ne samo partnera već i druge ljude razočarenje je neminovno dov
+HYP:pošto idealizujete ne samo partnera već i druge ljude razočarenje je je do do
+
+[2026-08-30 00:32:34,553][hybrid.speech_recognize][INFO] - 
+REF:pošto idealizujete ne samo partnera već i druge ljude razočarenje je neminovno dov
+HYP:pošto idealizujete ne samo partnera već i druge ljude razočarenje je je do do
+
+
+REF:pošto idealizujete ne samo partnera već i druge ljude razočarenje je neminovno dov
+HYP:pošto idealizujete ne ne partnera već i druge ljude razočarenje razočarenje dov
+
+[2026-08-30 00:32:34,556][hybrid.speech_recognize][INFO] - 
+REF:pošto idealizujete ne samo partnera već i druge ljude razočarenje je neminovno dov
+HYP:pošto idealizujete ne ne partnera već i druge ljude razočarenje razočarenje dov
+
+
+REF:snimamo govornu bazu koja će poslužiti za obuku prepoznavača govora ist
+HYP:snimamo govornu bazu koja će poslužiti za obuku prepoznavača govora govorast
+
+[2026-08-30 00:32:34,559][hybrid.speech_recognize][INFO] - 
+REF:snimamo govornu bazu koja će poslužiti za obuku prepoznavača govora ist
+HYP:snimamo govornu bazu koja će poslužiti za obuku prepoznavača govora govorast
+
+
+REF:tužilaštvo je prosledilo krivične prijave drugom i četvrtom gradskom tužilaštvu a b v
+HYP:to je je je je je jevovovvv
+
+[2026-08-30 00:32:35,112][hybrid.speech_recognize][INFO] - 
+REF:tužilaštvo je prosledilo krivične prijave drugom i četvrtom gradskom tužilaštvu a b v
+HYP:to je je je je je jevovovvv
+
+
+REF:tužilaštvo je prosledilo krivične prijave drugom i četvrtom gradskom tužilaštvu
+HYP:ust po po po je jevv
+
+[2026-08-30 00:32:35,124][hybrid.speech_recognize][INFO] - 
+REF:tužilaštvo je prosledilo krivične prijave drugom i četvrtom gradskom tužilaštvu
+HYP:ust po po po je jevv
+
+
+REF:snimamo govornu bazu koja će poslužiti za obuku prepoznavača govora nis
+HYP:snimamo govornu bazu koja će poslužiti za obuku prepoznavača prepoznavača i
+
+[2026-08-30 00:32:35,128][hybrid.speech_recognize][INFO] - 
+REF:snimamo govornu bazu koja će poslužiti za obuku prepoznavača govora nis
+HYP:snimamo govornu bazu koja će poslužiti za obuku prepoznavača prepoznavača i
+
+
+REF:snimamo govornu bazu koja će poslužiti za obuku prepoznavača govora ist
+HYP:snimamo govornu bazu koja će poslužiti za obuku
+
+[2026-08-30 00:32:35,130][hybrid.speech_recognize][INFO] - 
+REF:snimamo govornu bazu koja će poslužiti za obuku prepoznavača govora ist
+HYP:snimamo govornu bazu koja će poslužiti za obuku
+
+
+REF:dnevna temperatura će biti između osam i deset stepeni a
+HYP:naee je jeeeee je je je jesssssssss
+
+[2026-08-30 00:32:35,259][hybrid.speech_recognize][INFO] - 
+REF:dnevna temperatura će biti između osam i deset stepeni a
+HYP:naee je jeeeee je je je jesssssssss
+
+
+REF:ostanite tamo gde se dobro osećate bavite se onim što volite vo
+HYP:ko se seddd za zaoooooooooooo
+
+[2026-08-30 00:32:35,263][hybrid.speech_recognize][INFO] - 
+REF:ostanite tamo gde se dobro osećate bavite se onim što volite vo
+HYP:ko se seddd za zaoooooooooooo
+
+
+REF:mi smo mlada ekipa koju u svakom slučaju treba i podržavati ov
+HYP:mimmmm i s s prepoznavača
+
+[2026-08-30 00:32:35,321][hybrid.speech_recognize][INFO] - 
+REF:mi smo mlada ekipa koju u svakom slučaju treba i podržavati ov
+HYP:mimmmm i s s prepoznavača
+
+
+REF:snimamo govornu bazu koja će poslužiti za obuku prepoznavača govora ist
+HYP:snimamo govornu bazu koja će poslužiti za obuku govora govora govorast
+
+[2026-08-30 00:32:35,324][hybrid.speech_recognize][INFO] - 
+REF:snimamo govornu bazu koja će poslužiti za obuku prepoznavača govora ist
+HYP:snimamo govornu bazu koja će poslužiti za obuku govora govora govorast
+
+
+REF:dugačak kapetanov sto bio je pretrpan izvrsnom hranom l
+HYP:u je je je je jerrroooorrroooommmmm
+
+[2026-08-30 00:32:35,798][hybrid.speech_recognize][INFO] - 
+REF:dugačak kapetanov sto bio je pretrpan izvrsnom hranom l
+HYP:u je je je je jerrroooorrroooommmmm
+
+
+REF:saobraćaj je i u normalnim okolnostima izuzetno gust n
+HYP:saobraćaj je i u normalnim okolnostima gust gust u
+
+[2026-08-30 00:32:35,801][hybrid.speech_recognize][INFO] - 
+REF:saobraćaj je i u normalnim okolnostima izuzetno gust n
+HYP:saobraćaj je i u normalnim okolnostima gust gust u
+
+
+REF:oko stanica metroa mogu se videti prosjaci i alkoholičari s
+HYP:u je je je je je jenaeeenananananananananananana
+
+[2026-08-30 00:32:35,811][hybrid.speech_recognize][INFO] - 
+REF:oko stanica metroa mogu se videti prosjaci i alkoholičari s
+HYP:u je je je je je jenaeeenananananananananananana
+
+
+REF:istraživanje je obavljeno na slučajnom stratifikovanom uzorku ni
+HYP:istraživanje je je na na stratifikovanom uzorku ni ni
+
+[2026-08-30 00:32:35,813][hybrid.speech_recognize][INFO] - 
+REF:istraživanje je obavljeno na slučajnom stratifikovanom uzorku ni
+HYP:istraživanje je je na na stratifikovanom uzorku ni ni
+
+
+REF:džem od šljiva će podstaći svačiju probavu ta he
+HYP:džem od šljiva će će svačiju probavu ta h
+
+[2026-08-30 00:32:35,816][hybrid.speech_recognize][INFO] - 
+REF:džem od šljiva će podstaći svačiju probavu ta he
+HYP:džem od šljiva će će svačiju probavu ta h
+
+
+REF:istraživanje je obavljeno na slučajnom stratifikovanom uzorku ni
+HYP:istraživanje je obavljeno na slučajnom stratifikovanom uzorku ni
+
+[2026-08-30 00:32:35,820][hybrid.speech_recognize][INFO] - 
+REF:istraživanje je obavljeno na slučajnom stratifikovanom uzorku ni
+HYP:istraživanje je obavljeno na slučajnom stratifikovanom uzorku ni
+
+
+REF:ta hemijska olovka je crvena ali ne piše dobro b
+HYP:ta hemijska olovka je crvena ali ne piše dobro
+
+[2026-08-30 00:32:35,822][hybrid.speech_recognize][INFO] - 
+REF:ta hemijska olovka je crvena ali ne piše dobro b
+HYP:ta hemijska olovka je crvena ali ne piše dobro
+
+
+REF:bilo bi dobro da to što pre uradiš ili da javiš ako ne možeš po na
+HYP:bilo je bilo je je u da da jeuuuuuuuuuuuiiiii
+
+[2026-08-30 00:32:35,827][hybrid.speech_recognize][INFO] - 
+REF:bilo bi dobro da to što pre uradiš ili da javiš ako ne možeš po na
+HYP:bilo je bilo je je u da da jeuuuuuuuuuuuiiiii
+
+
+REF:šljunak je kotrljajući se popunio prostor između nje
+HYP:žuća je je je je je po pouuuuuuuoooooooooo
+
+[2026-08-30 00:32:36,332][hybrid.speech_recognize][INFO] - 
+REF:šljunak je kotrljajući se popunio prostor između nje
+HYP:žuća je je je je je po pouuuuuuuoooooooooo
+
+
+REF:u tom pogledu išlo im je prilično slabo ve
+HYP:u tom pogledu išlo im u prilično prilično ve ve
+
+[2026-08-30 00:32:36,335][hybrid.speech_recognize][INFO] - 
+REF:u tom pogledu išlo im je prilično slabo ve
+HYP:u tom pogledu išlo im u prilično prilično ve ve
+
+
+REF:kod glodara je nađena povećana koncentracija olova ne
+HYP:kod glodara je nađena povećana koncentracija olova ne
+
+[2026-08-30 00:32:36,338][hybrid.speech_recognize][INFO] - 
+REF:kod glodara je nađena povećana koncentracija olova ne
+HYP:kod glodara je nađena povećana koncentracija olova ne
+
+
+REF:mi smo mlada ekipa koju u svakom slučaju treba i podržavati ov
+HYP:mislimm će će u ug prepoznavača
+
+[2026-08-30 00:32:36,341][hybrid.speech_recognize][INFO] - 
+REF:mi smo mlada ekipa koju u svakom slučaju treba i podržavati ov
+HYP:mislimm će će u ug prepoznavača
+
+
+REF:američki bokser je posle strašnog krošea završio na podu proš
+HYP:amm po po pomooooooooooooouuuuuuuuuuuuuu
+
+[2026-08-30 00:32:36,344][hybrid.speech_recognize][INFO] - 
+REF:američki bokser je posle strašnog krošea završio na podu proš
+HYP:amm po po pomooooooooooooouuuuuuuuuuuuuu
+
+
+REF:pokušao je da ustane ali su noge otkazale poslušnost ov
+HYP:po je je je je je po po po
+
+[2026-08-30 00:32:36,347][hybrid.speech_recognize][INFO] - 
+REF:pokušao je da ustane ali su noge otkazale poslušnost ov
+HYP:po je je je je je po po po
+
+
+REF:trener partizana nakon meča sa vojvodinom bio je zadovoljan m
+HYP:ne je je je je se seaaaooaaa
+
+[2026-08-30 00:32:36,350][hybrid.speech_recognize][INFO] - 
+REF:trener partizana nakon meča sa vojvodinom bio je zadovoljan m
+HYP:ne je je je je se seaaaooaaa
+
+
+REF:s njih bi ponekad palo nekoliko komada uljane pogače o
+HYP:s jeoolalala je jeooooooooooooooo
+
+[2026-08-30 00:32:36,353][hybrid.speech_recognize][INFO] - 
+REF:s njih bi ponekad palo nekoliko komada uljane pogače o
+HYP:s jeoolalala je jeooooooooooooooo
+
+
+REF:deseto izdanje se neće pojaviti još nekoliko meseci s
+HYP:tani da da da se da da da da da daaaaaoooooooo
+
+[2026-08-30 00:32:37,078][hybrid.speech_recognize][INFO] - 
+REF:deseto izdanje se neće pojaviti još nekoliko meseci s
+HYP:tani da da da se da da da da da daaaaaoooooooo
+
+
+REF:to prouzrokuje svađe konflikte stres strah i ko zna šta još kor
+HYP:topppe su za za zasssoooooooooooo
+
+[2026-08-30 00:32:37,083][hybrid.speech_recognize][INFO] - 
+REF:to prouzrokuje svađe konflikte stres strah i ko zna šta još kor
+HYP:topppe su za za zasssoooooooooooo
+
+
+REF:postoji samo jedan način da se čovek odupre zlu u
+HYP:postoji samo samo da se se čovek odupre zlu
+
+[2026-08-30 00:32:37,117][hybrid.speech_recognize][INFO] - 
+REF:postoji samo jedan način da se čovek odupre zlu u
+HYP:postoji samo samo da se se čovek odupre zlu
+
+
+REF:čovek može da nađe koliko god hoće prijatelja mara
+HYP:od ješš se to to to na na na na na
+
+[2026-08-30 00:32:37,123][hybrid.speech_recognize][INFO] - 
+REF:čovek može da nađe koliko god hoće prijatelja mara
+HYP:od ješš se to to to na na na na na
+
+
+REF:od člana partije se zahteva da nema privatnog života ot
+HYP:uaaaaaaakkkaaaaaaaaaa
+
+[2026-08-30 00:32:37,125][hybrid.speech_recognize][INFO] - 
+REF:od člana partije se zahteva da nema privatnog života ot
+HYP:uaaaaaaakkkaaaaaaaaaa
+
+
+REF:istraživanje je obavljeno na slučajnom stratifikovanom uzorku ni
+HYP:istraživanje je je slučajnom slučajnom slučajnom slučajnom ni
+
+[2026-08-30 00:32:37,126][hybrid.speech_recognize][INFO] - 
+REF:istraživanje je obavljeno na slučajnom stratifikovanom uzorku ni
+HYP:istraživanje je je slučajnom slučajnom slučajnom slučajnom ni
+
+
+REF:večeras je sve teklo bez greške za razliku od prekjuče gla
+HYP:večeras je sve teklo teklo greške razliku razliku od od g g
+
+[2026-08-30 00:32:37,129][hybrid.speech_recognize][INFO] - 
+REF:večeras je sve teklo bez greške za razliku od prekjuče gla
+HYP:večeras je sve teklo teklo greške razliku razliku od od g g
+
+
+REF:zgrabio je salvetu sa stola i nespretno zamahao njome
+HYP:soooo se se se selililililililililili
+
+[2026-08-30 00:32:37,134][hybrid.speech_recognize][INFO] - 
+REF:zgrabio je salvetu sa stola i nespretno zamahao njome
+HYP:soooo se se se selililililililililili
+
+
+REF:džem od šljiva će podstaći svačiju probavu ta he
+HYP:džem od šljiva će podstaći svačiju svačijueeeee
+
+[2026-08-30 00:32:37,633][hybrid.speech_recognize][INFO] - 
+REF:džem od šljiva će podstaći svačiju probavu ta he
+HYP:džem od šljiva će podstaći svačiju svačijueeeee
+
+
+REF:pokušao je da ustane ali su noge otkazale poslušnost ov
+HYP:pošto jeuuu u po po
+
+[2026-08-30 00:32:37,636][hybrid.speech_recognize][INFO] - 
+REF:pokušao je da ustane ali su noge otkazale poslušnost ov
+HYP:pošto jeuuu u po po
+
+
+REF:svetlosti su se pomakle kao i senke po zidovima
+HYP:sveeeeee se po po po se se se po po po poiii
+
+[2026-08-30 00:32:37,637][hybrid.speech_recognize][INFO] - 
+REF:svetlosti su se pomakle kao i senke po zidovima
+HYP:sveeeeee se po po po se se se po po po poiii
+
+
+REF:večeras je sve teklo bez greške za razliku od prekjuče gla
+HYP:večeras je sve teklo bez greške za za za prekjuče
+
+[2026-08-30 00:32:37,639][hybrid.speech_recognize][INFO] - 
+REF:večeras je sve teklo bez greške za razliku od prekjuče gla
+HYP:večeras je sve teklo bez greške za za za prekjuče
+
+
+REF:taj vic je bio smešan upravo zato što je bio sasvim istinit te
+HYP:naii odem pro su su po po po po po po po po po po po po po
+
+[2026-08-30 00:32:37,641][hybrid.speech_recognize][INFO] - 
+REF:taj vic je bio smešan upravo zato što je bio sasvim istinit te
+HYP:naii odem pro su su po po po po po po po po po po po po po
+
+
+REF:ovo je jedini način da postignete rezultat koji ste planirali p
+HYP:ooo je je je jetititititititititinininininininini
+
+[2026-08-30 00:32:37,642][hybrid.speech_recognize][INFO] - 
+REF:ovo je jedini način da postignete rezultat koji ste planirali p
+HYP:ooo je je je jetititititititititinininininininini
+
+
+REF:saobraćaj je i u normalnim okolnostima izuzetno gust š
+HYP:saobraćaj je i i normalnim okolnostima izuzetno gust s
+
+[2026-08-30 00:32:37,644][hybrid.speech_recognize][INFO] - 
+REF:saobraćaj je i u normalnim okolnostima izuzetno gust š
+HYP:saobraćaj je i i normalnim okolnostima izuzetno gust s
+
+
+REF:džem od šljiva će podstaći svačiju probavu ta he
+HYP:džem od šljiva podstaći podstaći svačiju probavu probavuee
+
+[2026-08-30 00:32:37,646][hybrid.speech_recognize][INFO] - 
+REF:džem od šljiva će podstaći svačiju probavu ta he
+HYP:džem od šljiva podstaći podstaći svačiju probavu probavuee
+
+
+REF:pljeskavice su na tom kiosku retko sveže š
+HYP:narti da da se seuuuuuuuuuuuuuuuu
+
+[2026-08-30 00:32:38,227][hybrid.speech_recognize][INFO] - 
+REF:pljeskavice su na tom kiosku retko sveže š
+HYP:narti da da se seuuuuuuuuuuuuuuuu
+
+
+REF:priznajem da ovo može da bude puka slučajnost bi
+HYP:nem po pouu po po po po po po po po pouuuuaaa
+
+[2026-08-30 00:32:38,229][hybrid.speech_recognize][INFO] - 
+REF:priznajem da ovo može da bude puka slučajnost bi
+HYP:nem po pouu po po po po po po po po pouuuuaaa
+
+
+REF:kako napraviti barem mali korak ka pozitivnim promenama
+HYP:oneemmmmmmmmmmmmmmmmmmmmmmmm
+
+[2026-08-30 00:32:38,234][hybrid.speech_recognize][INFO] - 
+REF:kako napraviti barem mali korak ka pozitivnim promenama
+HYP:oneemmmmmmmmmmmmmmmmmmmmmmmm
+
+
+REF:veoma je teško napraviti ikakvu istorijsku distancu p
+HYP:je je jeuuuuuuuuuuuuuuuuuuu
+
+[2026-08-30 00:32:38,237][hybrid.speech_recognize][INFO] - 
+REF:veoma je teško napraviti ikakvu istorijsku distancu p
+HYP:je je jeuuuuuuuuuuuuuuuuuuu
+
+
+REF:na vrhu stenovitog dela nalazio se odbor za doček ž
+HYP:na vrhu stenovitog dela nalazio se za za doček doček
+
+[2026-08-30 00:32:38,238][hybrid.speech_recognize][INFO] - 
+REF:na vrhu stenovitog dela nalazio se odbor za doček ž
+HYP:na vrhu stenovitog dela nalazio se za za doček doček
+
+
+REF:dugačak kapetanov sto bio je pretrpan izvrsnom hranom l
+HYP:u je je je je je je jelililililililililililimmmmm
+
+[2026-08-30 00:32:38,241][hybrid.speech_recognize][INFO] - 
+REF:dugačak kapetanov sto bio je pretrpan izvrsnom hranom l
+HYP:u je je je je je je jelililililililililililimmmmm
+
+
+REF:na vrhu stenovitog dela nalazio se odbor za doček ž
+HYP:na vrhu dela dela nalazio se se doček doček
+
+[2026-08-30 00:32:38,243][hybrid.speech_recognize][INFO] - 
+REF:na vrhu stenovitog dela nalazio se odbor za doček ž
+HYP:na vrhu dela dela nalazio se se doček doček
+
+
+REF:ipak smo u plusu iako smo mislili da ćemo biti na gubitku p
+HYP:da bi u u u u u uuuuuuuuuuuuuu
+
+[2026-08-30 00:32:38,245][hybrid.speech_recognize][INFO] - 
+REF:ipak smo u plusu iako smo mislili da ćemo biti na gubitku p
+HYP:da bi u u u u u uuuuuuuuuuuuuu
+
+
+REF:ipak smo u plusu iako smo mislili da ćemo biti na gubitku p
+HYP:na bi bis u usssuuuuuuuuuuuu
+
+[2026-08-30 00:32:38,766][hybrid.speech_recognize][INFO] - 
+REF:ipak smo u plusu iako smo mislili da ćemo biti na gubitku p
+HYP:na bi bis u usssuuuuuuuuuuuu
+
+
+REF:ovdašnje potrošačko tržište zahteva kvalitetnu robu tužil
+HYP:o je je je je je seiiiiimomomomomomomomomo
+
+[2026-08-30 00:32:38,769][hybrid.speech_recognize][INFO] - 
+REF:ovdašnje potrošačko tržište zahteva kvalitetnu robu tužil
+HYP:o je je je je je seiiiiimomomomomomomomomo
+
+
+REF:na vrhu stenovitog dela nalazio se odbor za doček ž
+HYP:na vrhu dela dela se se se za za
+
+[2026-08-30 00:32:38,771][hybrid.speech_recognize][INFO] - 
+REF:na vrhu stenovitog dela nalazio se odbor za doček ž
+HYP:na vrhu dela dela se se se za za
+
+
+REF:mladić se nasmejao i bacio travčicu u vazduh po
+HYP:mladić se nasmejao i i travčicu u vazduh po po
+
+[2026-08-30 00:32:38,772][hybrid.speech_recognize][INFO] - 
+REF:mladić se nasmejao i bacio travčicu u vazduh po
+HYP:mladić se nasmejao i i travčicu u vazduh po po
+
+
+REF:vodostaj dunava kod novog sada i dalje je u opadanju
+HYP:vouuuuuuuuuuuuuuuuuuuu
+
+[2026-08-30 00:32:38,774][hybrid.speech_recognize][INFO] - 
+REF:vodostaj dunava kod novog sada i dalje je u opadanju
+HYP:vouuuuuuuuuuuuuuuuuuuu
+
+
+REF:vođe dve sučeljene strane srele su se poslednji put tr
+HYP:snanaesssssssssssssssssssss
+
+[2026-08-30 00:32:38,776][hybrid.speech_recognize][INFO] - 
+REF:vođe dve sučeljene strane srele su se poslednji put tr
+HYP:snanaesssssssssssssssssssss
+
+
+REF:zgrabio je salvetu sa stola i nespretno zamahao njome
+HYP:za se i se seoooooooogggggg
+
+[2026-08-30 00:32:38,778][hybrid.speech_recognize][INFO] - 
+REF:zgrabio je salvetu sa stola i nespretno zamahao njome
+HYP:za se i se seoooooooogggggg
+
+
+REF:večeras je sve teklo bez greške za razliku od prekjuče gla
+HYP:večeras je sve teklo bez greške za razliku od prekjuče g
+
+[2026-08-30 00:32:38,779][hybrid.speech_recognize][INFO] - 
+REF:večeras je sve teklo bez greške za razliku od prekjuče gla
+HYP:večeras je sve teklo bez greške za razliku od prekjuče g
+
+
+REF:na trenutak oči su mi zadrhtale od sreće tr
+HYP:na trenutak su su mu zadrhtale od sreće
+
+[2026-08-30 00:32:39,244][hybrid.speech_recognize][INFO] - 
+REF:na trenutak oči su mi zadrhtale od sreće tr
+HYP:na trenutak su su mu zadrhtale od sreće
+
+
+REF:a onda je jedan student uzeo čašu i natočio vode u nju zai
+HYP:adadauuuuuuuuuuuuooouuuuu
+
+[2026-08-30 00:32:39,248][hybrid.speech_recognize][INFO] - 
+REF:a onda je jedan student uzeo čašu i natočio vode u nju zai
+HYP:adadauuuuuuuuuuuuooouuuuu
+
+
+REF:svetlosti su se pomakle kao i senke po zidovima
+HYP:glaslouu se se po po po po po po po po po pomamamamamama
+
+[2026-08-30 00:32:39,249][hybrid.speech_recognize][INFO] - 
+REF:svetlosti su se pomakle kao i senke po zidovima
+HYP:glaslouu se se po po po po po po po po po pomamamamamama
+
+
+REF:u ovom svetu ne ume da organizuje sam svoj zivot
+HYP:uu su su suuuuuvvvvvvvvvvvvv s s s
+
+[2026-08-30 00:32:39,251][hybrid.speech_recognize][INFO] - 
+REF:u ovom svetu ne ume da organizuje sam svoj zivot
+HYP:uu su su suuuuuvvvvvvvvvvvvv s s s
+
+
+REF:saobraćaj je i u normalnim okolnostima izuzetno gust s
+HYP:saobraćaj je i i normalnim okolnostima izuzetno gust
+
+[2026-08-30 00:32:39,252][hybrid.speech_recognize][INFO] - 
+REF:saobraćaj je i u normalnim okolnostima izuzetno gust s
+HYP:saobraćaj je i i normalnim okolnostima izuzetno gust
+
+
+REF:poslovna nerviranja i stresovi loše utiču na zdravlje vl
+HYP:po je je je je je je je jeoooooooooo
+
+[2026-08-30 00:32:39,254][hybrid.speech_recognize][INFO] - 
+REF:poslovna nerviranja i stresovi loše utiču na zdravlje vl
+HYP:po je je je je je je je jeoooooooooo
+
+
+REF:čovek je parkirao kola blizu mesta za piknike o
+HYP:toeelalaee na na na na nannnn
+
+[2026-08-30 00:32:39,256][hybrid.speech_recognize][INFO] - 
+REF:čovek je parkirao kola blizu mesta za piknike o
+HYP:toeelalaee na na na na nannnn
+
+
+REF:večeras je sve teklo bez greške za razliku od prekjuče gla
+HYP:večeras je sve bez bez greške razliku razliku prekjuče prekjuče
+
+[2026-08-30 00:32:39,257][hybrid.speech_recognize][INFO] - 
+REF:večeras je sve teklo bez greške za razliku od prekjuče gla
+HYP:večeras je sve bez bez greške razliku razliku prekjuče prekjuče
+
+
+REF:mladić se nasmejao i bacio travčicu u vazduh po
+HYP:mladić se nasmejao i bacio travčicu vazduh vazduh po
+
+[2026-08-30 00:32:39,620][hybrid.speech_recognize][INFO] - 
+REF:mladić se nasmejao i bacio travčicu u vazduh po
+HYP:mladić se nasmejao i bacio travčicu vazduh vazduh po
+
+
+REF:ako vam to smeta nemojte dolaziti u finsku zimi
+HYP:ao na na na na na na na nauuuuuuuuuuu
+
+[2026-08-30 00:32:39,622][hybrid.speech_recognize][INFO] - 
+REF:ako vam to smeta nemojte dolaziti u finsku zimi
+HYP:ao na na na na na na na nauuuuuuuuuuu
+
+
+REF:šredingerova mačka mora biti ili živa ili mrtva u j
+HYP:š je je na na ma maooomamamamamamamamamamama
+
+[2026-08-30 00:32:39,624][hybrid.speech_recognize][INFO] - 
+REF:šredingerova mačka mora biti ili živa ili mrtva u j
+HYP:š je je na na ma maooomamamamamamamamamamama
+
+
+REF:kod glodara je nađena povećana koncentracija olova ne
+HYP:ko je je je je je olova ne
+
+[2026-08-30 00:32:39,625][hybrid.speech_recognize][INFO] - 
+REF:kod glodara je nađena povećana koncentracija olova ne
+HYP:ko je je je je je olova ne
+
+
+REF:papir od konoplje može da se reciklira više puta po
+HYP:poppotetemmmmmmmmmmmmmmmmm
+
+[2026-08-30 00:32:39,627][hybrid.speech_recognize][INFO] - 
+REF:papir od konoplje može da se reciklira više puta po
+HYP:poppotetemmmmmmmmmmmmmmmmm
+
+
+REF:po podne su vratili knjige u školsku biblioteku b
+HYP:pouuuuuuuuuuuuuuuuuuuuu
+
+[2026-08-30 00:32:39,629][hybrid.speech_recognize][INFO] - 
+REF:po podne su vratili knjige u školsku biblioteku b
+HYP:pouuuuuuuuuuuuuuuuuuuuu
+
+
+REF:crno beli su uspeli da materijalizuju prednost
+HYP:nisam je u u u u u u u u u u uooooo
+
+[2026-08-30 00:32:39,631][hybrid.speech_recognize][INFO] - 
+REF:crno beli su uspeli da materijalizuju prednost
+HYP:nisam je u u u u u u u u u u uooooo
+
+
+REF:treba naći rešenje za okončanje oružanih konflikata čuje
+HYP:ne je da da se se se je
+
+[2026-08-30 00:32:39,632][hybrid.speech_recognize][INFO] - 
+REF:treba naći rešenje za okončanje oružanih konflikata čuje
+HYP:ne je da da se se se je
+
+
+REF:trebalo bi da se prihvata onako kako dolazi
+HYP:trebalo je da se se se kako dolazi
+
+[2026-08-30 00:32:40,020][hybrid.speech_recognize][INFO] - 
+REF:trebalo bi da se prihvata onako kako dolazi
+HYP:trebalo je da se se se kako dolazi
+
+
+REF:u podrumu nije bilo toliko mračno koliko je mislio o
+HYP:u um je je je jenonoooooooooooooo
+
+[2026-08-30 00:32:40,023][hybrid.speech_recognize][INFO] - 
+REF:u podrumu nije bilo toliko mračno koliko je mislio o
+HYP:u um je je je jenonoooooooooooooo
+
+
+REF:vlade divac je završio meč sa dvanaest poena po
+HYP:vddd se se davavavavavavavavavavava
+
+[2026-08-30 00:32:40,026][hybrid.speech_recognize][INFO] - 
+REF:vlade divac je završio meč sa dvanaest poena po
+HYP:vddd se se davavavavavavavavavavava
+
+
+REF:ovdašnje potrošačko tržište zahteva kvalitetnu robu tužil
+HYP:onaa je je jeii se se se se u u u u u u u u
+
+[2026-08-30 00:32:40,029][hybrid.speech_recognize][INFO] - 
+REF:ovdašnje potrošačko tržište zahteva kvalitetnu robu tužil
+HYP:onaa je je jeii se se se se u u u u u u u u
+
+
+REF:koraci koje ćete preduzeti smanjuju i vaš trošak tu
+HYP:utetetete u natitišššššššššš
+
+[2026-08-30 00:32:40,032][hybrid.speech_recognize][INFO] - 
+REF:koraci koje ćete preduzeti smanjuju i vaš trošak tu
+HYP:utetetete u natitišššššššššš
+
+
+REF:centar grada tada je zatvoren za saobraćaj s
+HYP:sdaaa se seaaaaaššššššš
+
+[2026-08-30 00:32:40,035][hybrid.speech_recognize][INFO] - 
+REF:centar grada tada je zatvoren za saobraćaj s
+HYP:sdaaa se seaaaaaššššššš
+
+
+REF:velika moda nije zanimljiva za prosečnog francuza p
+HYP:vi se i da da da seuudddduuuuuuuuuuu
+
+[2026-08-30 00:32:40,038][hybrid.speech_recognize][INFO] - 
+REF:velika moda nije zanimljiva za prosečnog francuza p
+HYP:vi se i da da da seuudddduuuuuuuuuuu
+
+
+REF:beograd postaje grad u kome žive sve stariji ljudi k
+HYP:bilo je je je je uuzzdddd i i i i i i i i
+
+[2026-08-30 00:32:40,041][hybrid.speech_recognize][INFO] - 
+REF:beograd postaje grad u kome žive sve stariji ljudi k
+HYP:bilo je je je je uuzzdddd i i i i i i i i
+
+
+REF:odnekud iz kabine obratio mu se metalni glas
+HYP:kosss jeooaaaaaaa s s s s
+
+[2026-08-30 00:32:40,474][hybrid.speech_recognize][INFO] - 
+REF:odnekud iz kabine obratio mu se metalni glas
+HYP:kosss jeooaaaaaaa s s s s
+
+
+REF:mladić se nasmejao i bacio travčicu u vazduh po
+HYP:mladić se nasmejao i bacio travčicu vazduh vazduh po po
+
+[2026-08-30 00:32:40,476][hybrid.speech_recognize][INFO] - 
+REF:mladić se nasmejao i bacio travčicu u vazduh po
+HYP:mladić se nasmejao i bacio travčicu vazduh vazduh po po
+
+
+REF:svaki radnik mora ceniti i voleti svoj posao
+HYP:izka se se se i i i i po po po po po po po po po po
+
+[2026-08-30 00:32:40,479][hybrid.speech_recognize][INFO] - 
+REF:svaki radnik mora ceniti i voleti svoj posao
+HYP:izka se se se i i i i po po po po po po po po po po
+
+
+REF:pošaljite vi taj faks ponovo pa ćemo videti ov
+HYP:po je je je je je jeaooooooooooo
+
+[2026-08-30 00:32:40,481][hybrid.speech_recognize][INFO] - 
+REF:pošaljite vi taj faks ponovo pa ćemo videti ov
+HYP:po je je je je je jeaooooooooooo
+
+
+REF:zašto doživljavamo vreme od prošlosti ka budućnosti svak
+HYP:sššuuuuumooooooooooooooo
+
+[2026-08-30 00:32:40,483][hybrid.speech_recognize][INFO] - 
+REF:zašto doživljavamo vreme od prošlosti ka budućnosti svak
+HYP:sššuuuuumooooooooooooooo
+
+
+REF:ta hemijska olovka je crvena ali ne piše dobro b
+HYP:ta hemijska olovka olovka crvena ne ne piše dobro dobro
+
+[2026-08-30 00:32:40,485][hybrid.speech_recognize][INFO] - 
+REF:ta hemijska olovka je crvena ali ne piše dobro b
+HYP:ta hemijska olovka olovka crvena ne ne piše dobro dobro
+
+
+REF:ovo je jedini način da postignete rezultat koji ste planirali p
+HYP:oetetetetetetetetitititititititititi
+
+[2026-08-30 00:32:40,487][hybrid.speech_recognize][INFO] - 
+REF:ovo je jedini način da postignete rezultat koji ste planirali p
+HYP:oetetetetetetetetitititititititititi
+
+
+REF:unutrašnjost crkve oslikao je arsa teodorović za
+HYP:u je je se se je jedadddoooooooo
+
+[2026-08-30 00:32:40,490][hybrid.speech_recognize][INFO] - 
+REF:unutrašnjost crkve oslikao je arsa teodorović za
+HYP:u je je se se je jedadddoooooooo
+
+
+REF:samo se ti ponašaj prirodno i sve će biti u redu zg
+HYP:zaššššššš pokkuuuuuuu
+
+[2026-08-30 00:32:40,827][hybrid.speech_recognize][INFO] - 
+REF:samo se ti ponašaj prirodno i sve će biti u redu zg
+HYP:zaššššššš pokkuuuuuuu
+
+
+REF:postoji samo jedan način da se čovek odupre zlu u
+HYP:postoji samo samo da da se čovek odupre u u u
+
+[2026-08-30 00:32:40,837][hybrid.speech_recognize][INFO] - 
+REF:postoji samo jedan način da se čovek odupre zlu u
+HYP:postoji samo samo da da se čovek odupre u u u
+
+
+REF:ta hemijska olovka je crvena ali ne piše dobro b
+HYP:ta hemijska olovka je crvena ali ne ne b b
+
+[2026-08-30 00:32:40,840][hybrid.speech_recognize][INFO] - 
+REF:ta hemijska olovka je crvena ali ne piše dobro b
+HYP:ta hemijska olovka je crvena ali ne ne b b
+
+
+REF:postoji samo jedan način da se čovek odupre zlu u
+HYP:postoji samo jedan da da se čovek odupre zlu u
+
+[2026-08-30 00:32:40,843][hybrid.speech_recognize][INFO] - 
+REF:postoji samo jedan način da se čovek odupre zlu u
+HYP:postoji samo jedan da da se čovek odupre zlu u
+
+
+REF:na trenutak oči su mu zadrhtale od sreće tr
+HYP:na trenutak oči mu mu zadrhtale sreće sreće tr
+
+[2026-08-30 00:32:40,846][hybrid.speech_recognize][INFO] - 
+REF:na trenutak oči su mu zadrhtale od sreće tr
+HYP:na trenutak oči mu mu zadrhtale sreće sreće tr
+
+
+REF:a onda je jedan student uzeo čašu i natočio vode u nju zai
+HYP:aeeeesssssooooooooooo
+
+[2026-08-30 00:32:40,848][hybrid.speech_recognize][INFO] - 
+REF:a onda je jedan student uzeo čašu i natočio vode u nju zai
+HYP:aeeeesssssooooooooooo
+
+
+REF:prvi korak je bila potajna nemarna misao
+HYP:bio je je je je je je je i i i i i i i
+
+[2026-08-30 00:32:40,851][hybrid.speech_recognize][INFO] - 
+REF:prvi korak je bila potajna nemarna misao
+HYP:bio je je je je je je je i i i i i i i
+
+
+REF:mnogi naučnici smatraju da priroda ima ulogu u tome h
+HYP:po je da dauu u uuuuuuuuuu
+
+[2026-08-30 00:32:40,853][hybrid.speech_recognize][INFO] - 
+REF:mnogi naučnici smatraju da priroda ima ulogu u tome h
+HYP:po je da dauu u uuuuuuuuuu
+
+
+REF:na vrhu stenovitog dela nalazio se odbor za doček ž
+HYP:na vrhu stenovitog stenovitog nalazio odbor odbor za doček doček
+
+[2026-08-30 00:32:41,282][hybrid.speech_recognize][INFO] - 
+REF:na vrhu stenovitog dela nalazio se odbor za doček ž
+HYP:na vrhu stenovitog stenovitog nalazio odbor odbor za doček doček
+
+
+REF:temperatura je prijatna sve do sredine septembra
+HYP:semmm je je na narrrrrrrrrr
+
+[2026-08-30 00:32:41,284][hybrid.speech_recognize][INFO] - 
+REF:temperatura je prijatna sve do sredine septembra
+HYP:semmm je je na narrrrrrrrrr
+
+
+REF:džem od šljiva će podstaći svačiju probavu ta he
+HYP:džem od šljiva šljiva podstaći svačiju probavu taee
+
+[2026-08-30 00:32:41,287][hybrid.speech_recognize][INFO] - 
+REF:džem od šljiva će podstaći svačiju probavu ta he
+HYP:džem od šljiva šljiva podstaći svačiju probavu taee
+
+
+REF:nije moguće samo govoriti treba i slušati ve
+HYP:ne bi da da u u uv
+
+[2026-08-30 00:32:41,289][hybrid.speech_recognize][INFO] - 
+REF:nije moguće samo govoriti treba i slušati ve
+HYP:ne bi da da u u uv
+
+
+REF:saobraćaj je i u normalnim okolnostima izuzetno gust s
+HYP:saobraćaj je i u u okolnostima izuzetno gust
+
+[2026-08-30 00:32:41,291][hybrid.speech_recognize][INFO] - 
+REF:saobraćaj je i u normalnim okolnostima izuzetno gust s
+HYP:saobraćaj je i u u okolnostima izuzetno gust
+
+
+REF:verovatno ćemo vremenom raditi više algoritama vo
+HYP:vei mlad selala zamamamamamamamamamamamamamama
+
+[2026-08-30 00:32:41,294][hybrid.speech_recognize][INFO] - 
+REF:verovatno ćemo vremenom raditi više algoritama vo
+HYP:vei mlad selala zamamamamamamamamamamamamamama
+
+
+REF:pored ovoga prati i ovde šta se dešava vo
+HYP:po jeoooo jevevevv
+
+[2026-08-30 00:32:41,297][hybrid.speech_recognize][INFO] - 
+REF:pored ovoga prati i ovde šta se dešava vo
+HYP:po jeoooo jevevevv
+
+
+REF:na trenutak oči su mu zadrhtale od sreće tr
+HYP:na trenutak su su su zadrhtale od sreće tr
+
+[2026-08-30 00:32:41,300][hybrid.speech_recognize][INFO] - 
+REF:na trenutak oči su mu zadrhtale od sreće tr
+HYP:na trenutak su su su zadrhtale od sreće tr
+
+
+REF:mogli su praviti zalihe robe koju će poneti e
+HYP:mogli su praviti zalihe zalihe koju će poneti e
+
+[2026-08-30 00:32:41,649][hybrid.speech_recognize][INFO] - 
+REF:mogli su praviti zalihe robe koju će poneti e
+HYP:mogli su praviti zalihe zalihe koju će poneti e
+
+
+REF:kod glodara je nađena povećana koncentracija olova ne
+HYP:kod je je je povećana koncentracija olova ne
+
+[2026-08-30 00:32:41,653][hybrid.speech_recognize][INFO] - 
+REF:kod glodara je nađena povećana koncentracija olova ne
+HYP:kod je je je povećana koncentracija olova ne
+
+
+REF:žuća je hteo da krene kući po svaku cenu pos
+HYP:žuća je hteo da krene kući po po po po
+
+[2026-08-30 00:32:41,655][hybrid.speech_recognize][INFO] - 
+REF:žuća je hteo da krene kući po svaku cenu pos
+HYP:žuća je hteo da krene kući po po po po
+
+
+REF:poznato je da najbolje igramo kada nismo u grču v
+HYP:posslalalala ne neuuuuuuuuuuuuuu
+
+[2026-08-30 00:32:41,658][hybrid.speech_recognize][INFO] - 
+REF:poznato je da najbolje igramo kada nismo u grču v
+HYP:posslalalala ne neuuuuuuuuuuuuuu
+
+
+REF:ta hemijska olovka je crvena ali ne piše dobro b
+HYP:ta hemijska olovka je je ali ne piše dobro dobro
+
+[2026-08-30 00:32:41,660][hybrid.speech_recognize][INFO] - 
+REF:ta hemijska olovka je crvena ali ne piše dobro b
+HYP:ta hemijska olovka je je ali ne piše dobro dobro
+
+
+REF:mladić se nasmejao i bacio travčicu u vazduh po
+HYP:mladić se nasmejao bacio bacio travčicu vazduh vazduh po
+
+[2026-08-30 00:32:41,662][hybrid.speech_recognize][INFO] - 
+REF:mladić se nasmejao i bacio travčicu u vazduh po
+HYP:mladić se nasmejao bacio bacio travčicu vazduh vazduh po
+
+
+REF:trebalo bi da se prihvata onako kako dolazi
+HYP:trebalo bi da se prihvata onako kako dolazi
+
+[2026-08-30 00:32:41,664][hybrid.speech_recognize][INFO] - 
+REF:trebalo bi da se prihvata onako kako dolazi
+HYP:trebalo bi da se prihvata onako kako dolazi
+
+
+REF:mogli su praviti zalihe robe koju će poneti e
+HYP:mogli su praviti zalihe robe koju će poneti e
+
+[2026-08-30 00:32:41,666][hybrid.speech_recognize][INFO] - 
+REF:mogli su praviti zalihe robe koju će poneti e
+HYP:mogli su praviti zalihe robe koju će poneti e
+
+
+REF:čujemo je zato što smo na istoj talasnoj dužini ost
+HYP:tou po po je je jeuuuuuuuooooo
+
+[2026-08-30 00:32:42,121][hybrid.speech_recognize][INFO] - 
+REF:čujemo je zato što smo na istoj talasnoj dužini ost
+HYP:tou po po je je jeuuuuuuuooooo
+
+
+REF:bilo je vreme da se vrati na koledž s
+HYP:bilo je vreme se vrati vrati na koledž s
+
+[2026-08-30 00:32:42,123][hybrid.speech_recognize][INFO] - 
+REF:bilo je vreme da se vrati na koledž s
+HYP:bilo je vreme se vrati vrati na koledž s
+
+
+REF:samo se ti ponašaj prirodno i sve će biti u redu zg
+HYP:zas se se se se seeeeee za za za za za
+
+[2026-08-30 00:32:42,127][hybrid.speech_recognize][INFO] - 
+REF:samo se ti ponašaj prirodno i sve će biti u redu zg
+HYP:zas se se se se seeeeee za za za za za
+
+
+REF:kod kuće sam obično uveče posle osam kak
+HYP:on je je da dammmeeennnnnn
+
+[2026-08-30 00:32:42,129][hybrid.speech_recognize][INFO] - 
+REF:kod kuće sam obično uveče posle osam kak
+HYP:on je je da dammmeeennnnnn
+
+
+REF:zato se vraćamo stilu svojih mama i baka k
+HYP:daommmmmmmmmmmmmmmm
+
+[2026-08-30 00:32:42,131][hybrid.speech_recognize][INFO] - 
+REF:zato se vraćamo stilu svojih mama i baka k
+HYP:daommmmmmmmmmmmmmmm
+
+
+REF:ja ti kažem da ćeš začeti još jedno dete svetl
+HYP:jadada je jer na naššš na na na na na na
+
+[2026-08-30 00:32:42,134][hybrid.speech_recognize][INFO] - 
+REF:ja ti kažem da ćeš začeti još jedno dete svetl
+HYP:jadada je jer na naššš na na na na na na
+
+
+REF:šaljem ti deset papira umesto pet k
+HYP:zarlalala u uuuuuu
+
+[2026-08-30 00:32:42,136][hybrid.speech_recognize][INFO] - 
+REF:šaljem ti deset papira umesto pet k
+HYP:zarlalala u uuuuuu
+
+
+REF:žuća je hteo da krene kući po svaku cenu pos
+HYP:žuća je hteo da krene kući svaku svaku po po po
+
+[2026-08-30 00:32:42,137][hybrid.speech_recognize][INFO] - 
+REF:žuća je hteo da krene kući po svaku cenu pos
+HYP:žuća je hteo da krene kući svaku svaku po po po
+
+
+REF:onda je začuo zvuk sporih koraka na šljunku št
+HYP:on setiti su sulililiuuuuuuuuuuuu
+
+[2026-08-30 00:32:42,478][hybrid.speech_recognize][INFO] - 
+REF:onda je začuo zvuk sporih koraka na šljunku št
+HYP:on setiti su sulililiuuuuuuuuuuuu
+
+
+REF:on je predstavljao samo jedno ogromno lice
+HYP:on jesssseeeeeoooooo
+
+[2026-08-30 00:32:42,481][hybrid.speech_recognize][INFO] - 
+REF:on je predstavljao samo jedno ogromno lice
+HYP:on jesssseeeeeoooooo
+
+
+REF:trebalo bi da se prihvata onako kako dolazi
+HYP:trebalo bi da da se onako onako dolazi
+
+[2026-08-30 00:32:42,483][hybrid.speech_recognize][INFO] - 
+REF:trebalo bi da se prihvata onako kako dolazi
+HYP:trebalo bi da da se onako onako dolazi
+
+
+REF:čovek može da nađe koliko god hoće prijatelja mara
+HYP:toooo u unnnlilililili o o o o o o
+
+[2026-08-30 00:32:42,486][hybrid.speech_recognize][INFO] - 
+REF:čovek može da nađe koliko god hoće prijatelja mara
+HYP:toooo u unnnlilililili o o o o o o
+
+
+REF:molio bih vas da uzmete žutu hartiju d
+HYP:molio bih vas uzmete uzmete žutu hartiju d
+
+[2026-08-30 00:32:42,489][hybrid.speech_recognize][INFO] - 
+REF:molio bih vas da uzmete žutu hartiju d
+HYP:molio bih vas uzmete uzmete žutu hartiju d
+
+
+REF:neka drugi to čitaju i neka se snađu na
+HYP:neka drugi to čitaju se neka se snađu na
+
+[2026-08-30 00:32:42,492][hybrid.speech_recognize][INFO] - 
+REF:neka drugi to čitaju i neka se snađu na
+HYP:neka drugi to čitaju se neka se snađu na
+
+
+REF:on je prepotentan što vas intrigira o
+HYP:o o mu mu mu su su ne
+
+[2026-08-30 00:32:42,495][hybrid.speech_recognize][INFO] - 
+REF:on je prepotentan što vas intrigira o
+HYP:o o mu mu mu su su ne
+
+
+REF:prošlo glasanje nije dalo konačnog pobednika to
+HYP:proooolala ne neaaaaa u u u
+
+[2026-08-30 00:32:42,499][hybrid.speech_recognize][INFO] - 
+REF:prošlo glasanje nije dalo konačnog pobednika to
+HYP:proooolala ne neaaaaa u u u
+
+
+REF:samo nekud trčimo a ništa ne postižemo taj
+HYP:samo samo immttmommmmmmmmmomomo po po
+
+[2026-08-30 00:32:42,854][hybrid.speech_recognize][INFO] - 
+REF:samo nekud trčimo a ništa ne postižemo taj
+HYP:samo samo immttmommmmmmmmmomomo po po
+
+
+REF:eto svemu jednom ipak dođe kraj s
+HYP:eto svemu jednom ipak ipak kraj kraj
+
+[2026-08-30 00:32:42,871][hybrid.speech_recognize][INFO] - 
+REF:eto svemu jednom ipak dođe kraj s
+HYP:eto svemu jednom ipak ipak kraj kraj
+
+
+REF:nisam bila slobodna da odem u pozorište s
+HYP:nisam bila slobodna da odem u pozorište s
+
+[2026-08-30 00:32:42,874][hybrid.speech_recognize][INFO] - 
+REF:nisam bila slobodna da odem u pozorište s
+HYP:nisam bila slobodna da odem u pozorište s
+
+
+REF:prvi korak je bila potajna nemarna misao
+HYP:pri jeeee jemmmeeeeeee
+
+[2026-08-30 00:32:42,876][hybrid.speech_recognize][INFO] - 
+REF:prvi korak je bila potajna nemarna misao
+HYP:pri jeeee jemmmeeeeeee
+
+
+REF:bilo je vreme da se vrati na koledž s
+HYP:bilo je vreme da se vrati na koledž s
+
+[2026-08-30 00:32:42,878][hybrid.speech_recognize][INFO] - 
+REF:bilo je vreme da se vrati na koledž s
+HYP:bilo je vreme da se vrati na koledž s
+
+
+REF:sve vreme sam znao da će se to dogoditi v
+HYP:sve sve svemmees
+
+[2026-08-30 00:32:42,880][hybrid.speech_recognize][INFO] - 
+REF:sve vreme sam znao da će se to dogoditi v
+HYP:sve sve svemmees
+
+
+REF:na trenutak oči su mi zadrhtale od sreće tr
+HYP:na trenutak oči su zadrhtale zadrhtale sreće sreće tr
+
+[2026-08-30 00:32:42,882][hybrid.speech_recognize][INFO] - 
+REF:na trenutak oči su mi zadrhtale od sreće tr
+HYP:na trenutak oči su zadrhtale zadrhtale sreće sreće tr
+
+
+REF:svi negiraju umešanost u šverc cigareta os
+HYP:sst su su su u u u
+
+[2026-08-30 00:32:42,883][hybrid.speech_recognize][INFO] - 
+REF:svi negiraju umešanost u šverc cigareta os
+HYP:sst su su su u u u
+
+
+REF:kriza je nastupila posle irskog referenduma
+HYP:na jeeeuuu pouuuuuuuuuu
+
+[2026-08-30 00:32:43,238][hybrid.speech_recognize][INFO] - 
+REF:kriza je nastupila posle irskog referenduma
+HYP:na jeeeuuu pouuuuuuuuuu
+
+
+REF:u jednom stanu često živi nekoliko generacija te
+HYP:ukoliuuuaauuuuugggggg
+
+[2026-08-30 00:32:43,240][hybrid.speech_recognize][INFO] - 
+REF:u jednom stanu često živi nekoliko generacija te
+HYP:ukoliuuuaauuuuugggggg
+
+
+REF:u ovom svetu ne ume da organizuje sam svoj zivot
+HYP:u ve da da u ummme
+
+[2026-08-30 00:32:43,243][hybrid.speech_recognize][INFO] - 
+REF:u ovom svetu ne ume da organizuje sam svoj zivot
+HYP:u ve da da u ummme
+
+
+REF:ovaj program je napravljen iz edukativnih razloga
+HYP:o jeooooovivivivivivivivivivivivi
+
+[2026-08-30 00:32:43,247][hybrid.speech_recognize][INFO] - 
+REF:ovaj program je napravljen iz edukativnih razloga
+HYP:o jeooooovivivivivivivivivivivivi
+
+
+REF:žuća je hteo da krene kući po svaku cenu pos
+HYP:žuća je hteo da kući kući po po po pos
+
+[2026-08-30 00:32:43,249][hybrid.speech_recognize][INFO] - 
+REF:žuća je hteo da krene kući po svaku cenu pos
+HYP:žuća je hteo da kući kući po po po pos
+
+
+REF:mogli su praviti zalihe robe koju će poneti e
+HYP:mogli su praviti zalihe robe koju će poneti e
+
+[2026-08-30 00:32:43,251][hybrid.speech_recognize][INFO] - 
+REF:mogli su praviti zalihe robe koju će poneti e
+HYP:mogli su praviti zalihe robe koju će poneti e
+
+
+REF:ovaj program je napravljen iz edukativnih razloga
+HYP:nar po da da da daviviviaaaaaaaaaa
+
+[2026-08-30 00:32:43,254][hybrid.speech_recognize][INFO] - 
+REF:ovaj program je napravljen iz edukativnih razloga
+HYP:nar po da da da daviviviaaaaaaaaaa
+
+
+REF:onda je začuo zvuk sporih koraka na šljunku št
+HYP:onooooooouuuuuuuuuuuuuu
+
+[2026-08-30 00:32:43,257][hybrid.speech_recognize][INFO] - 
+REF:onda je začuo zvuk sporih koraka na šljunku št
+HYP:onooooooouuuuuuuuuuuuuu
+
+
+REF:najteže je ne biti sebičan u ljubavi mi
+HYP:neššš jeammmmm u u u u
+
+[2026-08-30 00:32:43,664][hybrid.speech_recognize][INFO] - 
+REF:najteže je ne biti sebičan u ljubavi mi
+HYP:neššš jeammmmm u u u u
+
+
+REF:neka drugi to čitaju i neka se snađu na
+HYP:neka drugi to i i neka se snađu na
+
+[2026-08-30 00:32:43,666][hybrid.speech_recognize][INFO] - 
+REF:neka drugi to čitaju i neka se snađu na
+HYP:neka drugi to i i neka se snađu na
+
+
+REF:u tom pogledu išlo im je prilično slabo ve
+HYP:u tom pogledu išlo je je je slabo
+
+[2026-08-30 00:32:43,667][hybrid.speech_recognize][INFO] - 
+REF:u tom pogledu išlo im je prilično slabo ve
+HYP:u tom pogledu išlo je je je slabo
+
+
+REF:žuća je hteo da krene kući po svaku cenu pos
+HYP:je je hteo da krene kući po svaku po poss
+
+[2026-08-30 00:32:43,671][hybrid.speech_recognize][INFO] - 
+REF:žuća je hteo da krene kući po svaku cenu pos
+HYP:je je hteo da krene kući po svaku po poss
+
+
+REF:čovek je parkirao kola blizu mesta za piknike o
+HYP:ča je je je u u u u u
+
+[2026-08-30 00:32:43,673][hybrid.speech_recognize][INFO] - 
+REF:čovek je parkirao kola blizu mesta za piknike o
+HYP:ča je je je u u u u u
+
+
+REF:nisam bila slobodna da odem u pozorište s
+HYP:nisam bila slobodna da odem u pozorište s
+
+[2026-08-30 00:32:43,675][hybrid.speech_recognize][INFO] - 
+REF:nisam bila slobodna da odem u pozorište s
+HYP:nisam bila slobodna da odem u pozorište s
+
+
+REF:pošaljite vi taj faks ponovo pa ćemo videti ov
+HYP:po jess je je je je je je je jevvvvvvvv
+
+[2026-08-30 00:32:43,677][hybrid.speech_recognize][INFO] - 
+REF:pošaljite vi taj faks ponovo pa ćemo videti ov
+HYP:po jess je je je je je je je jevvvvvvvv
+
+
+REF:teško je ponovo sastaviti slomljeno jaje z
+HYP:nauuuuu po po po pouuuu
+
+[2026-08-30 00:32:43,679][hybrid.speech_recognize][INFO] - 
+REF:teško je ponovo sastaviti slomljeno jaje z
+HYP:nauuuuu po po po pouuuu
+
+
+REF:svi negiraju umešanost u šverc cigareta os
+HYP:svava su suuuuuuuu
+
+[2026-08-30 00:32:44,105][hybrid.speech_recognize][INFO] - 
+REF:svi negiraju umešanost u šverc cigareta os
+HYP:svava su suuuuuuuu
+
+
+REF:šaljem ti deset papira umesto pet k
+HYP:džem je je jemmmmmmmmu
+
+[2026-08-30 00:32:44,108][hybrid.speech_recognize][INFO] - 
+REF:šaljem ti deset papira umesto pet k
+HYP:džem je je jemmmmmmmmu
+
+
+REF:trebalo bi da se prihvata onako kako dolazi
+HYP:trebalo bi se se see kako kako
+
+[2026-08-30 00:32:44,109][hybrid.speech_recognize][INFO] - 
+REF:trebalo bi da se prihvata onako kako dolazi
+HYP:trebalo bi se se see kako kako
+
+
+REF:šta bi mogao da bude sledeći sofijin korak on
+HYP:to jemomomo da da dao
+
+[2026-08-30 00:32:44,111][hybrid.speech_recognize][INFO] - 
+REF:šta bi mogao da bude sledeći sofijin korak on
+HYP:to jemomomo da da dao
+
+
+REF:neka drugi to čitaju i neka se snađu na
+HYP:neka to to i i neka se na na na na na
+
+[2026-08-30 00:32:44,112][hybrid.speech_recognize][INFO] - 
+REF:neka drugi to čitaju i neka se snađu na
+HYP:neka to to i i neka se na na na na na
+
+
+REF:eto svemu jednom ipak dođe kraj s
+HYP:eto svemu jednom ipak dođe kraj s
+
+[2026-08-30 00:32:44,114][hybrid.speech_recognize][INFO] - 
+REF:eto svemu jednom ipak dođe kraj s
+HYP:eto svemu jednom ipak dođe kraj s
+
+
+REF:bilo je vreme da se vrati na koledž s
+HYP:bilo je vreme da se vrati na koledž s
+
+[2026-08-30 00:32:44,116][hybrid.speech_recognize][INFO] - 
+REF:bilo je vreme da se vrati na koledž s
+HYP:bilo je vreme da se vrati na koledž s
+
+
+REF:pošaljite mi ime osobe koja vam je to rekla n
+HYP:pouooaaooooooo
+
+[2026-08-30 00:32:44,117][hybrid.speech_recognize][INFO] - 
+REF:pošaljite mi ime osobe koja vam je to rekla n
+HYP:pouooaaooooooo
+
+
+REF:pod je nekada bio gladak i lakiran
+HYP:poooola jelalalalalalalala
+
+[2026-08-30 00:32:44,439][hybrid.speech_recognize][INFO] - 
+REF:pod je nekada bio gladak i lakiran
+HYP:poooola jelalalalalalalala
+
+
+REF:postoji samo jedan način da se čovek odupre zlu u
+HYP:postojio jedan da da se čovek odupre zlu zlu
+
+[2026-08-30 00:32:44,442][hybrid.speech_recognize][INFO] - 
+REF:postoji samo jedan način da se čovek odupre zlu u
+HYP:postojio jedan da da se čovek odupre zlu zlu
+
+
+REF:molio bih vas da uzmete žutu hartiju d
+HYP:molio bih vas da uzmete žutu hartiju d
+
+[2026-08-30 00:32:44,444][hybrid.speech_recognize][INFO] - 
+REF:molio bih vas da uzmete žutu hartiju d
+HYP:molio bih vas da uzmete žutu hartiju d
+
+
+REF:reč dana u moskvi glasi ekskluzivno a
+HYP:na neoo da da da da neiiiioooo
+
+[2026-08-30 00:32:44,447][hybrid.speech_recognize][INFO] - 
+REF:reč dana u moskvi glasi ekskluzivno a
+HYP:na neoo da da da da neiiiioooo
+
+
+REF:morali su da se napregnu da bi ga čuli t
+HYP:moliooo da daš da netetete
+
+[2026-08-30 00:32:44,449][hybrid.speech_recognize][INFO] - 
+REF:morali su da se napregnu da bi ga čuli t
+HYP:moliooo da daš da netetete
+
+
+REF:nisam bila slobodna da odem u pozorište s
+HYP:nisam bila slobodna da odem odem odem odem
+
+[2026-08-30 00:32:44,451][hybrid.speech_recognize][INFO] - 
+REF:nisam bila slobodna da odem u pozorište s
+HYP:nisam bila slobodna da odem odem odem odem
+
+
+REF:svaki čovek je individualna osoba č
+HYP:svavavavava za za zaiiiioooo
+
+[2026-08-30 00:32:44,453][hybrid.speech_recognize][INFO] - 
+REF:svaki čovek je individualna osoba č
+HYP:svavavavava za za zaiiiioooo
+
+
+REF:birajte organski uzgajane namirnice
+HYP:na jetete na se na je je
+
+[2026-08-30 00:32:44,454][hybrid.speech_recognize][INFO] - 
+REF:birajte organski uzgajane namirnice
+HYP:na jetete na se na je je
+
+
+REF:maj je vrlo prijatan a leto u varšavu stiže u junu st
+HYP:a se seeu se seiiuuuuuuuuuuuuuuuuuuuuuuuuu
+
+[2026-08-30 00:32:44,850][hybrid.speech_recognize][INFO] - 
+REF:maj je vrlo prijatan a leto u varšavu stiže u junu st
+HYP:a se seeu se seiiuuuuuuuuuuuuuuuuuuuuuuuuu
+
+
+REF:to je uvek stoga što smo onakvi kakvi jesmo t
+HYP:touuuuuuuuuuuuuuuuuuuuuuu
+
+[2026-08-30 00:32:44,852][hybrid.speech_recognize][INFO] - 
+REF:to je uvek stoga što smo onakvi kakvi jesmo t
+HYP:touuuuuuuuuuuuuuuuuuuuuuu
+
+
+REF:molio bih vas da uzmete žutu hartiju d
+HYP:molio bih vas da uzmete žutu hartiju d
+
+[2026-08-30 00:32:44,853][hybrid.speech_recognize][INFO] - 
+REF:molio bih vas da uzmete žutu hartiju d
+HYP:molio bih vas da uzmete žutu hartiju d
+
+
+REF:svaki put kad se pojavi ja se uplašim n
+HYP:sva se se se je sevavavavavavava
+
+[2026-08-30 00:32:44,856][hybrid.speech_recognize][INFO] - 
+REF:svaki put kad se pojavi ja se uplašim n
+HYP:sva se se se je sevavavavavavava
+
+
+REF:često nemamo dovoljno vremena za druge z
+HYP:toššuuu daooouuuu
+
+[2026-08-30 00:32:44,857][hybrid.speech_recognize][INFO] - 
+REF:često nemamo dovoljno vremena za druge z
+HYP:toššuuu daooouuuu
+
+
+REF:kod kuće sam obično uveče posle osam kak
+HYP:ueeststm po po po po po po po
+
+[2026-08-30 00:32:44,859][hybrid.speech_recognize][INFO] - 
+REF:kod kuće sam obično uveče posle osam kak
+HYP:ueeststm po po po po po po po
+
+
+REF:osećao sam da više nikada neću biti isti pok
+HYP:onoo je jeeeeeeeeeeee
+
+[2026-08-30 00:32:44,861][hybrid.speech_recognize][INFO] - 
+REF:osećao sam da više nikada neću biti isti pok
+HYP:onoo je jeeeeeeeeeeee
+
+
+REF:dovoljno si mlad da tako govoriš m
+HYP:dovoljno si mlad da tako govoriš m
+
+[2026-08-30 00:32:44,862][hybrid.speech_recognize][INFO] - 
+REF:dovoljno si mlad da tako govoriš m
+HYP:dovoljno si mlad da tako govoriš m
+
+
+REF:zaista bih cenio tvoju pomoć s
+HYP:nisam sam sam sam sam sam s s smmmmuuuuu
+
+[2026-08-30 00:32:45,379][hybrid.speech_recognize][INFO] - 
+REF:zaista bih cenio tvoju pomoć s
+HYP:nisam sam sam sam sam sam s s smmmmuuuuu
+
+
+REF:hiljade ljudi žive bez regularnih papira p
+HYP:naaamm jemmmm je je jemmmm
+
+[2026-08-30 00:32:45,381][hybrid.speech_recognize][INFO] - 
+REF:hiljade ljudi žive bez regularnih papira p
+HYP:naaamm jemmmm je je jemmmm
+
+
+REF:osećao sam da više nikada neću biti isti pok
+HYP:oeeeiiiiiiiii
+
+[2026-08-30 00:32:45,382][hybrid.speech_recognize][INFO] - 
+REF:osećao sam da više nikada neću biti isti pok
+HYP:oeeeiiiiiiiii
+
+
+REF:način sticanja zarada je uglavnom isti d
+HYP:naš i i i i za zakkkkkkkk
+
+[2026-08-30 00:32:45,384][hybrid.speech_recognize][INFO] - 
+REF:način sticanja zarada je uglavnom isti d
+HYP:naš i i i i za zakkkkkkkk
+
+
+REF:tiha voda breg roni
+HYP:nijeoooooooo
+
+[2026-08-30 00:32:45,385][hybrid.speech_recognize][INFO] - 
+REF:tiha voda breg roni
+HYP:nijeoooooooo
+
+
+REF:sa našim savetima profitirajte n
+HYP:za se se se se se na se se semmm
+
+[2026-08-30 00:32:45,387][hybrid.speech_recognize][INFO] - 
+REF:sa našim savetima profitirajte n
+HYP:za se se se se se na se se semmm
+
+
+REF:pojavio se čak i novi brend čaja od
+HYP:poora da dauuu za za za za za
+
+[2026-08-30 00:32:45,388][hybrid.speech_recognize][INFO] - 
+REF:pojavio se čak i novi brend čaja od
+HYP:poora da dauuu za za za za za
+
+
+REF:saksonci su varvari i okrutni su
+HYP:za jeoooooooooooo
+
+[2026-08-30 00:32:45,390][hybrid.speech_recognize][INFO] - 
+REF:saksonci su varvari i okrutni su
+HYP:za jeoooooooooooo
+
+
+REF:glas bi mu prepoznala u svako doba
+HYP:glas bi mu u u u doba
+
+[2026-08-30 00:32:45,391][hybrid.speech_recognize][INFO] - 
+REF:glas bi mu prepoznala u svako doba
+HYP:glas bi mu u u u doba
+
+
+REF:pošaljite mi ime osobe koja vam je to rekla n
+HYP:poš je jeeemm
+
+[2026-08-30 00:32:45,392][hybrid.speech_recognize][INFO] - 
+REF:pošaljite mi ime osobe koja vam je to rekla n
+HYP:poš je jeeemm
+
+
+REF:zaposleni se ne plaše privatizacije s
+HYP:zapppppeeeeeeee
+
+[2026-08-30 00:32:45,394][hybrid.speech_recognize][INFO] - 
+REF:zaposleni se ne plaše privatizacije s
+HYP:zapppppeeeeeeee
+
+
+REF:svi smo mi već za života zaboravljeni st
+HYP:svešvvvvvvoovavavava
+
+[2026-08-30 00:32:45,396][hybrid.speech_recognize][INFO] - 
+REF:svi smo mi već za života zaboravljeni st
+HYP:svešvvvvvvoovavavava
+
+
+REF:zeleni ljiljan smanjuje kućno zagađivanje ka
+HYP:rdtetejejejeaaaaaiiivavavavava
+
+[2026-08-30 00:32:45,397][hybrid.speech_recognize][INFO] - 
+REF:zeleni ljiljan smanjuje kućno zagađivanje ka
+HYP:rdtetejejejeaaaaaiiivavavavava
+
+
+REF:njegovo je ime sveto i strašno t
+HYP:nijeo je je se se za zauoooo
+
+[2026-08-30 00:32:45,399][hybrid.speech_recognize][INFO] - 
+REF:njegovo je ime sveto i strašno t
+HYP:nijeo je je se se za zauoooo
+
+
+REF:sve vreme trošite na nevažne stvari na
+HYP:vvv se na na na na na
+
+[2026-08-30 00:32:45,406][hybrid.speech_recognize][INFO] - 
+REF:sve vreme trošite na nevažne stvari na
+HYP:vvv se na na na na na
+
+
+REF:na vrata je zakucao nepoznati sluga
+HYP:navavvvd u u uddd u
+
+[2026-08-30 00:32:45,408][hybrid.speech_recognize][INFO] - 
+REF:na vrata je zakucao nepoznati sluga
+HYP:navavvvd u u uddd u
+
+
+REF:po našem mišljenju to ne spada ovde cr
+HYP:pooouuuooooooooo
+
+[2026-08-30 00:32:45,870][hybrid.speech_recognize][INFO] - 
+REF:po našem mišljenju to ne spada ovde cr
+HYP:pooouuuooooooooo
+
+
+REF:ni pariz ni berlin ne protive se takvoj ideji
+HYP:aaa se seoooooooooooo
+
+[2026-08-30 00:32:45,872][hybrid.speech_recognize][INFO] - 
+REF:ni pariz ni berlin ne protive se takvoj ideji
+HYP:aaa se seoooooooooooo
+
+
+REF:nije baš išlo kako je očekivao u p
+HYP:nekaaa je jeoooooooo
+
+[2026-08-30 00:32:45,873][hybrid.speech_recognize][INFO] - 
+REF:nije baš išlo kako je očekivao u p
+HYP:nekaaa je jeoooooooo
+
+
+REF:kaća je osam godina radila kao di džej re
+HYP:nako je je je jeooooooo
+
+[2026-08-30 00:32:45,875][hybrid.speech_recognize][INFO] - 
+REF:kaća je osam godina radila kao di džej re
+HYP:nako je je je jeooooooo
+
+
+REF:ova umetnost se neguje u više oblasti m
+HYP:vevavavavaoooooooooooooo
+
+[2026-08-30 00:32:45,877][hybrid.speech_recognize][INFO] - 
+REF:ova umetnost se neguje u više oblasti m
+HYP:vevavavavaoooooooooooooo
+
+
+REF:način sticanja zarada je uglavnom isti d
+HYP:nar da da da da daiiuuuuuu
+
+[2026-08-30 00:32:45,879][hybrid.speech_recognize][INFO] - 
+REF:način sticanja zarada je uglavnom isti d
+HYP:nar da da da da daiiuuuuuu
+
+
+REF:luđu stvar nisam mogao da zamislim n
+HYP:kooooo sa sa sa sa sa sa sa sa
+
+[2026-08-30 00:32:45,880][hybrid.speech_recognize][INFO] - 
+REF:luđu stvar nisam mogao da zamislim n
+HYP:kooooo sa sa sa sa sa sa sa sa
+
+
+REF:glas bi mu prepoznala u svako doba
+HYP:glas bi mu u u u doba
+
+[2026-08-30 00:32:45,882][hybrid.speech_recognize][INFO] - 
+REF:glas bi mu prepoznala u svako doba
+HYP:glas bi mu u u u doba
+
+
+REF:to će nam se verovatno negde isplatiti o
+HYP:tooii sevvvisssssss
+
+[2026-08-30 00:32:45,883][hybrid.speech_recognize][INFO] - 
+REF:to će nam se verovatno negde isplatiti o
+HYP:tooii sevvvisssssss
+
+
+REF:neka drugi to čitaju i neka se snađu na
+HYP:neka drugi to i i neka se snađu na
+
+[2026-08-30 00:32:45,884][hybrid.speech_recognize][INFO] - 
+REF:neka drugi to čitaju i neka se snađu na
+HYP:neka drugi to i i neka se snađu na
+
+
+REF:glas bi mu prepoznala u svako doba
+HYP:glas bi mu u u svako svako
+
+[2026-08-30 00:32:45,886][hybrid.speech_recognize][INFO] - 
+REF:glas bi mu prepoznala u svako doba
+HYP:glas bi mu u u svako svako
+
+
+REF:u tom pogledu išlo im je prilično slabo ve
+HYP:to tom pogledu išlo je je prilično prilično
+
+[2026-08-30 00:32:45,887][hybrid.speech_recognize][INFO] - 
+REF:u tom pogledu išlo im je prilično slabo ve
+HYP:to tom pogledu išlo je je prilično prilično
+
+
+REF:saksonci su varvari i okrutni su
+HYP:za se se na na su na na
+
+[2026-08-30 00:32:45,888][hybrid.speech_recognize][INFO] - 
+REF:saksonci su varvari i okrutni su
+HYP:za se se na na su na na
+
+
+REF:u meč je ušao apsolutno spreman ne
+HYP:uššššššššmmmmmmmm
+
+[2026-08-30 00:32:45,890][hybrid.speech_recognize][INFO] - 
+REF:u meč je ušao apsolutno spreman ne
+HYP:uššššššššmmmmmmmm
+
+
+REF:eto svemu jednom ipak dođe kraj s
+HYP:eto svemu jednom jednom dođe kraj s s
+
+[2026-08-30 00:32:45,891][hybrid.speech_recognize][INFO] - 
+REF:eto svemu jednom ipak dođe kraj s
+HYP:eto svemu jednom jednom dođe kraj s s
+
+
+REF:strahinja je došao do zaključka pr
+HYP:zaddd na narrr na
+
+[2026-08-30 00:32:45,892][hybrid.speech_recognize][INFO] - 
+REF:strahinja je došao do zaključka pr
+HYP:zaddd na narrr na
+
+
+REF:popićemo čaj sa limunom i šećerom a b
+HYP:pomomomomouuu da da da da
+
+[2026-08-30 00:32:46,354][hybrid.speech_recognize][INFO] - 
+REF:popićemo čaj sa limunom i šećerom a b
+HYP:pomomomomouuu da da da da
+
+
+REF:vozačka dozvola mu je bila istekla j
+HYP:vooooost s slalalalala
+
+[2026-08-30 00:32:46,356][hybrid.speech_recognize][INFO] - 
+REF:vozačka dozvola mu je bila istekla j
+HYP:vooooost s slalalalala
+
+
+REF:svi smo mi već za života zaboravljeni st
+HYP:sveeeeeeeooooooooooo
+
+[2026-08-30 00:32:46,358][hybrid.speech_recognize][INFO] - 
+REF:svi smo mi već za života zaboravljeni st
+HYP:sveeeeeeeooooooooooo
+
+
+REF:najteže je ne biti sebičan u ljubavi mi
+HYP:ne da je je je ne ne ne ne je
+
+[2026-08-30 00:32:46,359][hybrid.speech_recognize][INFO] - 
+REF:najteže je ne biti sebičan u ljubavi mi
+HYP:ne da je je je ne ne ne ne je
+
+
+REF:supermarketi su puni mušterija z
+HYP:touuuuuuuuuuuuuuuuu
+
+[2026-08-30 00:32:46,361][hybrid.speech_recognize][INFO] - 
+REF:supermarketi su puni mušterija z
+HYP:touuuuuuuuuuuuuuuuu
+
+
+REF:svetlost je zablistala iz otvora
+HYP:svestststststststststst
+
+[2026-08-30 00:32:46,362][hybrid.speech_recognize][INFO] - 
+REF:svetlost je zablistala iz otvora
+HYP:svestststststststststst
+
+
+REF:nisam bila slobodna da odem u pozorište s
+HYP:nisam bila slobodna da u u pozorište s
+
+[2026-08-30 00:32:46,363][hybrid.speech_recognize][INFO] - 
+REF:nisam bila slobodna da odem u pozorište s
+HYP:nisam bila slobodna da u u pozorište s
+
+
+REF:ne ljuti se na mene jer nisam kriv
+HYP:nao su su su je je
+
+[2026-08-30 00:32:46,364][hybrid.speech_recognize][INFO] - 
+REF:ne ljuti se na mene jer nisam kriv
+HYP:nao su su su je je
+
+
+REF:odlutao je negde za svoj groš b
+HYP:od je jeo se se je sooooo
+
+[2026-08-30 00:32:46,366][hybrid.speech_recognize][INFO] - 
+REF:odlutao je negde za svoj groš b
+HYP:od je jeo se se je sooooo
+
+
+REF:dovoljno si mlad da tako govoriš m
+HYP:dovoljno si mlad mlad tako m m m
+
+[2026-08-30 00:32:46,367][hybrid.speech_recognize][INFO] - 
+REF:dovoljno si mlad da tako govoriš m
+HYP:dovoljno si mlad mlad tako m m m
+
+
+REF:u mom srcu je tvoja dobrobit
+HYP:uumomomm u ueeeeeeee
+
+[2026-08-30 00:32:46,369][hybrid.speech_recognize][INFO] - 
+REF:u mom srcu je tvoja dobrobit
+HYP:uumomomm u ueeeeeeee
+
+
+REF:tu se vraćamo na početak intervjua po
+HYP:toute da je je jevaššaaa
+
+[2026-08-30 00:32:46,370][hybrid.speech_recognize][INFO] - 
+REF:tu se vraćamo na početak intervjua po
+HYP:toute da je je jevaššaaa
+
+
+REF:jedan helikopter je prinudno sleteo
+HYP:na je je je je s s
+
+[2026-08-30 00:32:46,372][hybrid.speech_recognize][INFO] - 
+REF:jedan helikopter je prinudno sleteo
+HYP:na je je je je s s
+
+
+REF:na vrata je zakucao nepoznati sluga
+HYP:na je je je se se seuuuuuuuuu
+
+[2026-08-30 00:32:46,373][hybrid.speech_recognize][INFO] - 
+REF:na vrata je zakucao nepoznati sluga
+HYP:na je je je se se seuuuuuuuuu
+
+
+REF:novi univerzumi mogu nastati spontano
+HYP:ve je jemomotmmmmmmmrerere i i
+
+[2026-08-30 00:32:46,375][hybrid.speech_recognize][INFO] - 
+REF:novi univerzumi mogu nastati spontano
+HYP:ve je jemomotmmmmmmmrerere i i
+
+
+REF:nekada moraš da budeš ono što nisi jed
+HYP:nasmomomo nasss
+
+[2026-08-30 00:32:46,376][hybrid.speech_recognize][INFO] - 
+REF:nekada moraš da budeš ono što nisi jed
+HYP:nasmomomo nasss
+
+
+REF:u meč je ušao apsolutno spreman ne
+HYP:ušššu u u uoommmmmm
+
+[2026-08-30 00:32:46,816][hybrid.speech_recognize][INFO] - 
+REF:u meč je ušao apsolutno spreman ne
+HYP:ušššu u u uoommmmmm
+
+
+REF:na posao krenite javnim prevozom
+HYP:naooooo da da dammmmm
+
+[2026-08-30 00:32:46,818][hybrid.speech_recognize][INFO] - 
+REF:na posao krenite javnim prevozom
+HYP:naooooo da da dammmmm
+
+
+REF:sve vreme trošite na nevažne stvari na
+HYP:sve se se se jevaveee
+
+[2026-08-30 00:32:46,819][hybrid.speech_recognize][INFO] - 
+REF:sve vreme trošite na nevažne stvari na
+HYP:sve se se se jevaveee
+
+
+REF:zaista bih cenio tvoju pomoć s
+HYP:s je je je je je je je je je je je
+
+[2026-08-30 00:32:46,821][hybrid.speech_recognize][INFO] - 
+REF:zaista bih cenio tvoju pomoć s
+HYP:s je je je je je je je je je je je
+
+
+REF:planeta se i dalje obrtala
+HYP:mi je je je je u i ie
+
+[2026-08-30 00:32:46,822][hybrid.speech_recognize][INFO] - 
+REF:planeta se i dalje obrtala
+HYP:mi je je je je u i ie
+
+
+REF:bez alata nema zanata
+HYP:meslalalalannn
+
+[2026-08-30 00:32:46,823][hybrid.speech_recognize][INFO] - 
+REF:bez alata nema zanata
+HYP:meslalalalannn
+
+
+REF:u tom pogledu išlo im je prilično slabo ve
+HYP:u tom pogledu pogledu im je prilično prilično
+
+[2026-08-30 00:32:46,825][hybrid.speech_recognize][INFO] - 
+REF:u tom pogledu išlo im je prilično slabo ve
+HYP:u tom pogledu pogledu im je prilično prilično
+
+
+REF:pažljivo je posmatrao sveštenika im
+HYP:mladićšššooaatititititi
+
+[2026-08-30 00:32:46,826][hybrid.speech_recognize][INFO] - 
+REF:pažljivo je posmatrao sveštenika im
+HYP:mladićšššooaatititititi
+
+
+REF:dovoljno si mlad da tako govoriš m
+HYP:dovoljno si mlado tako govoriš za s
+
+[2026-08-30 00:32:46,827][hybrid.speech_recognize][INFO] - 
+REF:dovoljno si mlad da tako govoriš m
+HYP:dovoljno si mlado tako govoriš za s
+
+
+REF:luđu stvar nisam mogao da zamislim n
+HYP:uii s s soooooo
+
+[2026-08-30 00:32:46,828][hybrid.speech_recognize][INFO] - 
+REF:luđu stvar nisam mogao da zamislim n
+HYP:uii s s soooooo
+
+
+REF:staklene flaše vraćajte u prodavnice sa
+HYP:zaaeeeešššooooo
+
+[2026-08-30 00:32:46,831][hybrid.speech_recognize][INFO] - 
+REF:staklene flaše vraćajte u prodavnice sa
+HYP:zaaeeeešššooooo
+
+
+REF:svaki put kad se pojavi ja se uplašim n
+HYP:so po po po po po pooooo
+
+[2026-08-30 00:32:46,832][hybrid.speech_recognize][INFO] - 
+REF:svaki put kad se pojavi ja se uplašim n
+HYP:so po po po po po pooooo
+
+
+REF:one su i do osam puta trajnije
+HYP:ono su su su po po po po po po poa
+
+[2026-08-30 00:32:46,833][hybrid.speech_recognize][INFO] - 
+REF:one su i do osam puta trajnije
+HYP:ono su su su po po po po po po poa
+
+
+REF:jedan helikopter je prinudno sleteo
+HYP:da je je je jeoooo s s s
+
+[2026-08-30 00:32:46,835][hybrid.speech_recognize][INFO] - 
+REF:jedan helikopter je prinudno sleteo
+HYP:da je je je jeoooo s s s
+
+
+REF:eto svemu jednom dođe kraj s
+HYP:etoko jednom jednommomomomo
+
+[2026-08-30 00:32:46,837][hybrid.speech_recognize][INFO] - 
+REF:eto svemu jednom dođe kraj s
+HYP:etoko jednom jednommomomomo
+
+
+REF:često je slušala džonatana na
+HYP:često je slušala na na na na na
+
+[2026-08-30 00:32:46,838][hybrid.speech_recognize][INFO] - 
+REF:često je slušala džonatana na
+HYP:često je slušala na na na na na
+
+
+REF:možda on još uvek nije zaražen dne
+HYP:poooooo za za za za
+
+[2026-08-30 00:32:47,249][hybrid.speech_recognize][INFO] - 
+REF:možda on još uvek nije zaražen dne
+HYP:poooooo za za za za
+
+
+REF:javite nam kako vam ide na novom poslu
+HYP:jaaaa se semooooo
+
+[2026-08-30 00:32:47,263][hybrid.speech_recognize][INFO] - 
+REF:javite nam kako vam ide na novom poslu
+HYP:jaaaa se semooooo
+
+
+REF:dvaput je obišao grad kolima š
+HYP:sverm se se semamammmmmmm
+
+[2026-08-30 00:32:47,266][hybrid.speech_recognize][INFO] - 
+REF:dvaput je obišao grad kolima š
+HYP:sverm se se semamammmmmmm
+
+
+REF:kako možeš da kažeš tako nešto ipak
+HYP:ako se se se se na na na na nauu
+
+[2026-08-30 00:32:47,267][hybrid.speech_recognize][INFO] - 
+REF:kako možeš da kažeš tako nešto ipak
+HYP:ako se se se se na na na na nauu
+
+
+REF:nije želeo da pokaže neznanje čo
+HYP:nešš po po po po po po po po po po
+
+[2026-08-30 00:32:47,269][hybrid.speech_recognize][INFO] - 
+REF:nije želeo da pokaže neznanje čo
+HYP:nešš po po po po po po po po po po
+
+
+REF:nekada moraš da budeš ono što nisi jed
+HYP:ne ne da da da datiti od
+
+[2026-08-30 00:32:47,271][hybrid.speech_recognize][INFO] - 
+REF:nekada moraš da budeš ono što nisi jed
+HYP:ne ne da da da datiti od
+
+
+REF:kako ga prepoznati i preduprediti
+HYP:akoko polalakokokooolala
+
+[2026-08-30 00:32:47,272][hybrid.speech_recognize][INFO] - 
+REF:kako ga prepoznati i preduprediti
+HYP:akoko polalakokokooolala
+
+
+REF:oglasilo se zvonce
+HYP:od je je je je na na na na na na na
+
+[2026-08-30 00:32:47,273][hybrid.speech_recognize][INFO] - 
+REF:oglasilo se zvonce
+HYP:od je je je je na na na na na na na
+
+
+REF:bili su oprezni sa vatrom
+HYP:misli misli vas se se se se se se
+
+[2026-08-30 00:32:47,275][hybrid.speech_recognize][INFO] - 
+REF:bili su oprezni sa vatrom
+HYP:misli misli vas se se se se se se
+
+
+REF:nije bilo vremena za raspravljanje
+HYP:a je je je je jenaeeee
+
+[2026-08-30 00:32:47,276][hybrid.speech_recognize][INFO] - 
+REF:nije bilo vremena za raspravljanje
+HYP:a je je je je jenaeeee
+
+
+REF:otvaram poštu jednom nedeljno a
+HYP:ooouuo jeuuuuu
+
+[2026-08-30 00:32:47,278][hybrid.speech_recognize][INFO] - 
+REF:otvaram poštu jednom nedeljno a
+HYP:ooouuo jeuuuuu
+
+
+REF:glas bi mu prepoznala u svako doba
+HYP:glas bi mu prepoznala prepoznala svako doba
+
+[2026-08-30 00:32:47,279][hybrid.speech_recognize][INFO] - 
+REF:glas bi mu prepoznala u svako doba
+HYP:glas bi mu prepoznala prepoznala svako doba
+
+
+REF:nekad je to bio kamenolom
+HYP:ne ne je je je je jeoooomm
+
+[2026-08-30 00:32:47,281][hybrid.speech_recognize][INFO] - 
+REF:nekad je to bio kamenolom
+HYP:ne ne je je je je jeoooomm
+
+
+REF:ona sadrži dva paralelna kursa n
+HYP:je jeoo je jetiti u u u
+
+[2026-08-30 00:32:47,282][hybrid.speech_recognize][INFO] - 
+REF:ona sadrži dva paralelna kursa n
+HYP:je jeoo je jetiti u u u
+
+
+REF:sviđa mi se šareni džemper čes
+HYP:sviđa mi se se džemper čes
+
+[2026-08-30 00:32:47,283][hybrid.speech_recognize][INFO] - 
+REF:sviđa mi se šareni džemper čes
+HYP:sviđa mi se se džemper čes
+
+
+REF:strahinja je došao do zaključka pr
+HYP:izgleda je je su su su i i u u u u
+
+[2026-08-30 00:32:47,285][hybrid.speech_recognize][INFO] - 
+REF:strahinja je došao do zaključka pr
+HYP:izgleda je je su su su i i u u u u
+
+
+REF:molio bih vas da uzmete žutu hartiju d
+HYP:molio bih vas da uzmete žutu hartiju d
+
+[2026-08-30 00:32:47,693][hybrid.speech_recognize][INFO] - 
+REF:molio bih vas da uzmete žutu hartiju d
+HYP:molio bih vas da uzmete žutu hartiju d
+
+
+REF:sviđa mi se šareni džemper čes
+HYP:sviđa mi se šareni džemperees
+
+[2026-08-30 00:32:47,695][hybrid.speech_recognize][INFO] - 
+REF:sviđa mi se šareni džemper čes
+HYP:sviđa mi se šareni džemperees
+
+
+REF:veče kao da nema kraja p
+HYP:uš je jelalalalalalalala
+
+[2026-08-30 00:32:47,696][hybrid.speech_recognize][INFO] - 
+REF:veče kao da nema kraja p
+HYP:uš je jelalalalalalalala
+
+
+REF:često je slušala džonatana na
+HYP:često je slušala džonatana na
+
+[2026-08-30 00:32:47,698][hybrid.speech_recognize][INFO] - 
+REF:često je slušala džonatana na
+HYP:često je slušala džonatana na
+
+
+REF:dvaput je obišao grad kolima š
+HYP:sveršš seeooeeeee
+
+[2026-08-30 00:32:47,699][hybrid.speech_recognize][INFO] - 
+REF:dvaput je obišao grad kolima š
+HYP:sveršš seeooeeeee
+
+
+REF:maramica je prljava od krvi
+HYP:memm je jeoooooaa
+
+[2026-08-30 00:32:47,707][hybrid.speech_recognize][INFO] - 
+REF:maramica je prljava od krvi
+HYP:memm je jeoooooaa
+
+
+REF:ne ljuti se na mene jer nisam kriv
+HYP:neaooooooolalala
+
+[2026-08-30 00:32:47,708][hybrid.speech_recognize][INFO] - 
+REF:ne ljuti se na mene jer nisam kriv
+HYP:neaooooooolalala
+
+
+REF:sviđa mi se šareni džemper čes
+HYP:sviđa mi se šareni šareni čes
+
+[2026-08-30 00:32:47,709][hybrid.speech_recognize][INFO] - 
+REF:sviđa mi se šareni džemper čes
+HYP:sviđa mi se šareni šareni čes
+
+
+REF:nije bilo vremena za raspravljanje
+HYP:bilo je je je je vepapaeee
+
+[2026-08-30 00:32:47,711][hybrid.speech_recognize][INFO] - 
+REF:nije bilo vremena za raspravljanje
+HYP:bilo je je je je vepapaeee
+
+
+REF:ponavljanje je majka učenja o
+HYP:poooomm ma madadadadada
+
+[2026-08-30 00:32:47,712][hybrid.speech_recognize][INFO] - 
+REF:ponavljanje je majka učenja o
+HYP:poooomm ma madadadadada
+
+
+REF:nije želeo da pokaže neznanje čo
+HYP:često je je je je jeeeaaaa
+
+[2026-08-30 00:32:47,713][hybrid.speech_recognize][INFO] - 
+REF:nije želeo da pokaže neznanje čo
+HYP:često je je je je jeeeaaaa
+
+
+REF:pažljivo je posmatrao sveštenika im
+HYP:mladić ješššruuoooo
+
+[2026-08-30 00:32:47,714][hybrid.speech_recognize][INFO] - 
+REF:pažljivo je posmatrao sveštenika im
+HYP:mladić ješššruuoooo
+
+
+REF:bilo je vreme da se vrati na koledž s
+HYP:bilo je vreme da se vrati na koledž s
+
+[2026-08-30 00:32:47,716][hybrid.speech_recognize][INFO] - 
+REF:bilo je vreme da se vrati na koledž s
+HYP:bilo je vreme da se vrati na koledž s
+
+
+REF:on je veći krivac od njega p
+HYP:ko je je je je
+
+[2026-08-30 00:32:47,717][hybrid.speech_recognize][INFO] - 
+REF:on je veći krivac od njega p
+HYP:ko je je je je
+
+
+REF:često je slušala džonatana na
+HYP:često je slušala džonatana na
+
+[2026-08-30 00:32:47,718][hybrid.speech_recognize][INFO] - 
+REF:često je slušala džonatana na
+HYP:često je slušala džonatana na
+
+
+REF:kako možeš da kažeš tako nešto ipak
+HYP:ja ne ne neš da daoo
+
+[2026-08-30 00:32:47,719][hybrid.speech_recognize][INFO] - 
+REF:kako možeš da kažeš tako nešto ipak
+HYP:ja ne ne neš da daoo
+
+
+REF:dovoljno si mlad da tako govoriš m
+HYP:dovoljno si da da da govoriš m m
+
+[2026-08-30 00:32:47,927][hybrid.speech_recognize][INFO] - 
+REF:dovoljno si mlad da tako govoriš m
+HYP:dovoljno si da da da govoriš m m
+
+
+REF:jesam li vas uznemirio
+HYP:ness se se se za za je
+
+[2026-08-30 00:32:47,928][hybrid.speech_recognize][INFO] - 
+REF:jesam li vas uznemirio
+HYP:ness se se se za za je
+
+
+REF:pružila je ruku ka njemu n
+HYP:po jelalalako da da dauu
+
+[2026-08-30 00:32:47,930][hybrid.speech_recognize][INFO] - 
+REF:pružila je ruku ka njemu n
+HYP:po jelalalako da da dauu
+
+
+REF:bez alata nema zanata
+HYP:mladićsss se
+
+[2026-08-30 00:32:47,931][hybrid.speech_recognize][INFO] - 
+REF:bez alata nema zanata
+HYP:mladićsss se
+
+
+REF:maramica je prljava od krvi
+HYP:mi bimaooooooovavava
+
+[2026-08-30 00:32:47,932][hybrid.speech_recognize][INFO] - 
+REF:maramica je prljava od krvi
+HYP:mi bimaooooooovavava
+
+
+REF:često je slušala džonatana na
+HYP:često je su su na
+
+[2026-08-30 00:32:47,933][hybrid.speech_recognize][INFO] - 
+REF:često je slušala džonatana na
+HYP:često je su su na
+
+
+REF:sviđa mi se šareni džemper čes
+HYP:sviđa mi se šarenieees
+
+[2026-08-30 00:32:47,935][hybrid.speech_recognize][INFO] - 
+REF:sviđa mi se šareni džemper čes
+HYP:sviđa mi se šarenieees
+
+
+REF:planeta se i dalje obrtala
+HYP:mladić je je je se sela
+
+[2026-08-30 00:32:47,936][hybrid.speech_recognize][INFO] - 
+REF:planeta se i dalje obrtala
+HYP:mladić je je je se sela
+
+
+REF:pružila je ruku ka njemu n
+HYP:po jeonununuuuuuu
+
+[2026-08-30 00:32:48,107][hybrid.speech_recognize][INFO] - 
+REF:pružila je ruku ka njemu n
+HYP:po jeonununuuuuuu
+
+
+REF:odakle početi s
+HYP:od je je je po po po po pošš
+
+[2026-08-30 00:32:48,108][hybrid.speech_recognize][INFO] - 
+REF:odakle početi s
+HYP:od je je je po po po po pošš
+
+
+REF:šta to devojke vole a
+HYP:zaaa je jeaaavvvv
+
+[2026-08-30 00:32:48,110][hybrid.speech_recognize][INFO] - 
+REF:šta to devojke vole a
+HYP:zaaa je jeaaavvvv
+
+
+REF:oglasilo se zvonce
+HYP:to je je je je je za zai
+
+[2026-08-30 00:32:48,112][hybrid.speech_recognize][INFO] - 
+REF:oglasilo se zvonce
+HYP:to je je je je je za zai
+
+
+REF:šta to devojke vole a
+HYP:čaa je jeaao
+
+[2026-08-30 00:32:48,113][hybrid.speech_recognize][INFO] - 
+REF:šta to devojke vole a
+HYP:čaa je jeaao
+
+
+REF:imamo novi mesec
+HYP:damomomooo da
+
+[2026-08-30 00:32:48,114][hybrid.speech_recognize][INFO] - 
+REF:imamo novi mesec
+HYP:damomomooo da
+
+
+REF:imamo novi mesec
+HYP:mammmmmm
+
+[2026-08-30 00:32:48,115][hybrid.speech_recognize][INFO] - 
+REF:imamo novi mesec
+HYP:mammmmmm
+
+NOTE: hypothesis and token scores are output in base 2
+[2026-08-30 00:32:48,116][hybrid.speech_recognize][INFO] - NOTE: hypothesis and token scores are output in base 2
+Recognized 311 utterances (4423 tokens) in 17.3s (17.97 sentences/s, 255.58 tokens/s)
+[2026-08-30 00:32:48,116][hybrid.speech_recognize][INFO] - Recognized 311 utterances (4423 tokens) in 17.3s (17.97 sentences/s, 255.58 tokens/s)
+WER: 73.09664694280079%
+[2026-08-30 00:32:48,135][hybrid.speech_recognize][INFO] - WER: 73.09664694280079%
+
+decode complete. WER + hypotheses in: /workspace/av-hubert-ai-speak/workspace/experiments/final_encdec/decode_test
+  cat /workspace/av-hubert-ai-speak/workspace/experiments/final_encdec/decode_test/decode.log        # summary incl. WER

@@ -1,0 +1,7 @@
+=== [decoder] training (variant=aispeak, r=16, seed B, max_update=3000, patience=8) ===
+=== [decoder] decoding TEST ===
+FINAL decoder TEST WER: 74.47731755424063 (stopped at num_updates": "2136)  ckpt=/workspace/av-hubert-ai-speak/workspace/experiments/final_decoder/checkpoints/checkpoint_best.pt
+=== [encdec] training (variant=aispeak-enc, r=16, seed B, max_update=3000, patience=8) ===
+=== [encdec] decoding TEST ===
+FINAL encdec TEST WER: 73.09664694280079 (stopped at num_updates": "2328)  ckpt=/workspace/av-hubert-ai-speak/workspace/experiments/final_encdec/checkpoints/checkpoint_best.pt
+PHASE2_DONE
